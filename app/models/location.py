@@ -6,8 +6,8 @@ class Location(db.Model):
     __tablename__ = 'locations'
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, nullable = False, db.ForeignKey("users.id"))
-    photo_id = db.Column(db.Integer, nullable = False, db.ForeignKey("photos.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False,)
+    photo_id = db.Column(db.Integer, db.ForeignKey("photos.id"), nullable = False)
     street_address = db.Column(db.String(100), nullable = False,)
     city = db.Column(db.String(50), nullable = False)
     state = db.Column(db.String(25), nullable = False)

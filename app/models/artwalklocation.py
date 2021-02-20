@@ -2,9 +2,7 @@ from .db import db
 from .artwalk import ArtWalk
 from .location import Location
 
-class ArtWalkLocation(db.Model):
-    __tablename__ = 'art_walk_locations'
-
-    id = db.Column(db.Integer, primary_key = True)
-    art_walk_id = db.Column(db.Integer, nullable = False, db.ForeignKey("art_walks.id"))
-    location_id = db.Column(db.Integer, nullable = False, db.ForeignKey("locations.id"))
+artwalk_locations = db.Table('artwalk_locations',
+    db.Column('art_walk_id', db.Integer, db.ForeignKey("art_walks.id"), nullable = False, primary_key = True),
+    db.Column('location_id', db.Integer, db.ForeignKey("locations.id"), nullable = False, primary_key = True)
+)
