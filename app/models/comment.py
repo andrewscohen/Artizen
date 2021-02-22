@@ -1,6 +1,5 @@
 from .db import db
-from .user import User
-from .location import Location
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -11,3 +10,6 @@ class Comment(db.Model):
     comment = db.Column(db.Text, nullable = False)
     created_at = db.Column(db.Date, nullable = False)
     updated_at = db.Column(db.Date, nullable = False)
+
+    user = db.relationship("User", back_populates="comments")
+    location = db.relationship("Location", back_populates="comments")

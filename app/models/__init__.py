@@ -4,4 +4,3 @@ from .photo import Photo
 from .location import Location
 from .artwalk import ArtWalk
 from .comment import Comment
-from .artwalklocation import artwalk_locations
