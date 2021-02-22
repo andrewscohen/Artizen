@@ -14,7 +14,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           </NavLink>
         </li>
       </ul>
-      <ul>
+      <ul className="search-bar-container">
         <li>
           <SearchBar className="search-bar" />
         </li>

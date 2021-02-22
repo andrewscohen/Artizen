@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    border-bottom: 1px solid black;
+    box-shadow: 1px 1px 3px #555;
 }
 
 .nav ul {
@@ -11,6 +13,10 @@
 
 .nav li {
     list-style-type: none;
+}
+
+.search-bar-container {
+    flex-basis: 50%;
 }
 
 .nav .login-nav-buttons {

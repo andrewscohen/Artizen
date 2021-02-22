@@ -1,6 +1,12 @@
 .search-wrapper {
     border: 1px solid black;
     padding: 5px;
+    display: flex;
+}
+
+.search-wrapper input {
+    flex-grow: 1;
+    outline: none;
 }
 
 .search-wrapper input,
