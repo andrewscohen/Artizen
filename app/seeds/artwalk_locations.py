@@ -1,15 +1,25 @@
-from app.models.artwalk_location import db, Artwalk_Location
+from app.models.artwalk_location import Artwalk_Location
+from app.models import db, ArtWalk, Location
 
 def seed_artwalk_locations():
     artwalk_locations = [
-        {'artwalk_id': 1,
+        {'art_walk_id': 1,
         'location_id': 1,
+        },
+        {'art_walk_id': 1,
+        'location_id': 3,
+        },
+        {'art_walk_id': 1,
+        'location_id': 7,
+        },
+        {'art_walk_id': 1,
+        'location_id': 8,
         },
         ]
 
     for artwalk_location in artwalk_locations:
-        new_artwalk_location = ArtWalk_Location(**artwalk_location)
-        db.session.add(new_artwalk_location)
+        db.session.execute(Artwalk_Location.insert(),
+                        params=artwalk_location)
 
     db.session.commit()
 

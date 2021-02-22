@@ -4,6 +4,7 @@ from .locations import seed_locations, undo_locations
 from .photos import seed_photos, undo_photos
 from .comments import seed_comments, undo_comments
 from .artwalks import seed_artwalks, undo_artwalks
+from .artwalk_locations import seed_artwalk_locations, undo_artwalk_locations
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -16,6 +17,7 @@ def seed():
     seed_photos()
     seed_locations()
     seed_artwalks()
+    seed_artwalk_locations()
     seed_comments()
     # Add other seed functions here
 
@@ -23,6 +25,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_comments()
+    undo_artwalk_locations()
     undo_artwalks()
     undo_locations()
     undo_photos()
