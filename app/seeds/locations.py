@@ -3,7 +3,6 @@ from app.models import db, Location
 def seed_locations():
     locations = [
         {'user_id': 1,
-        'photo_id': 1,
         'street_address': '304 E Cesar Chavez St',
         'city': 'Austin',
         'state': 'TX',
@@ -14,7 +13,6 @@ def seed_locations():
         'description': 'Local legend!',
         'artist': ''},
         {'user_id': 12,
-        'photo_id': 2,
         'street_address': '2000 E Martin Luther King Jr Blvd',
         'city': 'Austin',
         'state': 'TX',
@@ -25,7 +23,6 @@ def seed_locations():
         'description': 'You\'re my butter half ❤️',
         'artist': 'Creative Suitcase'},
         {'user_id': 27,
-        'photo_id': 3,
         'street_address': '99 Waller St',
         'city': 'Austin',
         'state': 'TX',
@@ -36,7 +33,6 @@ def seed_locations():
         'description': 'This girl in this mural has rad hair!',
         'artist': 'Roshi K'},
         {'user_id': 38,
-        'photo_id': 4,
         'street_address': '1209 E Cesar Chavez St',
         'city': 'Austin',
         'state': 'TX',
@@ -47,7 +43,6 @@ def seed_locations():
         'description': 'I\'m a lover, not a fighter.',
         'artist': 'Federico'},
         {'user_id': 41,
-        'photo_id': 5,
         'street_address': '2101 E Cesar Chavez St',
         'city': 'Austin',
         'state': 'TX',
@@ -58,7 +53,6 @@ def seed_locations():
         'description': 'Selena will live forever',
         'artist': 'Federico'},
         {'user_id': 19,
-        'photo_id': 6,
         'street_address': '1601 S 1st St',
         'city': 'Austin',
         'state': 'TX',
@@ -69,7 +63,6 @@ def seed_locations():
         'description': 'Loves Scotch!!',
         'artist': ''},
         {'user_id': 28,
-        'photo_id': 7,
         'street_address': '2209 S 1st St',
         'city': 'Austin',
         'state': 'TX',
@@ -80,7 +73,6 @@ def seed_locations():
         'description': 'A message of reflection',
         'artist': ''},
         {'user_id': 10,
-        'photo_id': 8,
         'street_address': '1821 S 1st St',
         'city': 'Austin',
         'state': 'TX',
@@ -91,7 +83,6 @@ def seed_locations():
         'description': 'Take that to the bank',
         'artist': ''},
         {'user_id': 5,
-        'photo_id': 9,
         'street_address': '1421 S Congress Ave',
         'city': 'Austin',
         'state': 'TX',
@@ -102,7 +93,6 @@ def seed_locations():
         'description': 'Willie For President – In collaboration with Jacqui Oakley and Erick Montes.',
         'artist': 'Joe Swec'},
         {'user_id': 22,
-        'photo_id': 10,
         'street_address': 'South 1st Street',
         'city': 'Austin',
         'state': 'TX',
@@ -113,7 +103,6 @@ def seed_locations():
         'description': 'It\'s Becca...with the good hair..',
         'artist': ''},
         {'user_id': 37,
-        'photo_id': 11,
         'street_address': '1601 S 1st St',
         'city': 'Austin',
         'state': 'TX',
@@ -131,7 +120,6 @@ def seed_locations():
 
     db.session.commit()
 
-# db.engine.execute(user.__table__.insert(), locations)
 
 def undo_locations():
     db.session.execute('TRUNCATE locations RESTART IDENTITY CASCADE;')

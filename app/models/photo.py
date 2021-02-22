@@ -6,6 +6,7 @@ class Photo(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
+    location_id = db.Column(db.Integer, db.ForeignKey("locations.id"), nullable = False)
     url = db.Column(db.String(255), nullable = False, unique = True)
 
     user = db.relationship("User", back_populates="photos")
