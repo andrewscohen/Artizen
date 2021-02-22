@@ -1,7 +1,6 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
     align-items: center;
     padding: 0 10px;
 }
@@ -16,4 +15,9 @@
 
 .nav .login-nav-buttons {
     display: flex;
+    justify-content: space-between;
+}
+
+#sign-up-button {
+    padding-left: 15px;
 }

@@ -1,11 +1,14 @@
 import React from "react";
+import "./SearchBar.css";
 
 const SearchBar = () => {
     return (
-        <>
+        <div className="search-wrapper">
             <input type="text" placeholder="Enter a city" />
-            <button type="submit">Search</button>
-        </>
+            <button type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
     )
 }
 

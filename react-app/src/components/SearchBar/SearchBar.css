@@ -1,3 +1,13 @@
-.search-bar {
-    
+.search-wrapper {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.search-wrapper input,
+.search-wrapper button {
+    border: none;
+}
+
+.search-wrapper button {
+    background-color: transparent;
 }
