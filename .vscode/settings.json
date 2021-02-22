@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "/home/austin/.pyenv/versions/3.9.1/bin/python",
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.linting.pycodestyleEnabled": true
-}
