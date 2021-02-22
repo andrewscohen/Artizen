@@ -1,0 +1,30 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid black;
+    box-shadow: 1px 1px 3px #555;
+}
+
+.nav ul {
+    padding: 0;
+}
+
+.nav li {
+    list-style-type: none;
+}
+
+.search-bar-container {
+    flex-basis: 50%;
+}
+
+.nav .login-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Aktiv Grotesk","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+#sign-up-button {
+    padding-left: 15px;
+}
