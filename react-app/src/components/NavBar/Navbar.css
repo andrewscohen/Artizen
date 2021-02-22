@@ -22,6 +22,7 @@
 .nav .login-nav-buttons {
     display: flex;
     justify-content: space-between;
+    font-family: "Aktiv Grotesk","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 #sign-up-button {
