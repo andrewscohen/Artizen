@@ -7,7 +7,7 @@ fake = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     users = []
-    demo = User(username='Demo', email='demo@aa.io',
+    demo = User(username='Demo', email='demo@email.com',
                 password='password', first_name='Demo',
                 last_name='User')
     users.append(demo)
@@ -28,5 +28,5 @@ def seed_users():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_users():
-    db.session.execute('TRUNCATE users;')
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()

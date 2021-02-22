@@ -1,7 +1,5 @@
 from app.models import db, Location
 
-
-# Adds a demo user, you can add other users here if you want
 def seed_locations():
     locations = [
         {'user_id': 1 ,
@@ -15,13 +13,115 @@ def seed_locations():
         'title': '',
         'description': 'Local legend!',
         'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
+        {'user_id': 1 ,
+        'photo_id': 1,
+        'street_address': '304 E Cesar Chavez St',
+        'city': 'Austin',
+        'state': 'TX',
+        'zip_code': 78701,
+        'lat': 30.262937,
+        'long': -97.741687,
+        'title': '',
+        'description': 'Local legend!',
+        'artist': ''},
         ]
 
-    users.append(demo)
-
-    for user in users:
-        db.session.add(user)
+    for location in locations:
+        new_location = Location(**location)
+        db.session.add(new_location)
 
     db.session.commit()
 
-db.engine.execute(user.__table__.insert(), locations)
+# db.engine.execute(user.__table__.insert(), locations)
+
+def undo_locations():
+    db.session.execute('TRUNCATE locations RESTART IDENTITY CASCADE;')
+    db.session.commit()
