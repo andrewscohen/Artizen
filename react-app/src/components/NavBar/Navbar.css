@@ -1,0 +1,19 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.nav ul {
+    padding: 0;
+}
+
+.nav li {
+    list-style-type: none;
+}
+
+.nav .login-nav-buttons {
+    display: flex;
+}
