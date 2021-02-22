@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 .venv
 .DS_Store
+.vscode
+Pipfile
+Pipfile.lock
