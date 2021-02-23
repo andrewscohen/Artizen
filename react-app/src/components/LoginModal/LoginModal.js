@@ -35,8 +35,8 @@ const LoginModal = ({setAuthenticated}) => {
 
     return (
         <>
-            <button onClick={() => showLoginModal()}>Log In(Modal)</button>
-            <button onClick={() => showSignUpModal()}>Sign Up(Modal)</button>
+            <button className="login-btn" onClick={() => showLoginModal()}>Login</button>
+            <button className="signup-btn" onClick={() => showSignUpModal()}>Sign Up</button>
             <Modal style={customStyles} isOpen={showModal}>
             {
                 showLoginForm ?

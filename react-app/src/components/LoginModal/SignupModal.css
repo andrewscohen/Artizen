@@ -1,3 +1,12 @@
+.signup-btn {
+    color: #fff;
+    border: 1px solid rgb(255, 0, 234);
+    background-color: rgb(255, 0, 234);
+    padding: 0.3em 0.8em;
+    border-radius: 5px;
+    outline: none;
+}
+
 .signup-modal-form {
     display: flex;
     flex-direction: column;
