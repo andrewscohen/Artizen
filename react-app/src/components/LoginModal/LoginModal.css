@@ -1,0 +1,53 @@
+.login-modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-modal-form div {
+    margin-bottom: 1.5em;
+}
+
+.login-modal-form button {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
+    border-radius: 5px;
+}
+
+.login-modal-form input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.3em;
+}
+
+
+.login-modal-form button {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.login-modal-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.login-modal-top-row h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-modal-top-row button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding-top: 10px;
+    padding-right: 12px;
+}
+
+.login-modal-top-row button {
+    cursor: pointer;
+}
