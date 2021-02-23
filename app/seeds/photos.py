@@ -10,7 +10,7 @@ def seed_photos():
         },
         {'user_id': 12,
         'location_id': 2,
-        'url': 'https://streetartcities.com/media/c/c585b0dc-c303-47fb-9a9f-523b97d99bc8/2048.jpg',
+        'url': 'https://do512family.com/wp-content/uploads/2018/01/DSC_8986.jpg',
         'created_at': datetime.datetime.now()
         },
         {'user_id': 27,
@@ -56,6 +56,51 @@ def seed_photos():
         {'user_id': 37,
         'location_id': 11,
         'url': 'https://streetartcities.com/media/6/653b9219-b324-4fe4-9d20-5f520f96ed22/2048.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 42,
+        'location_id': 12,
+        'url': 'https://s3.amazonaws.com/paa.cspace.westaf/content%3F433b0456-caf6-491e-bbaf.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 4,
+        'location_id': 13,
+        'url': 'https://s3.amazonaws.com/paa.cspace.westaf/content%3F8d6cc1c3-a5da-4935-bed4.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 50,
+        'location_id': 14,
+        'url': 'https://s3.amazonaws.com/paa.cspace.westaf/content%3Fc6ada2b1-e836-4dda-9553.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 25,
+        'location_id': 15,
+        'url': 'https://s3.amazonaws.com/paa.cspace.westaf/content%3F0b6c578c-6f65-40a6-bd3b.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 11,
+        'location_id': 16,
+        'url': 'https://s7d2.scene7.com/is/image/TWCNews/spec_We%20Rise_2',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 17,
+        'location_id': 17,
+        'url': 'https://do512family.com/wp-content/uploads/2018/01/DSC_8988.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 1,
+        'location_id': 18,
+        'url': 'https://do512family.com/wp-content/uploads/2018/01/DSC_8980.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 31,
+        'location_id': 19,
+        'url': 'https://do512family.com/wp-content/uploads/2018/01/RH208528.jpg',
+        'created_at': datetime.datetime.now()
+        },
+        {'user_id': 8,
+        'location_id': 20,
+        'url': 'https://s7d2.scene7.com/is/image/TWCNews/spec_We%20Rise_2',
         'created_at': datetime.datetime.now()
         }
         ]

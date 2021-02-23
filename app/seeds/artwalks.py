@@ -5,6 +5,15 @@ def seed_artwalks():
         {'user_id': 1,
         'name': 'Sunday Walk in Austin'
         },
+        {'user_id': 1,
+        'name': 'Favorite Spots'
+        },
+        {'user_id': 22,
+        'name': 'Exploring Art'
+        },
+        {'user_id': 15,
+        'name': 'New Places'
+        },
         ]
 
     for artwalk in artwalks:
