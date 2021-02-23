@@ -14,14 +14,12 @@ import "./components/NavBar/Navbar.css"
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [sessionUser, setSessionUser] = useState({});
 
   useEffect(() => {
     (async() => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
-        setSessionUser(user);
       }
       setLoaded(true);
     })();
@@ -34,29 +32,31 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar className="nav" setAuthenticated={setAuthenticated} authenticated={authenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated} sessionUser={sessionUser}>
-          <UserProfile/>
-        </ProtectedRoute>
-        <Route path='/map'>
-          <Gmap />
-        </Route>
-      </Switch>
+      {loaded && (
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+            <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <UserProfile/>
+          </ProtectedRoute>
+          <Route path='/map'>
+            <Gmap />
+          </Route>
+        </Switch>
+      )}
     </BrowserRouter>
   );
 }

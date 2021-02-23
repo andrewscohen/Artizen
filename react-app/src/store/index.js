@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import artwalksReducer from "./artwalks"
 
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
+  artwalks: artwalksReducer,
 });
 
 const rootReducer = (state, action) => {
