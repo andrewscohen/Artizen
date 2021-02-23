@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import "./LoginModal.css"
 
-const LoginModalForm = ({ authenticated, setAuthenticated }) => {
+const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +58,10 @@ const LoginModalForm = ({ authenticated, setAuthenticated }) => {
       <div>
         <button id="btn" type="submit">Login</button>
       </div>
+      <p>
+        Don't have an account? 
+      </p>
+      <p onClick={() => setShowLoginForm(false)}>Sign Up Now</p>
     </form>
   );
 };
