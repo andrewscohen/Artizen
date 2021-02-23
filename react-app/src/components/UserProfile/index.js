@@ -6,7 +6,7 @@ import "./UserProfile.css"
 
 
 export default function UserProfile({sessionUser}) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [change, setChange] = useState(false);
 
   // useEffect(() => {
