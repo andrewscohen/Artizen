@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoutButton from '../auth/LogoutButton';
-// import './menu.css';
+import './menu.css';
 
 export default function ProfileButton({setAuthenticated}) {
 
