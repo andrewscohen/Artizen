@@ -7,7 +7,7 @@ import {LoadScript} from '@react-google-maps/api';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoadScript googleMapsApiKey='AIzaSyAe1sYNIYtSueIWvyDDK8stzK7oVfgQuWU'>
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}>
       <App />
     </LoadScript>
   </React.StrictMode>,

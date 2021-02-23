@@ -7,8 +7,8 @@ const containerStyle = {
 };
 
 const center = {
-    lat: 44.558755,
-    lng: -89.296325
+    lat: 30.275528863705016,
+    lng:  -97.74073530134736
   };
 
 const Gmap = () => {
@@ -19,8 +19,8 @@ const Gmap = () => {
         zoom={10}
       >
         { /* Child components, such as markers, info windows, etc. */ }
-        <Marker position={{lat: 44.558755, lng: -89.296325}}/>
-        <InfoWindow position={{lat: 44.558755, lng: -89.296325}}><p>This Spot</p></InfoWindow>
+        <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/>
+        {/* <InfoWindow position={{lat: 30.275528863705016, lng: -97.74073530134736}}><p>This Spot</p></InfoWindow> */}
         <></>
       </GoogleMap>
   )
