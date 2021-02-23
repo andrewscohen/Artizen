@@ -20,6 +20,7 @@ function App() {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        console.log(user);
       }
       setLoaded(true);
     })();
