@@ -5,13 +5,13 @@ import ArtwalkContainer from "../ArtwalkContainer"
 import "./UserProfile.css"
 
 
-export default function UserProfile() {
-  const dispatch = useDispatch();
+export default function UserProfile({sessionUser}) {
+  // const dispatch = useDispatch();
   const [change, setChange] = useState(false);
 
-  useEffect(() => {
-    dispatch(artwalkActions.getUserArtwalks(user.id))
-  }, [dispatch, sessionUser.id, change]);
+  // useEffect(() => {
+  //   dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
+  // }, [dispatch, sessionUser.id, change]);
 
 
   return (

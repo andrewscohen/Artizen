@@ -14,13 +14,14 @@ import "./components/NavBar/Navbar.css"
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [sessionUser, setSessionUser] = useState({});
 
   useEffect(() => {
     (async() => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
-        console.log(user);
+        setSessionUser(user);
       }
       setLoaded(true);
     })();
@@ -49,7 +50,7 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/" exact={true} authenticated={authenticated} sessionUser={sessionUser}>
           <UserProfile/>
         </ProtectedRoute>
         <Route path='/map'>
