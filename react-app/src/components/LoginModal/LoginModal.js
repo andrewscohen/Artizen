@@ -22,7 +22,8 @@ const LoginModal = ({setAuthenticated}) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)} >Log In(Modal)</button>
+            <button onClick={() => setShowModal(true)}>Log In(Modal)</button>
+            <button onClick={() => setShowModal(true)}>Sign Up(Modal)</button>
             <Modal style={customStyles} isOpen={showModal}>
             {
                 showLoginForm ?

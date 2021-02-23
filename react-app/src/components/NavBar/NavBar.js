@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from '../SearchBar/SearchBar';
 import LoginModal from "../LoginModal/LoginModal"
-import SignupModal from "../SignupModal/SignupModal"
 import "./Navbar.css"
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
@@ -36,9 +35,6 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
             </li>
             <li>
               <LoginModal setAuthenticated={setAuthenticated} />
-            </li>
-            <li>
-              <SignupModal setAuthenticated={setAuthenticated} />
             </li>
           </ul>
           :
