@@ -17,7 +17,7 @@ const customStyles = {
     }
 };
 
-const LoginModal = ({setAuthenticated}) => {
+const AuthModal = ({setAuthenticated}) => {
     const [showModal, setShowModal] = useState(false);
     const [showLoginForm, setShowLoginForm] = useState(true);
 
@@ -65,4 +65,4 @@ const LoginModal = ({setAuthenticated}) => {
     )
 }
 
-export default LoginModal
+export default AuthModal;

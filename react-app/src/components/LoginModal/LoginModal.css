@@ -6,6 +6,7 @@
     border-radius: 5px;
     outline: none;
     margin-right: 0.5em;
+    cursor: pointer;
 }
 
 .login-modal-form {
@@ -27,6 +28,7 @@
     border: none;
     background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .login-modal-form input {

@@ -5,6 +5,7 @@
     padding: 0.3em 0.8em;
     border-radius: 5px;
     outline: none;
+    cursor: pointer;
 }
 
 .signup-modal-form {
@@ -26,6 +27,7 @@
     border: none;
     background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .signup-modal-form input {
