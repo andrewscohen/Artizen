@@ -100,7 +100,7 @@ def seed_photos():
         },
         {'user_id': 8,
         'location_id': 20,
-        'url': 'https://s7d2.scene7.com/is/image/TWCNews/spec_We%20Rise_2',
+        'url': 'https://www.streetartbio.com/wp-content/uploads/2020/04/Fairey_Chevrier_Mural_Austin_Credit_Photo_Jonathan_Furlong-2.jpeg',
         'created_at': datetime.datetime.now()
         }
         ]
