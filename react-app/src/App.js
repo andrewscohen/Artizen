@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import UserProfile from "./components/UserProfile";
+import Gmap from "./components/Maps/Map.js";
 import { authenticate } from "./services/auth";
 import "./components/NavBar/Navbar.css"
 
@@ -50,6 +51,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <UserProfile/>
         </ProtectedRoute>
+        <Route path='/map'>
+          <Gmap />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
