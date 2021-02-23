@@ -105,11 +105,11 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
-      <p>
-        Already have an account? 
-      </p>
-      <p onClick={() => setShowLoginForm(true)}>Login Here</p>
+      <div>
+        <button type="submit">Sign Up</button>
+      </div>
+      <p className="modal-bottom-text">Already signed up?</p>
+      <p className="modal-bottom-text switch-text" onClick={() => setShowLoginForm(true)}>Login Here</p>
     </form>
   );
 };

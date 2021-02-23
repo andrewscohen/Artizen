@@ -7,6 +7,10 @@
     margin-bottom: 1.5em;
 }
 
+.login-modal-form div:last-of-type {
+    margin-bottom: 0.8em;
+}
+
 .login-modal-form button {
     padding: 5px 10px;
     color: white;
@@ -49,5 +53,17 @@
 }
 
 .login-modal-top-row button {
+    cursor: pointer;
+}
+
+.modal-bottom-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+.switch-text {
+    color: rgb(76, 76, 233);
+    text-decoration: underline;
     cursor: pointer;
 }

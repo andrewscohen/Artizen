@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import LoginModalForm from "./LoginModalForm"
 import SignupModalForm from "./SignupModalForm"
 import "./LoginModal.css"
+import "./SignupModal.css"
 
 const customStyles = {
     content : {
@@ -20,10 +21,22 @@ const LoginModal = ({setAuthenticated}) => {
     const [showModal, setShowModal] = useState(false);
     const [showLoginForm, setShowLoginForm] = useState(true);
 
+    const showSignUpModal = () => {
+        setShowLoginForm(false)
+        setShowModal(true)
+    }
+
+    const showLoginModal = () => {
+        setShowLoginForm(true)
+        setShowModal(true)
+    }
+
+
+
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Log In(Modal)</button>
-            <button onClick={() => setShowModal(true)}>Sign Up(Modal)</button>
+            <button onClick={() => showLoginModal()}>Log In(Modal)</button>
+            <button onClick={() => showSignUpModal()}>Sign Up(Modal)</button>
             <Modal style={customStyles} isOpen={showModal}>
             {
                 showLoginForm ?

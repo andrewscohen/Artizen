@@ -24,16 +24,6 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           !authenticated ?
           <ul className="login-nav-buttons">
             <li>
-              <NavLink to="/login" exact={true} activeClassName="active">
-                Login
-              </NavLink>
-            </li>
-            <li id="sign-up-button">
-              <NavLink to="/sign-up" exact={true} activeClassName="active">
-                Sign Up
-              </NavLink>
-            </li>
-            <li>
               <LoginModal setAuthenticated={setAuthenticated} />
             </li>
           </ul>

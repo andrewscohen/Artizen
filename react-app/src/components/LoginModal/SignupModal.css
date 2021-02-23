@@ -7,6 +7,10 @@
     margin-bottom: 1.5em;
 }
 
+.signup-modal-form div:last-of-type {
+    margin-bottom: 0.8em;
+}
+
 .signup-modal-form button {
     padding: 5px 10px;
     color: white;

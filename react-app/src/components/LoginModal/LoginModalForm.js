@@ -58,10 +58,8 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
       <div>
         <button id="btn" type="submit">Login</button>
       </div>
-      <p>
-        Don't have an account? 
-      </p>
-      <p onClick={() => setShowLoginForm(false)}>Sign Up Now</p>
+      <p className="modal-bottom-text">Don't have an account?</p>
+      <p className="modal-bottom-text switch-text" onClick={() => setShowLoginForm(false)}>Sign Up Now</p>
     </form>
   );
 };
