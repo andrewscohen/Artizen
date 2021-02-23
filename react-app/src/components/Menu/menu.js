@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
-import "./menu.css"
 import HamburgerMenu  from "react-hamburger-menu"
 
 
@@ -16,7 +15,7 @@ const Menu = ({setAuthenticated}) => {
     return (
         <>
             {
-            click ?     
+            !click ?     
             <div>
             <Link to="/" className="logo"></Link>
                 <HamburgerMenu 

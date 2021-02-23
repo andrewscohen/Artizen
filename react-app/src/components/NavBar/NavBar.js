@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
-import Menu from '../Menu/menu'
+import ProfileButton from '../Menu/profilebutton'
 import "./Navbar.css"
 
 
@@ -37,7 +37,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           :
           <ul>
             <li>
-              <Menu setAuthenticated={setAuthenticated} />
+              <ProfileButton setAuthenticated={setAuthenticated} />
              
             </li>
           </ul>
