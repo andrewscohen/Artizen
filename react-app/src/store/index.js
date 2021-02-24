@@ -1,19 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-<<<<<<< HEAD
+import sessionReducer from "./session";
 import artwalksReducer from "./artwalks"
 
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
-  artwalks: artwalksReducer,
-=======
-import sessionReducer from "./session";
-
-const appReducer = combineReducers({
-  // add individual reducer key-value pairs here.
   session: sessionReducer,
->>>>>>> main
+  artwalks: artwalksReducer,
 });
 
 const rootReducer = (state, action) => {
