@@ -8,7 +8,7 @@ const getOneLocation = location => {
 };
 
 export const getLocation = locationId => async dispatch => {
-  const res = await fetch(`/locations/${locationId}`);
+  const res = await fetch(`/api/locations/${locationId}`);
   const data = await res.json();
 
   dispatch(getOneLocation(data));
