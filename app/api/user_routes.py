@@ -26,5 +26,4 @@ def artwalks(id):
     artwalks = ArtWalk.query.filter(ArtWalk.user_id == id).all()
     data = [artwalk.to_dict() for artwalk in artwalks]
     res = json.dumps(data)
-    print("------------------------------------", res)
     return res
