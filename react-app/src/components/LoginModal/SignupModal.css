@@ -1,0 +1,69 @@
+.signup-btn {
+    color: #fff;
+    border: 1px solid rgb(255, 0, 234);
+    background-color: rgb(255, 0, 234);
+    padding: 0.3em 0.8em;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.signup-modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-modal-form div {
+    margin-bottom: 1.5em;
+}
+
+.signup-modal-form div:last-of-type {
+    margin-bottom: 0.8em;
+}
+
+.signup-modal-form button {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-modal-form input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.3em;
+}
+
+
+.signup-modal-form button {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.signup-modal-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.signup-modal-top-row h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1.2em;
+}
+
+.signup-modal-top-row button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding-top: 10px;
+    padding-right: 12px;
+}
+
+.signup-modal-top-row button {
+    cursor: pointer;
+}
