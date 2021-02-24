@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { setUser } from "../../store/session"
+import "./LoginModal.css"
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,14 +35,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form className="login-modal-form" onSubmit={onLogin}>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
         <input
           name="email"
           type="text"
@@ -51,7 +51,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
         <input
           name="password"
           type="password"
@@ -59,10 +58,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
       </div>
+      <div>
+        <button id="btn" type="submit">Login</button>
+      </div>
+      <p className="modal-bottom-text">Don't have an account?</p>
+      <p className="modal-bottom-text switch-text" onClick={() => setShowLoginForm(false)}>Sign Up Now</p>
     </form>
   );
 };
 
-export default LoginForm;
+export default LoginModalForm;
