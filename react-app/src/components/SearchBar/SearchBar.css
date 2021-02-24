@@ -1,7 +1,9 @@
 .search-wrapper {
-    border: 1px solid black;
+    border: 1px solid #FE3A9E;
+    border-radius: 5px;
     padding: 5px;
     display: flex;
+    background-color: white;
 }
 
 .search-wrapper input {
@@ -15,5 +17,9 @@
 }
 
 .search-wrapper button {
-    background-color: transparent;
+    background-color: white;
+}
+
+.search-wrapper button i {
+    color: #FE3A9E;
 }

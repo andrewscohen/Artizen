@@ -1,7 +1,7 @@
 .signup-btn {
     color: #fff;
-    border: 1px solid rgb(255, 0, 234);
-    background-color: rgb(255, 0, 234);
+    border: 1px solid #FE3A9E;
+    background-color: #FE3A9E;
     padding: 0.3em 0.8em;
     border-radius: 5px;
     outline: none;
@@ -25,7 +25,7 @@
     padding: 5px 10px;
     color: white;
     border: none;
-    background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
+    background-image: linear-gradient(to right, #1CC3D9, #FE3A9E);
     border-radius: 5px;
     cursor: pointer;
 }

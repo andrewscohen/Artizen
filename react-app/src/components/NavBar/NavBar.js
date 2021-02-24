@@ -1,11 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
-import ProfileButton from '../Menu/profilebutton'
-import LoginModal from "../LoginModal/AuthModal"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
+import ProfileButton from "../Menu/profilebutton";
+import LoginModal from "../LoginModal/AuthModal";
+import logo from "./temp-pic.jpg";
 
-import "./Navbar.css"
-
+import "./Navbar.css";
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
   return (
@@ -13,7 +13,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
       <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
-            <i className="fas fa-home"></i>
+            <img id="logo" src={logo} alt="picture" />
           </NavLink>
         </li>
       </ul>
@@ -22,23 +22,21 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           <SearchBar className="search-bar" />
         </li>
       </ul>
-        {
-          !authenticated ?
-          <ul className="login-nav-buttons">
-            <li>
-              <LoginModal setAuthenticated={setAuthenticated} />
-            </li>
-          </ul>
-          :
-          <ul>
-            <li>
-              <ProfileButton setAuthenticated={setAuthenticated} />
-             
-            </li>
-          </ul>
-        }
+      {!authenticated ? (
+        <ul className="login-nav-buttons">
+          <li>
+            <LoginModal setAuthenticated={setAuthenticated} />
+          </li>
+        </ul>
+      ) : (
+        <ul>
+          <li>
+            <ProfileButton setAuthenticated={setAuthenticated} />
+          </li>
+        </ul>
+      )}
     </nav>
   );
-}
+};
 
 export default NavBar;
