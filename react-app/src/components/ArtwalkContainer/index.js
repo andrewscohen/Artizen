@@ -9,9 +9,14 @@ export default function ArtwalkContainer({artwalk}) {
     <ul>
     {locationsArray.map(location => {
       return (
-        <li>
-          {location.street_address} {location.city} {location.state} {location.zip_code}
-        </li>
+        <div>
+          <div>
+          {location.street_address}
+          </div>
+          <div>
+          {location.city}, {location.state} {location.zip_code}
+          </div>
+        </div>
         )
       })
     }
