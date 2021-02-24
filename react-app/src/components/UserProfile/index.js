@@ -26,7 +26,7 @@ export default function UserProfile() {
         {artwalksArray.map(artwalk => {
           return (
             <div key={artwalk.id}>
-              {artwalk.title}
+              {artwalk.name}
             </div>
             )
           })
