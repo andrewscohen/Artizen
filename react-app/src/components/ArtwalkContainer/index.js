@@ -1,3 +1,4 @@
+import * as mapsMethods from "../../services/maps"
 import "./ArtwalkContainer.css"
 
 export default function ArtwalkContainer({artwalk}) {
@@ -11,10 +12,7 @@ export default function ArtwalkContainer({artwalk}) {
       return (
         <div>
           <div>
-          {location.street_address}
-          </div>
-          <div>
-          {location.city}, {location.state} {location.zip_code}
+          {location.city}, {location.state}
           </div>
         </div>
         )
