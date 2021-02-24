@@ -1,9 +1,12 @@
+
 import "./ArtwalkContainer.css"
 
 export default function ArtwalkContainer({artwalk}) {
   const locationsArray = Object.values(artwalk.locations)
+  const coordinates = locationsArray.map(location => `${location.lat}, ${location.long}`)
 
-  return (
+  if (locationsArray.length) {
+    return (
     <>
     <h3>{artwalk.name}</h3>
     <ul>
@@ -11,10 +14,7 @@ export default function ArtwalkContainer({artwalk}) {
       return (
         <div>
           <div>
-          {location.street_address}
-          </div>
-          <div>
-          {location.city}, {location.state} {location.zip_code}
+          {location.toString()}
           </div>
         </div>
         )
@@ -23,4 +23,5 @@ export default function ArtwalkContainer({artwalk}) {
     </ul>
     </>
   )
+}
 }
