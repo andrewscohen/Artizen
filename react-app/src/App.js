@@ -9,6 +9,7 @@ import User from "./components/User";
 import Gmap from "./components/Maps/Map.js";
 import { authenticate } from "./services/auth";
 import "./components/NavBar/Navbar.css"
+import LocationForm from"./components/LocationForm/location_form"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path="/locations/new" exact={true} authenticated={authenticated}>
+          <LocationForm />
         </ProtectedRoute>
         <Route path='/map'>
           <Gmap />
