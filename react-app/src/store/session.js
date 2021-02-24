@@ -9,19 +9,6 @@ export const setUser = (user) => {
   return { type: SET_USER, user };
 };
 
-// export const loginUser = () => async dispatch => {
-//   const res = await fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({credential, password}),
-//   });
-//   if (res.ok) {
-//     dispatch(setUser(res.data.user));
-//   }
-// };
-
 // export const loginDemo = () => async dispatch => {
 //   const res = await fetch('/api/session', {
 //     method: 'POST',
