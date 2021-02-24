@@ -8,10 +8,10 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-  // The following can be used to clear redux state entirely on logout (if we trigger a USER_LOGOUT action on logout):
-  // if (action.type === 'USER_LOGOUT') {
-  //   state = undefined
-  // }
+  // Clear redux state entirely on logout
+  if (action.type === 'USER_LOGOUT') {
+    state = undefined
+  }
   return appReducer(state, action)
 }
 
