@@ -6,7 +6,7 @@ const SearchBar = () => {
         <div className="search-wrapper">
             <input type="text" placeholder="Enter a city" />
             <button type="submit">
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
             </button>
         </div>
     )
