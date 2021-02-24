@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from '../SearchBar/SearchBar';
-import LoginModal from "../LoginModal/AuthModal"
 import "./Navbar.css"
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
@@ -24,7 +23,14 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           !authenticated ?
           <ul className="login-nav-buttons">
             <li>
-              <LoginModal setAuthenticated={setAuthenticated} />
+              <NavLink to="/login" exact={true} activeClassName="active">
+                Login
+              </NavLink>
+            </li>
+            <li id="sign-up-button">
+              <NavLink to="/sign-up" exact={true} activeClassName="active">
+                Sign Up
+              </NavLink>
             </li>
           </ul>
           :
