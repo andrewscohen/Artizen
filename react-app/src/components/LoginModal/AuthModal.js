@@ -4,7 +4,6 @@ import LoginModalForm from "./LoginModalForm"
 import SignupModalForm from "./SignupModalForm"
 import "./LoginModal.css"
 import "./SignupModal.css"
-// let's see if this helps us
 
 const customStyles = {
     content : {
