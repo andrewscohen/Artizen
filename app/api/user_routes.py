@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User, ArtWalk
+import json
 
 user_routes = Blueprint('users', __name__)
 
@@ -22,5 +23,7 @@ def user(id):
 @user_routes.route('/<int:id>/artwalks')
 @login_required
 def artwalks(id):
-    artwalks = Artwalk.query.filter(Artwalk.user_id == id).all()
-    return artwalks.to_dict()
+    artwalks = ArtWalk.query.filter(ArtWalk.user_id == id).all()
+    data = [artwalk.to_dict() for artwalk in artwalks]
+    res = json.dumps(data)
+    return res
