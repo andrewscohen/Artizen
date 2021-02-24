@@ -8,14 +8,14 @@ import "./UserProfile.css"
 
 export default function UserProfile() {
   const dispatch = useDispatch();
-  const [change, setChange] = useState(false);
+  // const [change, setChange] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const artwalks = useSelector(state => state.artwalks)
   const artwalksArray = Object.values(artwalks);
 
   useEffect(() => {
     dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
-  }, [dispatch, sessionUser, change]);
+  }, [dispatch, sessionUser]);
 
 
   return (
