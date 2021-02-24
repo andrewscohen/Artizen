@@ -10,7 +10,7 @@ export const getUserArtwalks = (userId) => async dispatch => {
   const res = await fetch(`/api/users/${userId}/artwalks`);
   const data = await res.json();
   res.data = data;
-  dispatch(loadArtwalks(res.data.artwalks));
+  dispatch(loadArtwalks(res.data));
 };
 
 
@@ -20,9 +20,9 @@ export default function artwalksReducer(state = initialState, action) {
   const updateState = {...state};
   switch (action.type) {
     case LOAD_ALL_ARTWALKS: {
-      updateState.artwalks = {};
+      // updateState.artwalks = {};
       action.artwalks.forEach(artwalk => {
-        updateState.artwalks[artwalk.id] = artwalk;
+        updateState[artwalk.id] = artwalk;
       })
       return updateState;
     }

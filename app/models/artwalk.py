@@ -12,3 +12,11 @@ class ArtWalk(db.Model):
     locations = db.relationship("Location",
                                 secondary=Artwalk_Location,
                                 back_populates="art_walks")
+
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "user_id": self.user_id,
+        "name": self.name,
+        }
