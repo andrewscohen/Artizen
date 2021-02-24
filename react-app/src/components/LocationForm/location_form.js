@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+import * as locationActions from '../../store/locations'
 
-
-function LocationForm(){
+const LocationForm = () => {
 
     const [title, setTitle] = useState('')
     const [artist, setArtist] = useState('')
@@ -10,14 +11,61 @@ function LocationForm(){
     const [state, setState] = useState('')
     const [zip, setZip] = useState(null)
     const [description, setDescription] = useState('')
-    const [photo, setPhoto] = useState(null)
+    const [lat, setLat] = useState(null)
+    const [long, setLong] = useState(null)
+    const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
+
+    const userId = useSelector((state) => state.session.user.id) 
+  
+    const dispatch = useDispatch()
+  
+      
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        let newErrors = []
+        dispatch(locationActions.addLocation({ 
+            userId,
+            title,
+            artist,
+            address,
+            city,
+            state,
+            zip,
+            description,
+            lat, 
+            long,
+            photo  
+        }))
+        .then(() => {
+        setTitle("");
+        setArtist("");
+        setAddress("");
+        setCity("");
+        setState("");
+        setZip(null);
+        setDescription("");
+        setLat(null);
+        setLong(null);
+        setPhoto(null);
+        })
+        .catch((res) => {
+        if (res.data && res.data.errors) {
+            newErrors = res.data.errors;
+            setErrors(newErrors);
+        }
+        });
+    }
+  
+
 
     return (
     <>
         <h1>Enter a New Location</h1>
         <fieldset>
-            <form action="/locations/new" method="POST" enctype="multipart/form-data">
+        {errors.length > 0 &&
+          errors.map((error) => <div key={error}>{error}</div>)}
+            <form onSubmit={handleSubmit}>
                 <label>
                     <input
                         type="text"
@@ -75,7 +123,29 @@ function LocationForm(){
                     />
                 </label>
                 <label>
-                    <input type="file"  onChange={e => setPhoto(e.target.files[0])} />
+                    {/* <input type="file"  onChange={e => setPhoto(e.target.files[0])} /> */}
+                    <input
+                        type="text"
+                        placeholder="Photo Url"
+                        value={photo}
+                        onChange={(e) => setPhoto(e.target.value)}
+                    />
+                </label>
+                <label>
+                    <input
+                        type="number"
+                        placeholder="Lat"
+                        value={lat}
+                        onChange={(e) => setLat(e.target.value)}
+                    />
+                </label>
+                <label>
+                    <input
+                        type="number"
+                        placeholder="Long"
+                        value={long}
+                        onChange={(e) => setLong(e.target.value)}
+                    />
                 </label>
                 <label>
                     <button type="submit">Create Location</button>
