@@ -22,3 +22,18 @@ class Location(db.Model):
     art_walks = db.relationship("ArtWalk",
                                 secondary=Artwalk_Location,
                                 back_populates="locations")
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "user_id": self.user_id,
+        "street_address": self.street_address,
+        "city": self.city,
+        "state": self.state,
+        "zip_code": self.zip_code,
+        "lat": self.lat,
+        "long": self.long,
+        "title": self.title,
+        "description": self.description,
+        "artist": self.artist,
+        }

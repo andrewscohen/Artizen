@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
-// import ArtwalkContainer from "../ArtwalkContainer"
+import ArtwalkContainer from "../ArtwalkContainer"
 import * as artwalkActions from "../../store/artwalks"
 import "./UserProfile.css"
 
@@ -25,9 +25,7 @@ export default function UserProfile() {
       <div>
         {artwalksArray.map(artwalk => {
           return (
-            <div key={artwalk.id}>
-              {artwalk.name}
-            </div>
+            <ArtwalkContainer artwalk={artwalk} />
             )
           })
         }

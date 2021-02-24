@@ -1,5 +1,6 @@
 from .db import db
 from .artwalk_location import Artwalk_Location
+from .location import Location
 
 class ArtWalk(db.Model):
     __tablename__ = 'art_walks'
@@ -19,4 +20,5 @@ class ArtWalk(db.Model):
         "id": self.id,
         "user_id": self.user_id,
         "name": self.name,
+        "locations": [location.to_dict() for location in self.locations],
         }
