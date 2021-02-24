@@ -10,4 +10,19 @@ const getOneLocation = location => {
 export const getLocation = locationId => async dispatch => {
   const res = await fetch(`/locations/${locationId}`);
   const data = await res.json();
+
+  dispatch(getOneLocation(data));
 };
+
+const initialState = {};
+
+const locationsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_ONE_LOCATION:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+export default locationsReducer;
