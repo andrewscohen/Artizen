@@ -21,21 +21,21 @@ export const addLocation = (locationFile) => async (dispatch) => {
         description,
         lat, 
         long,
-        photo
+        // photo
         } = locationFile
 
     const formData = new FormData();
     formData.append('user_id', userId)
-    formData.append('title', title)
-    formData.append('artist', artist)
     formData.append('street_address', address)
     formData.append('city', city)
     formData.append('state', state)
     formData.append('zip_code', zip)
+    formData.append('title', title)
+    formData.append('artist', artist)
     formData.append('description', description)
     formData.append('lat', lat)
     formData.append('long', long)
-    formData.append('photo', photo)
+    // formData.append('photo', photo)
     
     const res = await fetch ('/api/locations', {
         method: 'POST',

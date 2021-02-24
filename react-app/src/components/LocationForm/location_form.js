@@ -35,7 +35,7 @@ const LocationForm = () => {
             description,
             lat, 
             long,
-            photo  
+            // photo  
         }))
         .then(() => {
         setTitle("");
