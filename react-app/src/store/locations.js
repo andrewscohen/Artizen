@@ -11,7 +11,6 @@ export const getLocation = locationId => async dispatch => {
   const res = await fetch(`/api/locations/${locationId}`);
   const data = await res.json();
 
-  console.log(data);
   dispatch(getOneLocation(data));
 };
 
