@@ -19,8 +19,11 @@ const LocationContainer = () => {
     <div className="location-container">
       <div className="location-pic-container">
         <img className="location-art-img" src={location.photos[0].url} alt="art" />
-        <img src="https://i.stack.imgur.com/yh9h3.png" alt="map" />
       </div>
+      <img
+        src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=600x300&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
+        alt="map"
+      />
       {location.title.length > 0 && <h2 className="location-title">{location.title}</h2>}
       {location.artist.length > 0 && (
         <p className="location-artist">
