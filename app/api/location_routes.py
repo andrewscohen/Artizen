@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.forms import LocationForm
 from app.models import db, User, Location, Photo
@@ -6,8 +6,7 @@ from app.models import db, User, Location, Photo
 location_routes = Blueprint('locations', __name__)
 
 
-@location_routes.route('/', methods=['POST'])
-@login_required
+@location_routes.route('/', methods=["POST"])
 def add_location():
     form = LocationForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -23,12 +22,11 @@ def add_location():
             artist=form.data['artist'],
             lat=form.data['lat'],
             long=form.data['long'],
-            #TODO: user_id = user.id  <-- find way to grab User id
-            #TODO: lat = converted coordinate
-            #TODO: long = converted coordinate
         )
         db.session.add(location)
         db.session.commit()
+        res = location.to_dict()
+        return json.dumps(res)
 
         # upload_photo = form.data['photo'] #TODO send this to AWS storage
         # photo = Photo(

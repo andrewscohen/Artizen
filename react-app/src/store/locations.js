@@ -11,42 +11,42 @@ const newLocation = (location) => ({
 export const addLocation = (locationFile) => async (dispatch) => {
     
     const { 
-        userId,
+        user_id,
         title,
         artist,
-        address,
+        street_address,
         city,
         state,
-        zip,
+        zip_code,
         description,
         lat, 
         long,
         // photo
         } = locationFile
 
-    const formData = new FormData();
-    formData.append('user_id', userId)
-    formData.append('street_address', address)
-    formData.append('city', city)
-    formData.append('state', state)
-    formData.append('zip_code', zip)
-    formData.append('title', title)
-    formData.append('artist', artist)
-    formData.append('description', description)
-    formData.append('lat', lat)
-    formData.append('long', long)
-    // formData.append('photo', photo)
-    
+        
+
     const res = await fetch ('/api/locations', {
         method: 'POST',
         headers: {
-            "Content-Type": "multi-part/form-data"
+            "Content-Type": "application/json"
         }, 
-        body: formData,
+        body: {
+            user_id,
+            title,
+            artist,
+            street_address,
+            city,
+            state,
+            zip_code,
+            description,
+            lat, 
+            long,
+            }
     })
 
-    dispatch(newLocation(res.data.locationFile))
-    return res.data.locationFile
+    dispatch(newLocation(res.json()))
+    return res.json()
 }
 
 

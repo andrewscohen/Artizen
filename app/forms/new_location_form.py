@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextField, IntegerField, DecimalField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired
 
 class LocationForm(FlaskForm):
     user_id=IntegerField('user_id', validators=[DataRequired()])
@@ -11,5 +11,5 @@ class LocationForm(FlaskForm):
     title=StringField('title')
     description=TextField('description')
     artist=StringField('artist')
-    lat=DecimalField('lat', places=6, rounding=None, validators=[DataRequired()])
-    long=DecimalField('long', places=6, rounding=None, validators=[DataRequired()])
+    lat=DecimalField('lat', places=8, rounding=None, validators=[DataRequired()])
+    long=DecimalField('long', places=8, rounding=None, validators=[DataRequired()])

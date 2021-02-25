@@ -6,32 +6,33 @@ const LocationForm = () => {
 
     const [title, setTitle] = useState('')
     const [artist, setArtist] = useState('')
-    const [address, setAddress] = useState('')
+    const [street_address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
-    const [zip, setZip] = useState(null)
+    const [zip_code, setZip] = useState(null)
     const [description, setDescription] = useState('')
     const [lat, setLat] = useState(null)
     const [long, setLong] = useState(null)
     const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
 
-    const userId = useSelector((state) => state.session.user.id) 
+    const sessionUser = useSelector((state) => state.session.user) 
   
     const dispatch = useDispatch()
   
       
     const handleSubmit = async (e) => {
         e.preventDefault()
+             
         let newErrors = []
         dispatch(locationActions.addLocation({ 
-            userId,
+            user_id: sessionUser.id,
             title,
             artist,
-            address,
+            street_address,
             city,
             state,
-            zip,
+            zip_code,
             description,
             lat, 
             long,
@@ -86,7 +87,7 @@ const LocationForm = () => {
                     <input
                         type="text"
                         placeholder="Street Address"
-                        value={address}
+                        value={street_address}
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
@@ -110,7 +111,7 @@ const LocationForm = () => {
                     <input
                         type="number"
                         placeholder="Zip Code"
-                        value={zip}
+                        value={zip_code}
                         onChange={(e) => setZip(e.target.value)}
                     />
                 </label>
@@ -134,6 +135,7 @@ const LocationForm = () => {
                 <label>
                     <input
                         type="number"
+                        step="any"
                         placeholder="Lat"
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
@@ -142,6 +144,7 @@ const LocationForm = () => {
                 <label>
                     <input
                         type="number"
+                        step="any"
                         placeholder="Long"
                         value={long}
                         onChange={(e) => setLong(e.target.value)}
