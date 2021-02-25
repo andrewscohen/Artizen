@@ -24,7 +24,7 @@ export const addLocation = (locationFile) => async (dispatch) => {
 
         
 
-    const res = await fetch('/api/locations/new', {
+    const res = await fetch('/api/locations/', {
         method: "POST",
         headers: {
             "Content-Type": "multipart/form-data"
