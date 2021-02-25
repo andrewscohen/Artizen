@@ -10,12 +10,20 @@
   background-color: white;
   border: 1px solid black;
   height: fit-content;
-  padding: 20px;
   z-index: 100;
 }
 
-.dropdown li {
-  margin-bottom: 1em;
+.dropdown div {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.5em;
+  background-color: #1cc3d9;
+  width: 100%;
+}
+
+.dropdown div:hover {
+  background-color: lightblue;
 }
 
 .btn--hamburger {
