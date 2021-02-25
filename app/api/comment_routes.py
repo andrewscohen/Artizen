@@ -9,5 +9,5 @@ comment_routes = Blueprint("comments", __name__)
 @login_required
 def comments(location_id):
     comments = Comment.query.filter(Comment.location_id == location_id).all()
-
-    return json.dumps(comments)
+    data = [comment.to_dict() for comment in comments]
+    return json.dumps(data)
