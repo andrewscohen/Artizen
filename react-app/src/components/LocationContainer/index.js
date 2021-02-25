@@ -1,19 +1,23 @@
 import { getLocation } from "../../store/locations";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./LocationContainer.css";
 
 const LocationContainer = () => {
   const dispatch = useDispatch();
   const { locationId } = useParams();
+  const [loaded, setLoaded] = useState(false);
   const location = useSelector(state => state.locations);
 
-  useEffect(() => {
-    dispatch(getLocation(locationId));
+  useEffect(async () => {
+    // debugger;
+    await dispatch(getLocation(locationId));
+
+    setLoaded(true);
   }, [dispatch, locationId]);
 
-  // if (!location.length) return <span>Loading</span>;
+  if (!loaded) return <span>Loading</span>;
 
   return (
     <div className="location-container">
