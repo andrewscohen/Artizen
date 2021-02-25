@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getComments } from "../../store/comments";
+import Comment from "../Comment";
 
 const CommentContainer = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,9 @@ const CommentContainer = () => {
   return (
     <>
       <h1>Comments</h1>
-      <p>This is a comment</p>
+      {comments.map(comment => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
     </>
   );
 };
