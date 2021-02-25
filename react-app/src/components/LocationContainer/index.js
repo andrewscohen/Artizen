@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import "./LocationContainer.css";
+import CommentContainer from "../CommentContainer";
 
 const LocationContainer = () => {
   const dispatch = useDispatch();
@@ -39,17 +40,7 @@ const LocationContainer = () => {
         {location.city}, {location.state} {location.zip_code}
       </p>
       <div className="location-comment-container">
-        <h2 className="location-comment-header">Comments</h2>
-        <p className="location-comment">Wow. What a masterpiece!</p>
-        <p className="location-comment">Truly one of the most inspiring pieces of art I've ever seen</p>
-        <p className="location-comment">Wow. What a masterpiece!</p>
-        <p className="location-comment">Truly one of the most inspiring pieces of art I've ever seen</p>
-        <p className="location-comment">Wow. What a masterpiece!</p>
-        <p className="location-comment">Truly one of the most inspiring pieces of art I've ever seen</p>
-        <p className="location-comment">Wow. What a masterpiece!</p>
-        <p className="location-comment">Truly one of the most inspiring pieces of art I've ever seen</p>
-        <p className="location-comment">Wow. What a masterpiece!</p>
-        <p className="location-comment">Truly one of the most inspiring pieces of art I've ever seen</p>
+        <CommentContainer />
       </div>
     </div>
   );
