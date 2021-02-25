@@ -15,7 +15,7 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
       padding: "1.5em",
       backgroundColor: "rgba(254, 58, 158, .8)",
-      borderRadius: "none",
+      borderRadius: "2px",
       border: "none",
       width: "40%",
       boxSizing: "border-box",
