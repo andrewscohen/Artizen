@@ -1,10 +1,13 @@
 
 const NEW_LOCATION = 'locations/NEW_LOCATION'
 
-const newLocation = (location) => ({
-    type: NEW_LOCATION,
-    payload: location, 
-})
+const newLocation = (location) => {
+    
+    return {
+        type: NEW_LOCATION,
+        payload: location, 
+    }
+}
 
 export const addLocation = (locationFile) => async (dispatch) => {
     
@@ -19,17 +22,15 @@ export const addLocation = (locationFile) => async (dispatch) => {
         description,
         lat, 
         long,
-        // photo
+        photo
         } = locationFile
-
-        
 
     const res = await fetch('/api/locations/', {
         method: "POST",
         headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "application/json"
         }, 
-        body: {
+        body: JSON.stringify({
             user_id,
             title,
             artist,
@@ -40,13 +41,31 @@ export const addLocation = (locationFile) => async (dispatch) => {
             description,
             lat, 
             long,
-            }
+            })
     })
+    let result = await res.json()
+    
+    // return result
+    const form = new FormData()
+    form.append('photo', photo)
+    form.append('user_id', result.user_id)
+    form.append('location_id', result.id)
 
-    dispatch(newLocation(res.json()))
-    return res.json()
-}
-
+    const photoRes = await fetch('/api/photos/', {
+        method: "POST",
+        body: form
+    })
+    debugger
+    let p_result = await photoRes.json()
+    console.log(p_result)
+    if (res.ok && photoRes.ok){
+            result['photos'].push(p_result.url)
+            dispatch(newLocation(result))
+        }else {
+            // dispatch error slice of state
+        }
+    }
+   
 
 const initialState = {location: null}
 
@@ -54,7 +73,9 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case NEW_LOCATION:
+            debugger
             newState = Object.assign({}, state)
+            // { [location.id] : location }
             newState.location = action.payload
             return newState
         default:

@@ -9,10 +9,10 @@ const LocationForm = () => {
     const [street_address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
-    const [zip_code, setZip] = useState(null)
+    const [zip_code, setZip] = useState(0)
     const [description, setDescription] = useState('')
-    const [lat, setLat] = useState(null)
-    const [long, setLong] = useState(null)
+    const [lat, setLat] = useState(0.1)
+    const [long, setLong] = useState(0.1)
     const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
 
@@ -23,38 +23,39 @@ const LocationForm = () => {
       
     const handleSubmit = async (e) => {
         e.preventDefault()
-             
+        debugger
         let newErrors = []
         dispatch(locationActions.addLocation({ 
             user_id: sessionUser.id,
-            title,
-            artist,
             street_address,
             city,
             state,
             zip_code,
+            title,
             description,
+            artist,
             lat, 
             long,
-            // photo  
+            photo  
         }))
         .then(() => {
-        setTitle("");
-        setArtist("");
-        setAddress("");
-        setCity("");
-        setState("");
-        setZip(null);
-        setDescription("");
-        setLat(null);
-        setLong(null);
-        setPhoto(null);
+            setTitle("");
+            setArtist("");
+            setAddress("");
+            setCity("");
+            setState("");
+            setZip(0);
+            setDescription("");
+            setLat(0.1);
+            setLong(0.1);
+            setPhoto('');
         })
         .catch((res) => {
-        if (res.data && res.data.errors) {
-            newErrors = res.data.errors;
-            setErrors(newErrors);
-        }
+            debugger
+            if (res.data && res.data.errors) {
+                newErrors = res.data.errors;
+                setErrors(newErrors);
+            }
         });
     }
   
@@ -124,13 +125,7 @@ const LocationForm = () => {
                     />
                 </label>
                 <label>
-                    {/* <input type="file"  onChange={e => setPhoto(e.target.files[0])} /> */}
-                    <input
-                        type="text"
-                        placeholder="Photo Url"
-                        value={photo}
-                        onChange={(e) => setPhoto(e.target.value)}
-                    />
+                    <input type="file"  onChange={e => setPhoto(e.target.files[0])} />
                 </label>
                 <label>
                     <input
