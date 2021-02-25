@@ -1,12 +1,7 @@
 import React from "react";
 import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
-
-import Locate from '../Maps/Locate';
-import Search from '../Maps/Search';
-
 import mapStyle from "../Maps/mapStyle";
-
-
+import map_marker from "../images/map_marker.png"
 
 export default function Directions({coordinates}) {
   const libraries = ["places"];
@@ -25,17 +20,10 @@ export default function Directions({coordinates}) {
     search: false,
   };
   const center = coordinates[0];
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
-  }, []);
-
-  const panTo = React.useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
   }, []);
 
   if (loadError) return "Error";
@@ -57,7 +45,6 @@ export default function Directions({coordinates}) {
             <Marker key={coordinate.lat} position={coordinate} />
           )
         })}
-      {/* <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/> */}
       </GoogleMap>
     </div>
   );
