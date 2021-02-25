@@ -1,17 +1,21 @@
 .dropdown {
-  z-index: 100;
   box-sizing: border-box;
-  position: fixed;
-  top: 5em;
-  right: 0;
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  border: 1px solid #d1d1d1;
-  border-right: none;
-  border-top: none;
-  justify-content: flex-start;
-  height: auto;
+  position: absolute;
+  top: 63px;
+  right: 0;
   background-color: white;
+  border: 1px solid black;
+  height: fit-content;
+  padding: 20px;
+  z-index: 100;
+}
+
+.dropdown li {
+  margin-bottom: 1em;
 }
 
 .btn--hamburger {
