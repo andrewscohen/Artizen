@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux'
-
 
 const NEW_LOCATION = 'locations/NEW_LOCATION'
 
@@ -26,10 +24,10 @@ export const addLocation = (locationFile) => async (dispatch) => {
 
         
 
-    const res = await fetch ('/api/locations', {
-        method: 'POST',
+    const res = await fetch('/api/locations/new', {
+        method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "multipart/form-data"
         }, 
         body: {
             user_id,
