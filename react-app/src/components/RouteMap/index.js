@@ -17,7 +17,6 @@ export default function Directions({coordinates}) {
     styles: mapStyle,
     disableDefaultUI: true,
     zoomControl: false,
-    search: false,
   };
   const center = coordinates[0];
 
@@ -31,7 +30,6 @@ export default function Directions({coordinates}) {
 
   return (
     <div>
-
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
