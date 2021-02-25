@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.forms import LocationForm
 from app.models import db, User, Location, Photo
@@ -11,10 +11,14 @@ location_routes = Blueprint('locations', __name__)
 @login_required
 def add_location():
     form = LocationForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    # print(request.get_json())
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print('add location before validation: ', form.data)
     if form.validate_on_submit():
+        print('add location after validation: ')
+    
         location = Location(
-            user_id=form.data['title'],
+            user_id=form.data['user_id'],
             street_address=form.data['street_address'],
             city=form.data['city'],
             state=form.data['state'],
@@ -26,9 +30,12 @@ def add_location():
             long=form.data['long'],
         )
         db.session.add(location)
+       
         db.session.commit()
-        res = location.to_dict()
-        return json.dumps(res)       
+        
+        return location.to_dict()
+    return form.errors
+        # return json.dumps(res)       
     # upload_photo = form.data['photo'] #TODO send this to AWS storage
     # photo = Photo(
     #     user_id = user.id, TODO
