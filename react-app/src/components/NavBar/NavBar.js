@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import ProfileButton from "../Menu/profilebutton";
 import LoginModal from "../LoginModal/AuthModal";
-import logo from "./temp-pic.jpg";
+import { ReactComponent as Logo } from "./artizen_logo.svg";
 
 import "./Navbar.css";
 
@@ -13,7 +13,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
       <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
-            <img id="logo" src={logo} alt="picture" />
+              <Logo id="logo"/>
           </NavLink>
         </li>
       </ul>
