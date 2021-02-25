@@ -8,10 +8,11 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import UserProfile from "./components/UserProfile";
+import LocationContainer from "./components/LocationContainer";
 import Gmap from "./components/Maps/Map.js";
 import { authenticate } from "./services/auth";
-import { setUser } from "./store/session"
-import "./components/NavBar/Navbar.css"
+import { setUser } from "./store/session";
+import "./components/NavBar/Navbar.css";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -19,11 +20,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
-        dispatch(setUser(user))
+        dispatch(setUser(user));
       }
       setLoaded(true);
     })();
@@ -39,24 +40,24 @@ function App() {
       {loaded && (
         <Switch>
           <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
+            <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
           </Route>
           <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-            <UsersList/>
+            <UsersList />
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
             <User />
           </ProtectedRoute>
+          <ProtectedRoute path="/locations/:locationId" exact={true} authenticated={authenticated}>
+            <LocationContainer />
+          </ProtectedRoute>
           <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
             <UserProfile />
           </ProtectedRoute>
-          <Route path='/map'>
+          <Route path="/map">
             <Gmap />
           </Route>
         </Switch>
