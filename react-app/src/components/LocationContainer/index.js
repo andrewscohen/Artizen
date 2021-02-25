@@ -11,7 +11,6 @@ const LocationContainer = () => {
   const location = useSelector(state => state.locations);
 
   useEffect(async () => {
-    // debugger;
     await dispatch(getLocation(locationId));
 
     setLoaded(true);
