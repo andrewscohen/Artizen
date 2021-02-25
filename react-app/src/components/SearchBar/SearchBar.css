@@ -1,25 +1,34 @@
+
 .search-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-wrapper input:focus {
+    box-shadow: 0 0 4px #FFE41C;
+}
+
+.search-wrapper input {
     border: 1px solid #FE3A9E;
     border-radius: 5px;
     padding: 5px;
     display: flex;
     background-color: white;
-}
-
-.search-wrapper input {
     flex-grow: 1;
     outline: none;
 }
 
-.search-wrapper input,
-.search-wrapper button {
-    border: none;
-}
 
 .search-wrapper button {
-    background-color: white;
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 .search-wrapper button i {
     color: #FE3A9E;
+}
+
+.search-wrapper button:hover {
+    text-shadow: 0 0 4px #FFE41C;
 }
