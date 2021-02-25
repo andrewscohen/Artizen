@@ -5,6 +5,11 @@ from app.models import db, User, Location, Photo
 
 location_routes = Blueprint('locations', __name__)
 
+@location_routes.route('/location')
+def locations():
+    locations = Location.query.all()
+    return locations.to_dict()
+
 
 @location_routes.route('/', methods=["POST"])
 def add_location():
