@@ -31,7 +31,7 @@ export default function ProfileButton({ setAuthenticated }) {
       {showMenu && (
         <div className="dropdown">
           <div>
-            <li className="dropdown__li dropdown__header dropdown__header--background">User Name to Go Here</li>
+            <li className="dropdown__li dropdown__header--name dropdown__header--background">User Name to Go Here</li>
           </div>
           <div>
             <li className="dropdown__li dropdown__header--email dropdown__header--background">User Email to go here</li>

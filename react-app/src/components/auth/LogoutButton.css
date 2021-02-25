@@ -1,5 +1,8 @@
-/* .logout-button {
-    background-color: transparent;
-    /* padding: 3px 4px; */
-    /* border: none;
-} */ 
+.logout-button {
+  color: #1cc3d9;
+  background-color: white;
+  border: 1px solid white;
+  padding: 0.5em 0.6em;
+  border-radius: 5px;
+  cursor: pointer;
+}
