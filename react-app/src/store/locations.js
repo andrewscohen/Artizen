@@ -45,7 +45,7 @@ export const addLocation = (locationFile) => async (dispatch) => {
     })
     let result = await res.json()
     
-    // return result
+    
     const form = new FormData()
     form.append('photo', photo)
     form.append('user_id', result.user_id)
@@ -55,14 +55,12 @@ export const addLocation = (locationFile) => async (dispatch) => {
         method: "POST",
         body: form
     })
-    debugger
+
     let p_result = await photoRes.json()
     console.log(p_result)
     if (res.ok && photoRes.ok){
             result['photos'].push(p_result.url)
             dispatch(newLocation(result))
-        }else {
-            // dispatch error slice of state
         }
     }
    
@@ -73,7 +71,7 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case NEW_LOCATION:
-            debugger
+            
             newState = Object.assign({}, state)
             // { [location.id] : location }
             newState.location = action.payload
