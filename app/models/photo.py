@@ -12,3 +12,12 @@ class Photo(db.Model):
 
     user = db.relationship("User", back_populates="photos")
     location = db.relationship("Location", back_populates="photos")
+
+    def to_dict(self):
+        return {
+        "id": self.id,
+        "user_id": self.user_id,
+        "location_id": self.location_id,
+        "url": self.url,
+        "created_at": str(self.created_at),
+        }
