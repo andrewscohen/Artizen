@@ -10,7 +10,7 @@ import User from "./components/User";
 import UserProfile from "./components/UserProfile";
 import LocationContainer from "./components/LocationContainer";
 import Gmap from "./components/Maps/Map.js";
-import RenderMap from "./components/Maps/DirectionsMap.js";
+import Directions from "./components/Maps/DirectionsMap.js";
 import { authenticate } from "./services/auth";
 import { setUser } from "./store/session";
 import "./components/NavBar/Navbar.css";
@@ -62,7 +62,7 @@ function App() {
             <Gmap />
           </Route>
           <Route path="/directionsmap">
-            <RenderMap />
+            <Directions />
           </Route>
         </Switch>
       )}
