@@ -5,7 +5,7 @@ import { login } from "../../services/auth";
 import { setUser } from "../../store/session"
 import "./LoginModal.css"
 
-const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm}) => {
+const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm,}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

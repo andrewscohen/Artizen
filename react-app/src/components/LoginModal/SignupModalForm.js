@@ -49,7 +49,7 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
