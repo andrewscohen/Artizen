@@ -1,11 +1,7 @@
 .header__img {
   height: 100%;
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
-  overflow: hidden;
-  object-position: 100% 0;
-  overflow: hidden;
-  justify-self: flex-end;
 }
 
 .splash-container {

@@ -22,8 +22,8 @@ const customStyles = {
 
     },
     overlay : {
-        backgroundColor: "transparent",
-        // backgroundColor: "rgba(0, 0, 0, .6)",
+        // backgroundColor: "transparent",
+        backgroundColor: "rgba(0, 0, 0, .6)",
         zIndex: "100",
     }
 };
