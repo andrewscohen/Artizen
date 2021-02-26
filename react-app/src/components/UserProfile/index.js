@@ -25,7 +25,7 @@ export default function UserProfile() {
     <>
     <h1>User Profile {sessionUser.id}</h1>
     {artwalksArray.length > 0 &&
-      <div className="main user_main">
+      <div>
         {artwalksArray.map(artwalk => {
           return (
             <ArtwalkContainer artwalk={artwalk} />
