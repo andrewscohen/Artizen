@@ -25,16 +25,16 @@ class Location(db.Model):
 
     def to_dict(self):
         return {
-        "id": self.id,
-        "user_id": self.user_id,
-        "street_address": self.street_address,
-        "city": self.city,
-        "state": self.state,
-        "zip_code": self.zip_code,
-        "lat": self.lat,
-        "long": self.long,
-        "title": self.title,
-        "description": self.description,
-        "artist": self.artist,
-        "photos": [photo.to_dict() for photo in self.photos]
+            "id": self.id,
+            "user_id": self.user_id,
+            "street_address": self.street_address,
+            "city": self.city,
+            "state": self.state,
+            "zip_code": self.zip_code,
+            "lat": self.lat,
+            "long": self.long,
+            "title": self.title,
+            "description": self.description,
+            "artist": self.artist,
+            "photos": [photo.to_dict() for photo in self.photos]
         }

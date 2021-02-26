@@ -1,15 +1,94 @@
 .dropdown {
-    z-index: 100;
-    box-sizing: border-box;
-    position: fixed;
-    top: 5em;
-    right: 0;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #d1d1d1;
-    border-right: none;
-    border-top: none;
-    justify-content: flex-start;
-    height: auto;
-    background-color: white;
-  }
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 6em;
+  right: 0;
+  /* background-color: white; */
+  /* border: 1px solid black; */
+  border-radius: 0 0 .5em .5em;
+  height: fit-content;
+  z-index: 100;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1cc3d9;
+  text-align: right;
+}
+
+.dropdown div {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.dropdown__li {
+  width: 100%;
+  align-content: center;
+  box-sizing: border-box;
+}
+
+.dropdown__header--name,
+.dropdown__header--email {
+  color: black;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: .6em;
+  padding: .5em .3em .5em 2em;
+  height: 100%;
+}
+
+.dropdown__header--background {
+  background-color: #17afc4;
+}
+
+.btn--hamburger {
+  background-color: transparent;
+  border: none;
+  /* border-radius: 5px; */
+  outline: none;
+  color: black;
+  padding: .3em .4em .2em;
+  font-size: 2em;
+}
+
+.btn--hamburger:hover {
+  text-shadow: 0 0 4px rgba(0,0,0,.4);
+}
+
+.btn--dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  background-color: transparent;
+  border: none;
+  padding: 0.5em 0.6em;
+  /* border-radius: 5px; */
+  width: 100%;
+  height: 2.2em;
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn--dropdown:hover {
+  background-color: lightblue;
+}
+
+.btn--dropdown-icon {
+  color: #fe3a9e;
+  font-size: 1.2em;
+  text-align: center;
+  justify-self: center;
+}
+
+.btn--dropdown-text {
+  padding-left: 1.7em;
+  font-size: 1.2em;
+}
