@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import artwalksReducer from "./artwalks";
 import locationsReducer from "./locations";
+import commentsReducer from "./comments";
 
 const appReducer = combineReducers({
   // add individual reducer key-value pairs here.
   session: sessionReducer,
   artwalks: artwalksReducer,
   locations: locationsReducer,
+  comments: commentsReducer,
 });
 
 const rootReducer = (state, action) => {
