@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import { setUser } from "../../store/session"
 import "./LoginModal.css"
 
-const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm}) => {
+const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, showLoginForm,}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {
-      setAuthenticated(true);
       dispatch(setUser(user));
+      setAuthenticated(true);
+      history.push("/dashboard")
     } else {
       setErrors(user.errors);
     }
@@ -31,7 +33,7 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
