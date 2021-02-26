@@ -18,7 +18,6 @@ const Directions = () => {
   const directionsCallback = (response) => {
     console.log("RESPONSE: ", response)
 
-    setTimeout(() => {
     if (response !== null) {
       if (response.status === 'OK') {
         setServices(false)
@@ -27,7 +26,6 @@ const Directions = () => {
         console.log('RESPONSE NOT OK: ', response)
         }
       }
-    }, 1000);
   }
 
   // if (loadError) return "Error";
@@ -84,7 +82,7 @@ const Directions = () => {
                 }}
               />
             )
-          }
+          } 
         </GoogleMap>
         </LoadScript>
   )
