@@ -59,11 +59,6 @@ export default function Directions({coordinates}) {
         options={options}
         onLoad={onMapLoad}
       >
-        {/* {coordinates.map(coordinate => {
-          return (
-            <Marker key={coordinate.lat} position={coordinate} />
-          )
-        })} */}
         { services &&
               <DirectionsService
                 options={{
