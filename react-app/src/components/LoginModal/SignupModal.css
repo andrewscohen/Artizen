@@ -1,11 +1,26 @@
+.btn__x {
+    outline: none;
+    border: none;
+}
+
+.btn__x:hover {
+    text-shadow: 0 0 2px rgba(0, 0, 0, .7);
+}
+
 .signup-btn {
-    color: #fff;
-    border: 1px solid rgb(255, 0, 234);
-    background-color: rgb(255, 0, 234);
-    padding: 0.3em 0.8em;
+    background-color: #fe3a9e;
+    border: none;
+    color: black;
+    padding: 0.4em .9em;
     border-radius: 5px;
     outline: none;
+    margin-right: 0.5em;
     cursor: pointer;
+}
+
+.signup-btn:hover {
+    box-shadow: 0 0 4px #FFE41C;
+    background-color: #fc2393;
 }
 
 .signup-modal-form {
@@ -24,18 +39,29 @@
 .signup-modal-form button {
     padding: 5px 10px;
     color: white;
-    border: none;
-    background-image: linear-gradient(to right, #8a307f, #79a7d3, #6883bc);
+    border: 1px solid #fe3a9e;
+    background-color: #1CC3D9;
+    /* background-image: linear-gradient(to right, #1CC3D9, #FE3A9E); */
     border-radius: 5px;
     cursor: pointer;
 }
 
-.signup-modal-form input {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 0.3em;
+.signup-modal-form button:hover {
+    box-shadow: 0 0 4px #FFE41C;
+    background-color: #18b9ce;
 }
 
+.signup-modal-form input {
+    border: 1px solid #1CC3D9;
+    border-radius: 2px;
+    padding: 0.3em;
+    outline: none;
+    width: 96%;
+}
+
+.signup-modal-form input:focus {
+    box-shadow: 0 0 3px #1CC3D9;
+}
 
 .signup-modal-form button {
     border-radius: 5px;
@@ -51,7 +77,6 @@
 
 .signup-modal-top-row h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 1.2em;
 }
 
 .signup-modal-top-row button {
@@ -66,4 +91,32 @@
 
 .signup-modal-top-row button {
     cursor: pointer;
+}
+
+.modal-bottom-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.switch-text {
+    color: #1CC3D9;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.signup-modal-top-row {
+    color: #1CC3D9;
+    text-align: left;
+    justify-content: flex-start;
+    padding-bottom: .5em;
+}
+
+::placeholder {
+    color: #fe3a9e;
+}
+
+.Overlay {
+    background-color: rgba(0, 0, 0, 0.5);
 }
