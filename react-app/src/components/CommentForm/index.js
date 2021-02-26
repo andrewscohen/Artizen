@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../store/comments";
@@ -12,6 +12,7 @@ const CommentForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(addComment({ locationId, userId: sessionUser.id, comment }));
+    setComment("");
   };
 
   return (
