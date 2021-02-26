@@ -1,0 +1,33 @@
+.location-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.location-pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+}
+
+.location-art-img {
+  width: 100%;
+  max-height: 600px;
+}
+
+.location-title {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.location-artist {
+  margin-top: 0;
+}
+
+.location-artist-name {
+  font-weight: bold;
+  color: #fe3a9e;
+}
+
+.location-address {
+  margin: 0;
+}
