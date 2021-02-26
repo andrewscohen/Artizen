@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import * as locationActions from '../../store/locations'
+import { getCoords } from '../../services/maps';
+
 
 const LocationForm = () => {
 
@@ -11,20 +14,21 @@ const LocationForm = () => {
     const [state, setState] = useState('')
     const [zip_code, setZip] = useState(0)
     const [description, setDescription] = useState('')
-    const [lat, setLat] = useState(0.1)
-    const [long, setLong] = useState(0.1)
     const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
 
     const sessionUser = useSelector((state) => state.session.user) 
   
     const dispatch = useDispatch()
+    const history = useHistory()
   
       
     const handleSubmit = async (e) => {
         e.preventDefault()
-        debugger
         let newErrors = []
+        const address = `${street_address} ${city} ${state} ${zip_code}`
+        console.log('ADDRESS: ', address)
+        const {lat, long} = await getCoords(address)
         dispatch(locationActions.addLocation({ 
             user_id: sessionUser.id,
             street_address,
@@ -46,17 +50,17 @@ const LocationForm = () => {
             setState("");
             setZip(0);
             setDescription("");
-            setLat(0.1);
-            setLong(0.1);
             setPhoto('');
         })
         .catch((res) => {
-            debugger
+            
             if (res.data && res.data.errors) {
                 newErrors = res.data.errors;
                 setErrors(newErrors);
             }
         });
+    
+        history.push('/map')
     }
   
 
@@ -127,24 +131,7 @@ const LocationForm = () => {
                 <label>
                     <input type="file"  onChange={e => setPhoto(e.target.files[0])} />
                 </label>
-                <label>
-                    <input
-                        type="number"
-                        step="any"
-                        placeholder="Lat"
-                        value={lat}
-                        onChange={(e) => setLat(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <input
-                        type="number"
-                        step="any"
-                        placeholder="Long"
-                        value={long}
-                        onChange={(e) => setLong(e.target.value)}
-                    />
-                </label>
+                
                 <label>
                     <button type="submit">Create Location</button>
                 </label>

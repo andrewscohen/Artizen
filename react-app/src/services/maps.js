@@ -6,7 +6,7 @@ Geocode.setLocationType("ROOFTOP");
 export const getCoords = (address) => Geocode.fromAddress(address).then(
   (response) => {
     const { lat, lng } = response.results[0].geometry.location;
-    return(lat, lng);
+    return ({lat, long: lng}) ;
   },
   (error) => {
     console.error(error);
