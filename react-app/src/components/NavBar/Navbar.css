@@ -1,30 +1,43 @@
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    border-bottom: 1px solid black;
-    box-shadow: 1px 1px 3px #555;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 2px solid black;
+  /* box-shadow: 1px 1px 3px #555; */
+  background-color: #1cc3d9;
+  height: 6em;
+}
+
+#logo {
+  max-width: 220px;
+  box-sizing: border-box;
+  padding-left: 1em;
 }
 
 .nav ul {
-    padding: 0;
+  padding: 0;
 }
 
 .nav li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .search-bar-container {
-    flex-basis: 50%;
+  flex-basis: 50%;
+  align-self: center;
 }
 
 .nav .login-nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    font-family: "Aktiv Grotesk","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  display: flex;
+  justify-content: space-between;
+  font-family: "Aktiv Grotesk", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  box-sizing: border-box;
+  padding-right: 1em;
 }
 
 #sign-up-button {
-    padding-left: 15px;
+  padding-left: 15px;
 }

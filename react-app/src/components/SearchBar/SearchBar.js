@@ -7,7 +7,7 @@ const SearchBar = () => {
         <div className="search-wrapper">
             {/* <Search /> */}
             <input type="text" placeholder="Enter a city" />
-            <button type="submit">
+            <button type="submit" className="btn__search">
                 <i className="fas fa-search"></i>
             </button>
         </div>

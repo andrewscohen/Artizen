@@ -1,0 +1,21 @@
+.comment-container {
+  border: 1px solid black;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  background-color: #1cc3d977;
+}
+
+.comment-user-line {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.comment-user {
+  font-weight: bold;
+}
+
+.comment-content {
+  font-size: 1.2em;
+  margin: 0;
+}

@@ -1,3 +1,11 @@
+const GET_ONE_LOCATION = "locations/GET_ONE_LOCATION";
+
+const getOneLocation = location => {
+  return {
+    type: GET_ONE_LOCATION,
+    payload: location,
+  };
+};
 
 const NEW_LOCATION = 'locations/NEW_LOCATION'
 
@@ -8,6 +16,14 @@ const newLocation = (location) => {
         payload: location, 
     }
 }
+
+export const getLocation = locationId => async dispatch => {
+    const res = await fetch(`/api/locations/get/${locationId}`);
+    const data = await res.json();
+  
+    dispatch(getOneLocation(data));
+  };
+
 
 export const addLocation = (locationFile) => async (dispatch) => {
     
@@ -67,19 +83,27 @@ export const addLocation = (locationFile) => async (dispatch) => {
 
 const initialState = {location: null}
 
-const locationReducer = (state = initialState, action) => {
+const locationsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case NEW_LOCATION:
-            
+        case NEW_LOCATION:    
             newState = Object.assign({}, state)
             // { [location.id] : location }
             newState.location = action.payload
             return newState
+        case GET_ONE_LOCATION:
+            return action.payload;
         default:
             return state
 
     }
 }
 
-export default locationReducer
+export default locationsReducer
+
+
+
+
+
+
+

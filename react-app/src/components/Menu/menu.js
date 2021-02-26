@@ -7,7 +7,7 @@ import HamburgerMenu  from "react-hamburger-menu"
 const Menu = ({setAuthenticated}) => {
 
     const [click, setClick] = useState(true)
-    
+
     const handleClick = () => {
         setClick(!click)
     }
@@ -15,24 +15,24 @@ const Menu = ({setAuthenticated}) => {
     return (
         <>
             {
-            !click ?     
+            !click ?
             <div>
             <Link to="/" className="logo"></Link>
-                <HamburgerMenu 
+                <HamburgerMenu
                     isOpen={click}
-                    menuClicked={() => handleClick} 
+                    menuClicked={() => handleClick}
                 />
 
             </div>
             :
             <div>
                 <ul className='menu-list'>
-                    
-                    <li><Link style={{textDecoration: 'none'}}>Home</Link></li>
-                    <li><Link style={{textDecoration: 'none'}}>Add a Location</Link></li>
-                    <li><Link style={{textDecoration: 'none'}}>Create a Walk</Link></li>
+
+                    <li className='menu-list-item'><Link style={{textDecoration: 'none'}}>Home</Link></li>
+                    <li className='menu-list-item'><Link style={{textDecoration: 'none'}}>Add a Location</Link></li>
+                    <li className='menu-list-item'><Link style={{textDecoration: 'none'}}>Create a Walk</Link></li>
                     <li>
-                        <LogoutButton setAuthenticated={setAuthenticated} />
+                        <LogoutButton className='menu-list-item' setAuthenticated={setAuthenticated} />
                     </li>
                 </ul>
             </div>
