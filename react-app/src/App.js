@@ -63,7 +63,7 @@ function App() {
           <ProtectedRoute path="/dashboard" exact={true} authenticated={authenticated}>
             <UserProfile />
           </ProtectedRoute>
-          <ProtectedRoute path="/locations/new" exact={true} authenticated={authenticated}>
+          <ProtectedRoute path="/locations/add/new" exact={true} authenticated={authenticated}>
             <LocationForm />
           </ProtectedRoute>
           <Route path="/map">

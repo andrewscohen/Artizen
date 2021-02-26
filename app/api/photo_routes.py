@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.forms import LocationForm
-import boto3, botocore
+import boto3
+import botocore
 from ..config import Config
 from ..helpers import *
 from datetime import datetime
@@ -35,9 +36,9 @@ def add_photo():
             created_at=datetime.now()
         )
         db.session.add(photo)
-       
+
         db.session.commit()
 
         return photo.to_dict()
     else:
-        return redirect("/locations/new")
+        return redirect("/locations/add/new")

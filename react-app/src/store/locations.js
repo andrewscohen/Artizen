@@ -7,7 +7,7 @@ const getOneLocation = location => {
   };
 };
 
-const NEW_LOCATION = 'locations/NEW_LOCATION'
+const NEW_LOCATION = 'locations/add/new_LOCATION'
 
 const newLocation = (location) => {
     

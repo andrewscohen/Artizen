@@ -48,7 +48,7 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
           </div>
           <div>
             <li className="dropdown__li">
-              <Link to="/locations/new">
+              <Link to="/locations/add/new">
                 <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Add An Art Location</p></button>
               </Link>
             </li>
