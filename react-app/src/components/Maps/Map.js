@@ -1,5 +1,5 @@
 import React from "react";
-import {GoogleMap, useLoadScript, Marker, DirectionsService} from "@react-google-maps/api";
+import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
 
 import Locate from './Locate';
 import Search from './Search';

@@ -1,84 +1,51 @@
 import {useState} from "react";
-import {GoogleMap, useLoadScript, Marker, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
-
-import Locate from './Locate';
-import Search from './Search';
-import Gmap from './Map';
-import "@reach/combobox/styles.css";
-import mapStyle from "./mapStyle";
+import {GoogleMap, useLoadScript, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
 
 const libraries = ["places"];
 
-const mapContainerStyle = {
-  height: "70vh",
-  width: "70vw",
-};
-const options = {
-  styles: mapStyle,
-  disableDefaultUI: true,
-  zoomControl: true,
-};
-const center = {
-  lat: 30.275528863705016,
-  lng: -97.74073530134736,
-};
-const origin = {
-  lat: 30.275528863705016,
-  lng: -97.74073530134736,
-}
-const destination = {
-  lat: 39.29038,
-  lng: -76.61219
-}
+const Directions = () => {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY, libraries
+  }, libraries);
 
-
-
-const Directions = ({origin, destination}) => {
   const [response, setResponse] = useState(null);
   const [travelMode, setTravelMode] = useState('DRIVING');
-  // const [origin, setOrigin] = useState(origin);
-  // const [destination, setDestination] = useState(destination);
 
   const directionsCallback = (response) => {
-    console.log(response)
+    console.log("RESPONSE: ", response)
 
+    setTimeout(() => {
     if (response !== null) {
       if (response.status === 'OK') {
         setResponse(response)
       } else {
         console.log('RESPONSE NOT OK: ', response)
+        }
       }
-    }
+    }, 1000);
   }
-  return (
-    <div className='map'>
-      <div className='map-settings'>
-        <hr className='mt-0 mb-3' />
-        <div className='row'>
-          <div className='col-md-6 col-lg-4'>
-            <div className='form-group'>
-              <br />
-        {/* <button className='btn btn-primary' type='button' onClick={this.onClick}>
-          Build Route
-        </button> */}
-      </div>
 
-      <div className='map-container'>
+  if (loadError) return "Error";
+  if (!isLoaded) return "Loading...";
+
+
+
+  return (
         <GoogleMap
           id='direction-example'
           mapContainerStyle={{
             height: '400px',
             width: '100%'
           }}
-          zoom={8}
+          zoom={2}
           center={{
             lat: 0,
-            lng: -180
+            lng: -180,
           }}>
               <DirectionsService
                 options={{
-                  destination: {lat: 39.29038, lng: -76.61219},
-                  origin:{lat: 39.29038, lng: -76.61219},
+                  destination: "12521 Valley Pines Drive, Reisterstown, MD 21136",
+                  origin: "900 Overbrook Road, Baltimore, MD 21239",
                   travelMode: travelMode
                 }}
                 callback={directionsCallback}
@@ -95,11 +62,6 @@ const Directions = ({origin, destination}) => {
             )
           }
         </GoogleMap>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
   )
 }
 
