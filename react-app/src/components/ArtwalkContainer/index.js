@@ -9,11 +9,13 @@ export default function ArtwalkContainer({artwalk}) {
 
   if (locationsArray.length) {
     return (
-    <>
-    <h2>{artwalk.name}</h2>
-    <h3>{locationsArray[0].city}, {locationsArray[0].state}</h3>
-    <Directions coordinates={coordinates}/>
-    </>
+    <div className="artwalk-container">
+      <Directions className="map" coordinates={coordinates}/>
+      <div className="artwalk-container__info">
+        <h2>{artwalk.name}</h2>
+        <h3>{locationsArray[0].city}, {locationsArray[0].state}</h3>
+      </div>
+    </div>
   )
 }
 }
