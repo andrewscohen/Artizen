@@ -39,9 +39,7 @@ const LocationContainer = () => {
       <p className="location-address">
         {location.city}, {location.state} {location.zip_code}
       </p>
-      <div className="location-comment-container">
-        <CommentContainer />
-      </div>
+      <CommentContainer />
     </div>
   );
 };

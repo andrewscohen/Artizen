@@ -18,7 +18,7 @@ const CommentContainer = () => {
 
   return (
     <>
-      <h1>Comments</h1>
+      <h1 style={{ textAlign: "center" }}>Comments</h1>
       {comments.map(comment => (
         <Comment key={comment.id} comment={comment} />
       ))}
