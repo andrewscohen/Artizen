@@ -7,10 +7,16 @@ export default function ArtwalkContainer({artwalk}) {
     return {lat: location.lat, lng: location.long}
   })
 
+  const mapContainerStyle = {
+    height: "200px",
+    width: "350px",
+    borderRadius: "5px 0 0 5px",
+  }
+
   if (locationsArray.length) {
     return (
     <div className="artwalk-container">
-      <Directions className="map" coordinates={coordinates}/>
+      <Directions className="map" coordinates={coordinates} mapContainerStyle={mapContainerStyle}/>
       <div className="artwalk-container__info">
         <h2>{artwalk.name}</h2>
         <h3>{locationsArray[0].city}, {locationsArray[0].state}</h3>

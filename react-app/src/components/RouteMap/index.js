@@ -3,7 +3,7 @@ import {GoogleMap, DirectionsService, DirectionsRenderer, useLoadScript, Marker}
 import mapStyle from "../Maps/mapStyle";
 import map_marker from "../images/map_marker.png"
 
-export default function Directions({coordinates}) {
+export default function Directions({coordinates, mapContainerStyle}) {
   const libraries = ["places"];
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
@@ -16,11 +16,6 @@ export default function Directions({coordinates}) {
     libraries ,
   });
 
-  const mapContainerStyle = {
-    height: "200px",
-    width: "350px",
-    borderRadius: "5px 0 0 5px",
-  };
   const options = {
     styles: mapStyle,
     disableDefaultUI: true,
