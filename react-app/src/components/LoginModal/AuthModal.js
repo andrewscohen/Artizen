@@ -19,26 +19,34 @@ const customStyles = {
       border: "none",
       width: "40%",
       boxSizing: "border-box",
+
     },
     overlay : {
         backgroundColor: "rgba(0, 0, 0, .6)",
+        zIndex: "100",
     }
 };
 
-const AuthModal = ({setAuthenticated}) => {
+const AuthModal = ({setAuthenticated, setDisplay}) => {
     const [showModal, setShowModal] = useState(false);
     const [showLoginForm, setShowLoginForm] = useState(true);
 
     const showSignUpModal = () => {
         setShowLoginForm(false)
         setShowModal(true)
+        setDisplay(false)
     }
 
     const showLoginModal = () => {
         setShowLoginForm(true)
         setShowModal(true)
+        setDisplay(false)
     }
 
+    const onClick = () => {
+        setShowModal(false);
+        setDisplay(true);
+    }
 
 
     return (
@@ -51,7 +59,7 @@ const AuthModal = ({setAuthenticated}) => {
                 <>
                     <div className="login-modal-top-row">
                         <h1 className="title">Login</h1>
-                        <button className="btn__x" onClick={() => setShowModal(false)}>
+                        <button className="btn__x" onClick={onClick}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
@@ -61,7 +69,7 @@ const AuthModal = ({setAuthenticated}) => {
                 <>
                     <div className="signup-modal-top-row">
                         <h1 className="title">Sign Up</h1>
-                        <button className="btn__x" onClick={() => setShowModal(false)}>
+                        <button className="btn__x" onClick={onClick}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
