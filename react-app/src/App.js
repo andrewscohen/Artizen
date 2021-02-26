@@ -25,8 +25,8 @@ function App() {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
-        setAuthenticated(true);
         dispatch(setUser(user));
+        setAuthenticated(true);
       }
       setLoaded(true);
     })();
@@ -44,12 +44,12 @@ function App() {
           <Route exact path="/" >
             <Home display={display} />
           </Route>
-          {/* <Route path="/login" exact={true}>
+          <Route path="/login" exact={true}>
             <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          </Route> */}
+          </Route>
           {/* <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
             <UsersList />
           </ProtectedRoute> */}

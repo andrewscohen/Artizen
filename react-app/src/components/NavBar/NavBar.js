@@ -7,7 +7,7 @@ import { ReactComponent as Logo } from "./artizen_logo.svg";
 
 import "./Navbar.css";
 
-const NavBar = ({ setAuthenticated, authenticated, setDisplay, display }) => {
+const NavBar = ({ setAuthenticated, authenticated, setDisplay}) => {
   return (
     <nav className="nav">
       <ul>
@@ -31,7 +31,7 @@ const NavBar = ({ setAuthenticated, authenticated, setDisplay, display }) => {
       ) : (
         <ul>
           <li>
-            <ProfileButton setAuthenticated={setAuthenticated} />
+            <ProfileButton setAuthenticated={setAuthenticated} setDisplay={setDisplay} />
           </li>
         </ul>
       )}
