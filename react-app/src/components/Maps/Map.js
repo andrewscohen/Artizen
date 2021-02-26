@@ -22,6 +22,7 @@ const center = {
 };
 
 
+
 export default function Gmap() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
@@ -53,6 +54,7 @@ export default function Gmap() {
 
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
+
 
   return (
     <div>

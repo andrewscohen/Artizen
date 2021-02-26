@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./menu.css";
 
-export default function ProfileButton({ setAuthenticated }) {
+export default function ProfileButton({ setAuthenticated, setDisplay }) {
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
 
@@ -48,7 +48,7 @@ export default function ProfileButton({ setAuthenticated }) {
           </div>
           <div>
             <li className="dropdown__li">
-              <Link to="/locations/new">
+              <Link to="/locations/add/new">
                 <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Add An Art Location</p></button>
               </Link>
             </li>
@@ -62,7 +62,7 @@ export default function ProfileButton({ setAuthenticated }) {
           </div>
           <div>
             <li className="dropdown__li">
-              <LogoutButton setAuthenticated={setAuthenticated} />
+              <LogoutButton setAuthenticated={setAuthenticated} setDisplay={setDisplay} />
             </li>
           </div>
         </div>

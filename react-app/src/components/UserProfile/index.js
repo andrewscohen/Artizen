@@ -9,20 +9,25 @@ import "./UserProfile.css"
 export default function UserProfile() {
   const dispatch = useDispatch();
   // const [change, setChange] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const artwalks = useSelector(state => state.artwalks)
   const artwalksArray = Object.values(artwalks);
 
-  useEffect(() => {
-    dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
-  }, [dispatch, sessionUser]);
+  const getArtwalks = async () => {
+    await dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
+    .then(setLoaded(true));
+  }
 
+  useEffect(() => {getArtwalks()}, [dispatch, sessionUser]);
+
+  if (!loaded) return <span>Loading</span>;
 
   return (
     <>
     <h1>User Profile {sessionUser.id}</h1>
     {artwalksArray.length > 0 &&
-      <div>
+      <div className="main user_main">
         {artwalksArray.map(artwalk => {
           return (
             <ArtwalkContainer artwalk={artwalk} />

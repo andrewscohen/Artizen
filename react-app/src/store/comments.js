@@ -1,8 +1,16 @@
 const GET_LOCATION_COMMENTS = "comments/GET_LOCATION_COMMENTS";
+const NEW_COMMENT = "comments/NEW_COMMENT";
 
 const getCommentsForLocation = comments => {
   return {
     type: GET_LOCATION_COMMENTS,
+    payload: comments,
+  };
+};
+
+const addNewCommentToLocation = comments => {
+  return {
+    type: NEW_COMMENT,
     payload: comments,
   };
 };
@@ -14,11 +22,30 @@ export const getComments = locationId => async dispatch => {
   dispatch(getCommentsForLocation(data));
 };
 
+export const addComment = ({ locationId, userId, comment }) => async dispatch => {
+  const res = await fetch(`/api/comments/new`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      comment,
+      location_id: locationId,
+      user_id: userId,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(addNewCommentToLocation(data));
+};
+
 const initialState = [];
 
 const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LOCATION_COMMENTS:
+      return action.payload;
+    case NEW_COMMENT:
       return action.payload;
     default:
       return state;

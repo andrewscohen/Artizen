@@ -6,13 +6,14 @@ import { userLogout } from "../../store/session"
 import "./LogoutButton.css"
 
 
-const LogoutButton = ({setAuthenticated}) => {
+const LogoutButton = ({setAuthenticated, setDisplay}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onLogout = async (e) => {
     await logout();
     setAuthenticated(false);
+    setDisplay(true);
     history.push("/");
     dispatch(userLogout());
   };
