@@ -1,14 +1,25 @@
 .logout-button {
-  background-color:  #1cc3d9;
+  border-radius: 0 0 .5rem .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   color: black;
-  font-weight: bold;
+  background-color: transparent;
   border: none;
   padding: 0.5em 0.6em;
-  border-radius: 0 0 .5em .5em;
   width: 100%;
+  height: 2rem;
   text-align: right;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .logout-button:hover {
   background-color: lightblue;
+}
+
+.btn--dropdown-icon {
+  color: #fe3a9e;
+  font-size: 1rem;
 }
