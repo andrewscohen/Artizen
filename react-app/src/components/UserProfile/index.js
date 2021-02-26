@@ -14,10 +14,12 @@ export default function UserProfile() {
   const artwalks = useSelector(state => state.artwalks)
   const artwalksArray = Object.values(artwalks);
 
-  useEffect(async () => {
+  const getArtwalks = async () => {
     await dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
     .then(setLoaded(true));
-  }, [dispatch, sessionUser]);
+  }
+
+  useEffect(() => {getArtwalks()}, [dispatch, sessionUser]);
 
   if (!loaded) return <span>Loading</span>;
 
