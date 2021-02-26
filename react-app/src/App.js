@@ -12,8 +12,9 @@ import UserProfile from "./components/UserProfile";
 import LocationContainer from "./components/LocationContainer";
 import Gmap from "./components/Maps/Map.js";
 import { authenticate } from "./services/auth";
-import { setUser } from "./store/session";
-import "./components/NavBar/Navbar.css";
+import { setUser } from "./store/session"
+import "./components/NavBar/Navbar.css"
+import LocationForm from"./components/LocationForm/location_form"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,6 +62,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/dashboard" exact={true} authenticated={authenticated}>
             <UserProfile />
+          </ProtectedRoute>
+          <ProtectedRoute path="/locations/add/new" exact={true} authenticated={authenticated}>
+            <LocationForm />
           </ProtectedRoute>
           <Route path="/map">
             <Gmap />
