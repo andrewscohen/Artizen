@@ -14,7 +14,7 @@ const customStyles = {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       padding: "1.5em",
-      backgroundColor: "rgba(254, 58, 158, .8)",
+      backgroundColor: "rgba(254, 58, 158, .7)",
       borderRadius: "2px",
       border: "none",
       width: "40%",
@@ -22,7 +22,8 @@ const customStyles = {
 
     },
     overlay : {
-        backgroundColor: "rgba(0, 0, 0, .6)",
+        backgroundColor: "transparent",
+        // backgroundColor: "rgba(0, 0, 0, .6)",
         zIndex: "100",
     }
 };
