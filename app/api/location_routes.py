@@ -35,7 +35,14 @@ def add_location():
         
         return location.to_dict()
     return form.errors
-      
+        # return json.dumps(res)       
+    # upload_photo = form.data['photo'] #TODO send this to AWS storage
+    # photo = Photo(
+    #     user_id = user.id, TODO
+    #     url = aws_url, TODO retrieve the AWS url
+    #     location_id = location.id, TODO query db for locationid 
+    #     create_at = new Date() 
+    # )TODO: db.session.add(photo) 
 
 
 @location_routes.route('/location')
