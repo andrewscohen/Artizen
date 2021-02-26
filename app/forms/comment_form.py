@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired
 
 
 class CommentForm(FlaskForm):
-    comment = TextField("What do you think?", validators=[DataRequired()])
+    comment = TextField("comment", validators=[DataRequired()])

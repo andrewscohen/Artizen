@@ -15,17 +15,22 @@ def comments(location_id):
     return json.dumps(data)
 
 
-@comment_routes.route("/new/<int:location_id>/", methods=["POST"])
+@comment_routes.route("/new", methods=["POST"])
 @login_required
-def add_comment(location_id, user_id):
+def add_comment():
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    comment_obj = request.get_json()
+    user_id = comment_obj["user_id"]
+    location_id = comment_obj["location_id"]
+    comment_content = comment_obj["comment"]
 
     if form.validate_on_submit():
         comment = Comment(
             user_id=user_id,
             location_id=location_id,
-            comment=form.data["comment"],
+            comment=comment_content,
             created_at=datetime.now(),
             updated_at=datetime.now()
         )

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getComments } from "../../store/comments";
 import Comment from "../Comment";
+import CommentForm from "../CommentForm";
 
 const CommentContainer = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const CommentContainer = () => {
       {comments.map(comment => (
         <Comment key={comment.id} comment={comment} />
       ))}
+      <CommentForm />
     </>
   );
 };

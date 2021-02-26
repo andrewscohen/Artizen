@@ -22,16 +22,16 @@ export const getComments = locationId => async dispatch => {
   dispatch(getCommentsForLocation(data));
 };
 
-export const addComment = (comment, locationId, userId) => async dispatch => {
-  const res = await fetch(`/api/comments/new/${locationId}`, {
+export const addComment = ({ locationId, userId, comment }) => async dispatch => {
+  const res = await fetch(`/api/comments/new`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       comment,
-      locationId,
-      userId,
+      location_id: locationId,
+      user_id: userId,
     }),
   });
 
