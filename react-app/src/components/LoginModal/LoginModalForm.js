@@ -16,9 +16,9 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {
-      dispatch(setUser(user));
+      
       setAuthenticated(true);
-      history.push("/dashboard")
+      dispatch(setUser(user))
     } else {
       setErrors(user.errors);
     }
