@@ -11,7 +11,8 @@ export default function Directions({coordinates}) {
   });
   const mapContainerStyle = {
     height: "200px",
-    width: "400px",
+    width: "350px",
+    borderRadius: "5px 0 0 5px",
   };
   const options = {
     styles: mapStyle,
@@ -29,7 +30,7 @@ export default function Directions({coordinates}) {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div className="map">
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
