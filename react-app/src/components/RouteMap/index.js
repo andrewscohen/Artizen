@@ -49,7 +49,7 @@ export default function Directions({coordinates, mapContainerStyle}) {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={13}
         center={center}
         options={options}
         onLoad={onMapLoad}

@@ -21,6 +21,7 @@ export const getOneArtwalk = (artwalkId) => async dispatch => {
   const data = await res.json();
   res.data = data;
   dispatch(loadOneArtwalk(res.data));
+  return res;
 }
 
 const initialState = {currentArtwalk: {}};
