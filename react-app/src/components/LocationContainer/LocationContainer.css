@@ -1,12 +1,31 @@
 .location-container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Pic Info"
+    "Map Info";
+  height: 100vh;
 }
 
 .location-pic-container {
+  grid-area: Pic;
+  padding: 1em;
+}
+
+.location-map-container {
+  grid-area: Map;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1em;
+  padding: 1em;
+}
+
+.location-info-container {
+  grid-area: Info;
+  padding: 1em;
 }
 
 .location-art-img {
