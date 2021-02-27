@@ -6,20 +6,32 @@ import * as artwalkActions from "../../store/artwalks"
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
-  const dispatch = useDispatch();
   const { artwalkId } = useParams();
+  const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const artwalk = useSelector(state => state.artwalks.currentArtwalk);
-  const locationsArray = Object.values(artwalk.locations);
-  const coordinates = locationsArray.map(location => {
-    return {lat: location.lat, lng: location.long}
-  })
+  console.log(artwalk);
+  let locationsArray;
+  let coordinates;
 
   useEffect(() => {
-    dispatch(artwalkActions.getOneArtwalk(artwalkId));
-    setLoaded(true);
-  }, [artwalk, dispatch, artwalkId])
+    dispatch(artwalkActions.getOneArtwalk(artwalkId))
+    // console.log("dispatched thunk")
+    .then(setLoaded(true));
+    console.log("loaded!")
+  }, [artwalkId, dispatch])
 
+  // const locationsArray = Object.values(artwalk.locations);
+  // const coordinates = locationsArray.map(location => {
+  //   return {lat: location.lat, lng: location.long}
+  // })
+
+  if (loaded) {
+    locationsArray = Object.values(artwalk.locations);
+    coordinates = locationsArray.map(location => {
+      return {lat: location.lat, lng: location.long}
+    })
+  }
 
 
   const mapContainerStyle = {
@@ -30,7 +42,7 @@ export default function ArtwalkView() {
 
   if (!loaded) return <span>Loading</span>;
 
-
+  if (locationsArray.length) {
     return (
     <>
     <h1>{artwalk.name}</h1>
@@ -41,5 +53,6 @@ export default function ArtwalkView() {
       </div>
     </div>
     </>
-  )
+    )
   }
+}
