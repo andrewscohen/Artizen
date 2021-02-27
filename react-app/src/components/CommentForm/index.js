@@ -19,7 +19,12 @@ const CommentForm = () => {
   return (
     <div className="comment-form-container">
       <form className="comment-form" onSubmit={e => handleSubmit(e)}>
-        <textarea value={comment} onChange={e => setComment(e.target.value)} required></textarea>
+        <textarea
+          placeholder="What do you think?"
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+          required
+        ></textarea>
         <button type="submit">Submit</button>
       </form>
     </div>
