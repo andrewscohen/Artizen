@@ -1,5 +1,6 @@
 const GET_LOCATION_COMMENTS = "comments/GET_LOCATION_COMMENTS";
 const NEW_COMMENT = "comments/NEW_COMMENT";
+const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 const getCommentsForLocation = comments => {
   return {
@@ -12,6 +13,13 @@ const addNewCommentToLocation = comments => {
   return {
     type: NEW_COMMENT,
     payload: comments,
+  };
+};
+
+const deleteOneCommentFromLocation = comment => {
+  return {
+    type: DELETE_COMMENT,
+    payload: comment,
   };
 };
 
@@ -37,6 +45,22 @@ export const addComment = ({ locationId, userId, comment }) => async dispatch =>
 
   const data = await res.json();
   dispatch(addNewCommentToLocation(data));
+};
+
+export const deleteComment = (id, location_id) => async dispatch => {
+  const res = await fetch(`/api/comments/${id}/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+      location_id,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(deleteOneCommentFromLocation(data));
 };
 
 const initialState = [];

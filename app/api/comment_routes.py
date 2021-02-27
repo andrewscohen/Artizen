@@ -40,18 +40,18 @@ def add_comment():
 
         db.session.commit()
 
-        # comments = Comment.query.filter(
-        #     Comment.location_id == location_id).all()
-        # data = [comment.to_dict() for comment in comments]
-        # return json.dumps(data)
-
-        return Response("{'a':'b'}", status=202, mimetype='application/json')
+        comments = Comment.query.filter(
+            Comment.location_id == location_id).all()
+        data = [comment.to_dict() for comment in comments]
+        return json.dumps(data)
 
 
 @comment_routes.route("/<int:id>/delete", methods=["DELETE"])
 @login_required
 def delete_comment(id):
     comment = Comment.query.get(id)
+
+    location_id = request.get_json()["location_id"]
 
     db.session.delete(comment)
     db.session.commit()
