@@ -34,7 +34,7 @@ const LocationContainer = () => {
             Artwork by <span className="location-artist-name">{location.artist}</span>
           </p>
         )}
-        <p>Description: {location.description}</p>
+        {location.description.length > 0 && <p className="location-description">Description: {location.description}</p>}
         <p className="location-address">{location.street_address}</p>
         <p className="location-address">
           {location.city}, {location.state} {location.zip_code}
@@ -43,7 +43,7 @@ const LocationContainer = () => {
       </div>
       <div className="location-map-container">
         <img
-          src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=600x600&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
+          src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=640x320&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
           alt="map"
         />
       </div>

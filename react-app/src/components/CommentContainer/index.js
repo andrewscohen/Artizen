@@ -20,9 +20,11 @@ const CommentContainer = () => {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Comments</h1>
-      {comments.map(comment => (
-        <Comment key={comment.id} comment={comment} />
-      ))}
+      {comments.length ? (
+        comments.map(comment => <Comment key={comment.id} comment={comment} />)
+      ) : (
+        <p style={{ textAlign: "center" }}>Be the first to add a comment!</p>
+      )}
       <CommentForm />
     </>
   );

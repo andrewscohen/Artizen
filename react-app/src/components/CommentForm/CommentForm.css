@@ -1,0 +1,30 @@
+.comment-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comment-form textarea {
+  width: 300px;
+  height: 130px;
+  margin-bottom: 1.5em;
+}
+
+.comment-form textarea::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.comment-form button {
+  padding: 0.5em 0;
+  font-size: 1em;
+  background-color: #fe3a9e;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 5px;
+}
