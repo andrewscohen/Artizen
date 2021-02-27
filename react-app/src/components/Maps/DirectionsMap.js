@@ -1,17 +1,8 @@
 import React, {useState} from "react";
-import {GoogleMap, DirectionsService, DirectionsRenderer, LoadScript, Marker} from "@react-google-maps/api";
-
-// const libraries = ["places"];
+import {GoogleMap, DirectionsService, DirectionsRenderer, LoadScript} from "@react-google-maps/api";
 
 const Directions = () => {
-  // const { isLoaded, loadError } = useLoadScript({
-  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-  //   libraries ,
-  // });
-
   const [response, setResponse] = useState(null);
-  // const [travelMode, setTravelMode] = useState('DRIVING');
-  const [markers, setMarkers] = useState([]);
   const [services, setServices] = useState(true)
 
 
@@ -27,20 +18,6 @@ const Directions = () => {
         }
       }
   }
-
-  // if (loadError) return "Error";
-  // if (!isLoaded) return "Loading...";
-
-  const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -60,7 +37,6 @@ const Directions = () => {
             lat: 39.37,
             lng: -76.59,
           }}
-          onClick={onMapClick}
           onLoad={onMapLoad}
         >
           { services &&
@@ -76,13 +52,12 @@ const Directions = () => {
           {
             response !== null && (
               <DirectionsRenderer
-                // required
                 options={{
                   directions: response
                 }}
               />
             )
-          } 
+          }
         </GoogleMap>
         </LoadScript>
   )

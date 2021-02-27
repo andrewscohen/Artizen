@@ -1,4 +1,4 @@
-export default [
+const mapStyle = [
     {
         "featureType": "administrative",
         "elementType": "all",
@@ -81,3 +81,5 @@ export default [
         ]
     }
 ]
+
+export default mapStyle

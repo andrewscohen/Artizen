@@ -29,7 +29,6 @@ export default function Gmap() {
     libraries ,
   });
   const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
 
   const onMapClick = React.useCallback((e) => {
     setMarkers((current) => [
