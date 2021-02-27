@@ -3,6 +3,8 @@ import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as locationActions from "../../store/locations";
 import { getCoords } from "../../services/maps";
+import splashImage from "./expose-art-crop.jpg"
+
 
 const LocationForm = () => {
   const [title, setTitle] = useState("");
@@ -10,7 +12,7 @@ const LocationForm = () => {
   const [street_address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [zip_code, setZip] = useState(0);
+  const [zip_code, setZip] = useState('');
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
   const [errors, setErrors] = useState([]);
@@ -48,7 +50,7 @@ const LocationForm = () => {
         setAddress("");
         setCity("");
         setState("");
-        setZip(0);
+        setZip('');
         setDescription("");
         setPhoto("");
       })
@@ -63,50 +65,55 @@ const LocationForm = () => {
   return (
     <>
       {newLocation && <Redirect to={`/locations/${newLocation.id}`} />}
-      <h1>Enter a New Location</h1>
-      <fieldset>
+      <div className="form-container">
+      <fieldset className="splash-container vertical-center">
+        <h1>Help Uncover Your City's True Colors</h1>
+        <h2>Found a neat piece of street art?</h2>
+        <h2>Upload it here</h2>
         {errors.length > 0 && errors.map(error => <div key={error}>{error}</div>)}
         <form onSubmit={handleSubmit}>
-          <label>
+          <div>
             <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />
-          </label>
-          <label>
+          </div>
+          <div>
             <input type="text" placeholder="Artist" value={artist} onChange={e => setArtist(e.target.value)} />
-          </label>
-          <label>
+          </div>
+          <div>
             <input
               type="text"
               placeholder="Street Address"
               value={street_address}
               onChange={e => setAddress(e.target.value)}
             />
-          </label>
-          <label>
+          </div>
+          <div>
             <input type="text" placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
-          </label>
-          <label>
+          </div>
+          <div>
             <input type="text" placeholder="State" value={state} onChange={e => setState(e.target.value)} />
-          </label>
-          <label>
+          </div>
+          <div>
             <input type="number" placeholder="Zip Code" value={zip_code} onChange={e => setZip(e.target.value)} />
-          </label>
-          <label>
+          </div>
+          <div>
             <input
               type="textarea"
               placeholder="Description"
               value={description}
               onChange={e => setDescription(e.target.value)}
             />
-          </label>
-          <label>
+          </div>
+          <div>
             <input type="file" onChange={e => setPhoto(e.target.files[0])} />
-          </label>
+          </div>
 
-          <label>
+          <div>
             <button type="submit">Create Location</button>
-          </label>
+          </div>
         </form>
       </fieldset>
+      <img className="header__img" src={splashImage} alt="Uncovering Colorful Street Art"/>
+      </div>
     </>
   );
 };

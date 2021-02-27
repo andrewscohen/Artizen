@@ -1,0 +1,48 @@
+.header__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .splash-container {
+    display: flex;
+    z-index: 50;
+    background-color: rgba(255, 228, 28, 0.7);
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    color: white;
+    justify-self: center;
+    box-sizing: border-box;
+    margin-top: .8em;
+    padding: 1.2em;
+  }
+  
+  .subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+  }
+  
+  .subtitle2 {
+    color: #fe3a9e;
+  }
+
+  .vertical-left {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+.form-container {
+    position: relative;
+}
+
+.heading {
+    position: absolute;
+    top: 10%;
+}
