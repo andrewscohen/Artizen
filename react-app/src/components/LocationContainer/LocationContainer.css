@@ -1,5 +1,5 @@
 .location-container {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: 1fr 1fr;
@@ -38,11 +38,11 @@
 }
 
 .location-title {
-  margin-bottom: 0;
-  text-align: center;
+  font-size: 2.5em;
 }
 
 .location-artist {
+  font-size: 2em;
   margin-top: 0;
 }
 
@@ -53,4 +53,5 @@
 
 .location-address {
   margin: 0;
+  font-size: 2em;
 }
