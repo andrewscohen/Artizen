@@ -1,21 +1,37 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteComment } from "../../store/comments";
+import { deleteComment, updateComment } from "../../store/comments";
 import "./Comment.css";
 
 const parseDate = str => `${str.slice(7, 11)} ${str.slice(4, 7)}, ${str.slice(11, 16)}`;
 
 const Comment = ({ comment, setUpdateContainer }) => {
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editedComment, setEditedComment] = useState(comment.comment);
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  const handleDelete = (id, location_id) => {
-    dispatch(deleteComment(id, location_id));
+  const handleDelete = id => {
+    dispatch(deleteComment(id));
     setUpdateContainer(prev => !prev);
+  };
+
+  const handleEdit = (id, comment) => {
+    dispatch(updateComment(id, comment));
+    setUpdateContainer(prev => !prev);
+    setShowEditForm(false);
   };
 
   return (
     <div className="comment-container">
-      <p className="comment-content">{comment.comment}</p>
+      {showEditForm ? (
+        <div className="comment-edit-form">
+          <textarea onChange={e => setEditedComment(e.target.value)}>{editedComment}</textarea>
+          <button onClick={() => handleEdit(comment.id, editedComment)}>Update</button>
+        </div>
+      ) : (
+        <p className="comment-content">{comment.comment}</p>
+      )}
       <p className="comment-user-line">
         Posted by
         <span className="comment-user"> {comment.username}</span>
@@ -23,10 +39,10 @@ const Comment = ({ comment, setUpdateContainer }) => {
       </p>
       {sessionUser.id === comment.user_id && (
         <>
-          <button>
+          <button onClick={() => setShowEditForm(true)}>
             <i class="far fa-edit"></i>
           </button>
-          <button onClick={() => handleDelete(comment.id, comment.location_id)}>
+          <button onClick={() => handleDelete(comment.id)}>
             <i class="far fa-trash-alt"></i>
           </button>
         </>

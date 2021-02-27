@@ -12,10 +12,7 @@ const CommentContainer = () => {
   const [updateContainer, setUpdateContainer] = useState(false);
 
   useEffect(() => {
-    async function comment() {
-      await dispatch(getComments(locationId));
-    }
-    comment();
+    dispatch(getComments(locationId));
   }, [dispatch, locationId, updateContainer]);
 
   return (
