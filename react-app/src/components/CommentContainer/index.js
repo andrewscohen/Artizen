@@ -9,20 +9,20 @@ const CommentContainer = () => {
   const dispatch = useDispatch();
   const { locationId } = useParams();
   const comments = useSelector(state => state.comments);
-  const [deleteComment, setDeleteComment] = useState(false);
+  const [updateContainer, setUpdateContainer] = useState(false);
 
   useEffect(() => {
     async function comment() {
       await dispatch(getComments(locationId));
     }
     comment();
-  }, [dispatch, locationId, deleteComment]);
+  }, [dispatch, locationId, updateContainer]);
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Comments</h1>
       {comments.length ? (
-        comments.map(comment => <Comment key={comment.id} comment={comment} setDeleteComment={setDeleteComment} />)
+        comments.map(comment => <Comment key={comment.id} comment={comment} setUpdateContainer={setUpdateContainer} />)
       ) : (
         <p style={{ textAlign: "center" }}>Be the first to add a comment!</p>
       )}

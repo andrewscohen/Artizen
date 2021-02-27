@@ -51,9 +51,18 @@ def add_comment():
 def delete_comment(id):
     comment = Comment.query.get(id)
 
-    location_id = request.get_json()["location_id"]
-
     db.session.delete(comment)
     db.session.commit()
 
     return Response("{'a':'b'}", status=201, mimetype='application/json')
+
+
+@comment_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_comment(id):
+    comment = Comment.query.get(id)
+
+    comment.comment = request.get_json()["comment"]
+    db.session.commit()
+
+    return Response("{'a':'b'}", status=204, mimetype='application/json')
