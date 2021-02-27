@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, json, request
 from flask_login import login_required
-from app.models import Comment, Location, db
+from app.models import Comment, Location, db, User
 from app.forms.comment_form import CommentForm
 from datetime import datetime
 
@@ -10,7 +10,8 @@ comment_routes = Blueprint("comments", __name__)
 @comment_routes.route("/<int:location_id>")
 @login_required
 def comments(location_id):
-    comments = Comment.query.filter(Comment.location_id == location_id).all()
+    comments = Comment.query.join(User).filter(
+        Comment.location_id == location_id).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
 

@@ -7,8 +7,8 @@ const Comment = ({ comment }) => {
     <div className="comment-container">
       <p className="comment-content">{comment.comment}</p>
       <p className="comment-user-line">
-        {/*todo - get user's username */}Posted by
-        <span className="comment-user"> User #{comment.user_id}</span>
+        Posted by
+        <span className="comment-user"> {comment.username}</span>
         <span className="comment-date">{parseDate(comment.created_at)}</span>
       </p>
     </div>
