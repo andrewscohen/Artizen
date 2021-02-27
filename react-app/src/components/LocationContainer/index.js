@@ -34,8 +34,7 @@ const LocationContainer = () => {
             Artwork by <span className="location-artist-name">{location.artist}</span>
           </p>
         )}
-        {location.description.length > 0 && <p>Description: {location.description}</p>}
-
+        {location.description.length > 0 && <p className="location-description">Description: {location.description}</p>}
         <p className="location-address">{location.street_address}</p>
         <p className="location-address">
           {location.city}, {location.state} {location.zip_code}
