@@ -10,7 +10,8 @@ import User from "./components/User";
 import UserProfile from "./components/UserProfile";
 import LocationContainer from "./components/LocationContainer";
 import Gmap from "./components/Maps/Map.js";
-import Directions from "./components/Maps/DirectionsMap.js";
+// import Directions from "./components/Maps/DirectionsMap.js";
+import ArtwalkView from "./components/ArtwalkView"
 import { authenticate } from "./services/auth";
 import { setUser } from "./store/session"
 import "./components/NavBar/Navbar.css"
@@ -66,12 +67,15 @@ function App() {
           <ProtectedRoute path="/locations/add/new" exact={true} authenticated={authenticated}>
             <LocationForm />
           </ProtectedRoute>
+          <ProtectedRoute path="/artwalks/:artwalkId" exact={true} authenticated={authenticated}>
+            <ArtwalkView />
+          </ProtectedRoute>
           <Route path="/map">
             <Gmap />
           </Route>
-          <Route path="/directionsmap">
+          {/* <Route path="/directionsmap">
             <Directions />
-          </Route>
+          </Route> */}
         </Switch>
       )}
     </BrowserRouter>
