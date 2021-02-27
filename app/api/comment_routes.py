@@ -10,7 +10,7 @@ comment_routes = Blueprint("comments", __name__)
 @comment_routes.route("/<int:location_id>")
 @login_required
 def comments(location_id):
-    comments = Comment.query.join(User).filter(
+    comments = Comment.query.filter(
         Comment.location_id == location_id).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)

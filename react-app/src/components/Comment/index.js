@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import "./Comment.css";
 
 const parseDate = str => `${str.slice(7, 11)} ${str.slice(4, 7)}, ${str.slice(11, 16)}`;
 
 const Comment = ({ comment }) => {
+  const sessionUser = useSelector(state => state.session.user);
+
   return (
     <div className="comment-container">
       <p className="comment-content">{comment.comment}</p>
@@ -11,6 +14,16 @@ const Comment = ({ comment }) => {
         <span className="comment-user"> {comment.username}</span>
         <span className="comment-date">{parseDate(comment.created_at)}</span>
       </p>
+      {sessionUser.id == comment.user_id && (
+        <>
+          <button>
+            <i class="far fa-edit"></i>
+          </button>
+          <button>
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </>
+      )}
     </div>
   );
 };
