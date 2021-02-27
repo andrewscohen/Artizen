@@ -30,7 +30,7 @@ export default function ArtwalkView() {
 
   const mapContainerStyle = {
     height: "400px",
-    width: "800px",
+    width: "1000px",
     // borderRadius: "5px 0 0 5px",
   }
 
@@ -44,7 +44,7 @@ export default function ArtwalkView() {
           <h1>{artwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
           <div className="">
-            <Directions className="map" coordinates={coordinates} mapContainerStyle={mapContainerStyle}/>
+            <Directions className="map" locations={locationsArray} coordinates={coordinates} mapContainerStyle={mapContainerStyle}/>
           </div>
         </>
         }
