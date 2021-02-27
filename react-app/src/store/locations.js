@@ -7,27 +7,42 @@ const getOneLocation = location => {
   };
 };
 
-const NEW_LOCATION = 'locations/add/new_LOCATION'
+const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
+
+const getEveryLocation = locations => {
+    return {
+        type: GET_EVERY_LOCATION,
+        payload: locations
+    }
+}
+
+const NEW_LOCATION = "locations/add/new_LOCATION"
 
 const newLocation = (location) => {
-    
+
     return {
         type: NEW_LOCATION,
-        payload: location, 
+        payload: location,
     }
 }
 
 export const getLocation = locationId => async dispatch => {
     const res = await fetch(`/api/locations/get/${locationId}`);
     const data = await res.json();
-  
+
     dispatch(getOneLocation(data));
   };
 
+export const getAllLocations = () => async dispatch => {
+    const res = await fetch(`/api/locations/get/all`);
+    const data = await res.json();
+
+    dispatch(getEveryLocation(data));
+}
 
 export const addLocation = (locationFile) => async (dispatch) => {
-    
-    const { 
+
+    const {
         user_id,
         title,
         artist,
@@ -36,7 +51,7 @@ export const addLocation = (locationFile) => async (dispatch) => {
         state,
         zip_code,
         description,
-        lat, 
+        lat,
         long,
         photo
         } = locationFile
@@ -45,7 +60,7 @@ export const addLocation = (locationFile) => async (dispatch) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        }, 
+        },
         body: JSON.stringify({
             user_id,
             title,
@@ -55,13 +70,13 @@ export const addLocation = (locationFile) => async (dispatch) => {
             state,
             zip_code,
             description,
-            lat, 
+            lat,
             long,
             })
     })
     let result = await res.json()
-    
-    
+
+
     const form = new FormData()
     form.append('photo', photo)
     form.append('user_id', result.user_id)
@@ -79,19 +94,21 @@ export const addLocation = (locationFile) => async (dispatch) => {
             dispatch(newLocation(result))
         }
     }
-   
+
 
 const initialState = {location: null}
 
 const locationsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case NEW_LOCATION:    
+        case NEW_LOCATION:
             newState = Object.assign({}, state)
             // { [location.id] : location }
             newState.location = action.payload
             return newState
         case GET_ONE_LOCATION:
+            return action.payload;
+        case GET_EVERY_LOCATION:
             return action.payload;
         default:
             return state
@@ -100,10 +117,3 @@ const locationsReducer = (state = initialState, action) => {
 }
 
 export default locationsReducer
-
-
-
-
-
-
-

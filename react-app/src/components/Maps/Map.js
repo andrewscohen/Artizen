@@ -10,6 +10,7 @@ const libraries = ["places"];
 const mapContainerStyle = {
   height: "70vh",
   width: "70vw",
+  float: "right"
 };
 const options = {
   styles: mapStyle,
@@ -62,7 +63,7 @@ export default function Gmap() {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={12}
         center={center}
         options={options}
         onClick={onMapClick}

@@ -14,7 +14,8 @@ import Directions from "./components/Maps/DirectionsMap.js";
 import { authenticate } from "./services/auth";
 import { setUser } from "./store/session"
 import "./components/NavBar/Navbar.css"
-import LocationForm from"./components/LocationForm/location_form"
+import LocationForm from "./components/LocationForm/location_form"
+import CreateArtWalk from "./components/CreateArtWalk/CreateArtWalk"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -72,6 +73,9 @@ function App() {
           <Route path="/directionsmap">
             <Directions />
           </Route>
+          <ProtectedRoute path="/artwalks/add/new" exact={true} authenticated={authenticated}>
+            <CreateArtWalk />
+          </ProtectedRoute>
         </Switch>
       )}
     </BrowserRouter>
