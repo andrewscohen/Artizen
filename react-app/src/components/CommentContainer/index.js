@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getComments } from "../../store/comments";
@@ -9,19 +9,20 @@ const CommentContainer = () => {
   const dispatch = useDispatch();
   const { locationId } = useParams();
   const comments = useSelector(state => state.comments);
+  const [deleteComment, setDeleteComment] = useState(false);
 
   useEffect(() => {
     async function comment() {
       await dispatch(getComments(locationId));
     }
     comment();
-  }, [dispatch, locationId]);
+  }, [dispatch, locationId, deleteComment]);
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Comments</h1>
       {comments.length ? (
-        comments.map(comment => <Comment key={comment.id} comment={comment} />)
+        comments.map(comment => <Comment key={comment.id} comment={comment} setDeleteComment={setDeleteComment} />)
       ) : (
         <p style={{ textAlign: "center" }}>Be the first to add a comment!</p>
       )}

@@ -56,7 +56,4 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
 
-    comments = Comment.query.filter(
-        Comment.location_id == location_id).all()
-    data = [comment.to_dict() for comment in comments]
-    return json.dumps(data)
+    return Response("{'a':'b'}", status=201, mimetype='application/json')

@@ -4,12 +4,13 @@ import "./Comment.css";
 
 const parseDate = str => `${str.slice(7, 11)} ${str.slice(4, 7)}, ${str.slice(11, 16)}`;
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, setDeleteComment }) => {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const handleDelete = (id, location_id) => {
     dispatch(deleteComment(id, location_id));
+    setDeleteComment(prev => !prev);
   };
 
   return (
