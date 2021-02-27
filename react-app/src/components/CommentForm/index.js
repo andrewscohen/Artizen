@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../store/comments";
+import "./CommentForm.css";
 
 const CommentForm = () => {
   const [comment, setComment] = useState("");
@@ -12,13 +13,21 @@ const CommentForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(addComment({ locationId, userId: sessionUser.id, comment }));
+    setComment("");
   };
 
   return (
-    <form onSubmit={e => handleSubmit(e)}>
-      <textarea value={comment} onChange={e => setComment(e.target.value)} required></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="comment-form-container">
+      <form className="comment-form" onSubmit={e => handleSubmit(e)}>
+        <textarea
+          placeholder="What do you think?"
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
