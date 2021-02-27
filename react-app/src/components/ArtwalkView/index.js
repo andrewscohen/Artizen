@@ -2,16 +2,25 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Directions from '../RouteMap'
+import * as artwalkActions from "../../store/artwalks"
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
+  const dispatch = useDispatch();
   const { artwalkId } = useParams();
+  const [loaded, setLoaded] = useState(false);
   const artwalk = useSelector(state => state.artwalks.currentArtwalk);
   const locationsArray = Object.values(artwalk.locations);
-
   const coordinates = locationsArray.map(location => {
     return {lat: location.lat, lng: location.long}
   })
+
+  useEffect(() => {
+    dispatch(artwalkActions.getOneArtwalk(artwalkId));
+    setLoaded(true);
+  }, [artwalk, dispatch, artwalkId])
+
+
 
   const mapContainerStyle = {
     height: "500px",
@@ -19,7 +28,9 @@ export default function ArtwalkView() {
     // borderRadius: "5px 0 0 5px",
   }
 
-  if (locationsArray.length) {
+  if (!loaded) return <span>Loading</span>;
+
+
     return (
     <>
     <h1>{artwalk.name}</h1>
@@ -31,5 +42,4 @@ export default function ArtwalkView() {
     </div>
     </>
   )
-}
-}
+  }

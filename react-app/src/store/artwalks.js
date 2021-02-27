@@ -23,21 +23,21 @@ export const getOneArtwalk = (artwalkId) => async dispatch => {
   dispatch(loadOneArtwalk(res.data));
 }
 
-const initialState = {};
+const initialState = {currentArtwalk: {}};
 
 export default function artwalksReducer(state = initialState, action) {
   const updateState = {...state};
   switch (action.type) {
-    case LOAD_ALL_ARTWALKS: {
-      // updateState.artwalks = {};
+    case LOAD_ALL_ARTWALKS:
       action.artwalks.forEach(artwalk => {
         updateState[artwalk.id] = artwalk;
       })
       return updateState;
-    }
-    case LOAD_ONE_ARTWALK: {
+      /* falls through */
+    case LOAD_ONE_ARTWALK:
       updateState.currentArtwalk = action.artwalk;
-    }
+      return updateState;
+      /* falls through */
     default:
       return state;
   }
