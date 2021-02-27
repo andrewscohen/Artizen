@@ -1,16 +1,52 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteComment, updateComment } from "../../store/comments";
 import "./Comment.css";
 
 const parseDate = str => `${str.slice(7, 11)} ${str.slice(4, 7)}, ${str.slice(11, 16)}`;
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, setUpdateContainer }) => {
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editedComment, setEditedComment] = useState(comment.comment);
+  const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+  const handleDelete = id => {
+    dispatch(deleteComment(id));
+    setUpdateContainer(prev => !prev);
+  };
+
+  const handleEdit = (id, comment) => {
+    dispatch(updateComment(id, comment));
+    setUpdateContainer(prev => !prev);
+    setShowEditForm(false);
+  };
+
   return (
     <div className="comment-container">
-      <p className="comment-content">{comment.comment}</p>
+      {showEditForm ? (
+        <div className="comment-edit-form">
+          <textarea onChange={e => setEditedComment(e.target.value)}>{editedComment}</textarea>
+          <button onClick={() => handleEdit(comment.id, editedComment)}>Update</button>
+        </div>
+      ) : (
+        <p className="comment-content">{comment.comment}</p>
+      )}
       <p className="comment-user-line">
-        {/*todo - get user's username */}Posted by
-        <span className="comment-user"> User #{comment.user_id}</span>
+        Posted by
+        <span className="comment-user"> {comment.username}</span>
         <span className="comment-date">{parseDate(comment.created_at)}</span>
       </p>
+      {sessionUser.id === comment.user_id && (
+        <>
+          <button onClick={() => setShowEditForm(true)}>
+            <i class="far fa-edit"></i>
+          </button>
+          <button onClick={() => handleDelete(comment.id)}>
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </>
+      )}
     </div>
   );
 };

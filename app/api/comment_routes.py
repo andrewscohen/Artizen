@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, json, request
+from flask import Blueprint, jsonify, json, request, Response
 from flask_login import login_required
-from app.models import Comment, Location, db
+from app.models import Comment, Location, db, User
 from app.forms.comment_form import CommentForm
 from datetime import datetime
 
@@ -10,7 +10,8 @@ comment_routes = Blueprint("comments", __name__)
 @comment_routes.route("/<int:location_id>")
 @login_required
 def comments(location_id):
-    comments = Comment.query.filter(Comment.location_id == location_id).all()
+    comments = Comment.query.filter(
+        Comment.location_id == location_id).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
 
@@ -43,3 +44,35 @@ def add_comment():
             Comment.location_id == location_id).all()
         data = [comment.to_dict() for comment in comments]
         return json.dumps(data)
+
+
+@comment_routes.route("/<int:id>/delete", methods=["DELETE"])
+@login_required
+def delete_comment(id):
+    comment = Comment.query.get(id)
+
+    location_id = comment.location_id
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    comments = Comment.query.filter(
+        Comment.location_id == location_id).all()
+    data = [comment.to_dict() for comment in comments]
+    return json.dumps(data)
+
+
+@comment_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_comment(id):
+    comment = Comment.query.get(id)
+
+    location_id = comment.location_id
+
+    comment.comment = request.get_json()["comment"]
+    db.session.commit()
+
+    comments = Comment.query.filter(
+        Comment.location_id == location_id).all()
+    data = [comment.to_dict() for comment in comments]
+    return json.dumps(data)
