@@ -1,20 +1,15 @@
 import React, {useState} from "react";
-import {GoogleMap, DirectionsService, DirectionsRenderer, useLoadScript, Marker} from "@react-google-maps/api";
+import {GoogleMap, DirectionsService, DirectionsRenderer, Marker} from "@react-google-maps/api";
 import mapStyle from "../Maps/mapStyle";
 import map_marker from "../images/map_marker.png"
 
 export default function Directions({coordinates, mapContainerStyle}) {
-  const libraries = ["places"];
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
   const waypoints = coordinates.slice(1, coordinates.length -1).map(location => {
     return {location, stopover: true};
   })
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries ,
-  });
 
   const options = {
     styles: mapStyle,
@@ -40,9 +35,6 @@ export default function Directions({coordinates, mapContainerStyle}) {
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
-
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
 
   return (
     <div className="map">

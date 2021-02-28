@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {GoogleMap, DirectionsService, DirectionsRenderer, LoadScript} from "@react-google-maps/api";
+import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
 
 const Directions = () => {
   const [response, setResponse] = useState(null);
@@ -25,7 +25,6 @@ const Directions = () => {
   }, []);
 
   return (
-<LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}>
         <GoogleMap
           id='direction-example'
           mapContainerStyle={{
@@ -59,7 +58,6 @@ const Directions = () => {
             )
           }
         </GoogleMap>
-        </LoadScript>
   )
 }
 

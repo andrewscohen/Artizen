@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api";
+import {GoogleMap, Marker, InfoWindow} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
 import {getAllLocations} from "../../store/locations";
@@ -31,7 +31,6 @@ const customStyles = {
     }
 };
 
-const libraries = ["places"];
 const mapContainerStyle = {
   height: "70vh",
   width: "70vw",
@@ -49,10 +48,6 @@ const center = {
 
 
 export default function CreateArtWalk(){
-    const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-        libraries ,
-      });
     const [artWalkName, setArtWalkName] = useState('');
     const [showModal, setShowModal] = useState(true);
     const [loaded, setLoaded] = useState(false);
@@ -84,7 +79,7 @@ export default function CreateArtWalk(){
           },
         ]);
       }, []);
-          
+
 
     const addToWalk = (e) => {
       if (!artWalkList){
@@ -101,7 +96,7 @@ export default function CreateArtWalk(){
 
     // useEffect() => {
     //   setArtWalkList([])
-    //   if 
+    //   if
     //   const addToWalk(artWalkList => setArtWalkList([...artWalkList, ])
     // }
 
@@ -114,9 +109,6 @@ export default function CreateArtWalk(){
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
       }, []);
-
-      if (loadError) return "Error";
-      if (!isLoaded) return "Loading...";
 
     return (
         <>
@@ -157,6 +149,7 @@ export default function CreateArtWalk(){
                     setSelected(location);
                 }}
                 icon={{
+                    scaledSize: new window.google.maps.Size(30,30),
                     origin: new window.google.maps.Point(0, 0),
                     anchor: new window.google.maps.Point(15, 15)
                   }}
