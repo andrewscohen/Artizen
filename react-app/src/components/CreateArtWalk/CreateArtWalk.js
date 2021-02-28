@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
 import * as locationActions from "../../store/locations";
 import mapStyle from "../Maps/mapStyle.js"
+import ArtCard from "../ArtCard/ArtCard.js"
 // import Locate from '../Maps/Locate';
 // import Search from '../Maps/Search';
 import "@reach/combobox/styles.css";
@@ -131,7 +132,8 @@ export default function CreateArtWalk(){
               {artWalkList && artWalkList.map((location) => (
                 // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
                 // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
-                  <img src={location.photos[0].url} alt="image" styles={{width: "100px"}} />
+                <ArtCard location={location}/>
+                  // <img src={location.photos[0].url} alt="image" styles={{width: "100px"}} />
                 ))
             }
             </div>
