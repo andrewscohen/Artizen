@@ -8,11 +8,13 @@ background-image: url(./expose-art-crop.jpg);
   }
   
   .splash-container {
+  
+    font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     z-index: 50;
-    background-color: rgba(255, 228, 28, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     text-align: center;
     color: white;
     justify-self: center;
@@ -35,8 +37,8 @@ background-image: url(./expose-art-crop.jpg);
   .vertical-left {
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 10%;
+    top: 25%;
+    left: 25%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
@@ -48,7 +50,6 @@ background-image: url(./expose-art-crop.jpg);
     width: 100%;
 }
 
-.heading {
-    position: absolute;
-    top: 10%;
+.heading1 {
+  font-size: 45px;
 }
