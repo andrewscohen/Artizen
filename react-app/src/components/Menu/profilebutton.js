@@ -55,7 +55,7 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
           </div>
           <div>
             <li className="dropdown__li">
-              <Link to="/artwalks/new">
+              <Link to="/artwalks/add/new">
               <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Create A New Art Walk</p></button>
               </Link>
             </li>

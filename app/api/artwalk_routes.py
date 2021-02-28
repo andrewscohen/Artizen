@@ -5,7 +5,6 @@ import json
 
 artwalk_routes = Blueprint('artwalks', __name__)
 
-
 @artwalk_routes.route('/<int:id>')
 @login_required
 def artwalk(id):

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
-
 import map_marker from "../images/map_marker.png"
 
 export default function Directions({locationsArray, mapContainerStyle, options}) {

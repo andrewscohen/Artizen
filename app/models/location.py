@@ -1,6 +1,7 @@
 from .db import db
 from .artwalk_location import Artwalk_Location
 
+
 class Location(db.Model):
     __tablename__ = 'locations'
 
@@ -9,7 +10,7 @@ class Location(db.Model):
     street_address = db.Column(db.String(100), nullable = False,)
     city = db.Column(db.String(50), nullable = False)
     state = db.Column(db.String(25), nullable = False)
-    zip_code = db.Column(db.Integer, nullable = False) #String or Int?
+    zip_code = db.Column(db.Integer, nullable = False)
     lat = db.Column(db.Float, nullable = False)
     long = db.Column(db.Float, nullable = False)
     title = db.Column(db.String(50))
