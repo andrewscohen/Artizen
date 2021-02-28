@@ -44,7 +44,7 @@ body {
 .header {
   font-family: "Ubuntu Mono";
   font-weight: 400;
-  font-size: 2.5em;
+  font-size: 2.7em;
 }
 
 .main {
@@ -52,7 +52,7 @@ body {
   height: 100%;
   position: fixed;
   top: 7em;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .vertical-center {

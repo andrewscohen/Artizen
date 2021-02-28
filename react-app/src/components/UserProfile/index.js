@@ -27,10 +27,10 @@ export default function UserProfile() {
   // if (!loaded) return <span>Loading</span>;
 
   return (
-    <>
-    {artwalksArray.length > 0 &&
-      <div className="main user_main">
-        <h1>User Profile {sessionUser.id}</h1>
+    <div className="main">
+      <h1>User Profile {sessionUser.id}</h1>
+      {artwalksArray.length > 0 &&
+      <div className="user_main">
         {artwalksArray.map(artwalk => {
           return (
             <ArtwalkContainer artwalk={artwalk} />
@@ -39,6 +39,6 @@ export default function UserProfile() {
         }
       </div>
     }
-    </>
+    </div>
   )
 }

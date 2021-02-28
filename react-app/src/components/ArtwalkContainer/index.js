@@ -11,9 +11,9 @@ export default function ArtwalkContainer({artwalk}) {
 
 
   const mapContainerStyle = {
-    height: "200px",
-    width: "350px",
-    borderRadius: "5px 0 0 5px",
+    height: "225px",
+    width: "300px",
+    borderRadius: "5px 5px 0 0",
     zoomControl: false,
   }
 
@@ -34,8 +34,8 @@ export default function ArtwalkContainer({artwalk}) {
           /> */}
         <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
         <div className="artwalk-container__info">
-          <h2 className="header">{artwalk.name}</h2>
-          <h3>{locationsArray[0].city}, {locationsArray[0].state}</h3>
+          <h2 className="header artwalk-title">{artwalk.name}</h2>
+          <h3 className="artwalk-city">{locationsArray[0].city}, {locationsArray[0].state}</h3>
         </div>
       </div>
     </Link>
