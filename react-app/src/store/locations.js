@@ -1,6 +1,7 @@
 const GET_ONE_LOCATION = "locations/GET_ONE_LOCATION";
 const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
-
+const UPDATE_LOCATION = "locations/UPDATE_LOCATION";
+const NEW_LOCATION = "locations/add/new_LOCATION"
 
 const getOneLocation = location => {
   return {
@@ -9,20 +10,23 @@ const getOneLocation = location => {
   };
 };
 
-
 const getEveryLocation = (locations) => {
     return { type: GET_EVERY_LOCATION, locations }
 }
 
-const NEW_LOCATION = "locations/add/new_LOCATION"
-
 const newLocation = (location) => {
-
     return {
         type: NEW_LOCATION,
         payload: location,
     }
 }
+
+const updateOneLocation = location => {
+  return {
+    type: UPDATE_LOCATION,
+    payload: location,
+  };
+};
 
 export const getLocation = locationId => async dispatch => {
     const res = await fetch(`/api/locations/get/${locationId}`);
@@ -40,7 +44,6 @@ export const getAllLocations = () => async dispatch => {
 }
 
 export const addLocation = (locationFile) => async (dispatch) => {
-
     const {
         user_id,
         title,
@@ -93,6 +96,32 @@ export const addLocation = (locationFile) => async (dispatch) => {
             dispatch(newLocation(result))
         }
     }
+
+export const updateLocation = locationObj => async dispatch => {
+  const { id, user_id, title, artist, street_address, city, state, zip_code, description, lat, long } = locationObj;
+
+  const res = await fetch(`/api/locations/${id}/edit`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id,
+      title,
+      artist,
+      street_address,
+      city,
+      state,
+      zip_code,
+      description,
+      lat,
+      long,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(updateOneLocation(data));
+};
 
 
 const initialState = {location: null, allLocations: {}}

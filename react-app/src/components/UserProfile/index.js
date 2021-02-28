@@ -11,17 +11,20 @@ export default function UserProfile() {
   // const [change, setChange] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
-  const artwalks = useSelector(state => state.artwalks)
-  const artwalksArray = Object.values(artwalks);
+  const { userArtwalks } = useSelector(state => state.artwalks)
+  // console.log("These are the artwalks", userArtwalks)
+  let artwalksArray = Object.values(userArtwalks);
 
-  const getArtwalks = async () => {
-    await dispatch(artwalkActions.getUserArtwalks(sessionUser.id))
-    .then(setLoaded(true));
-  }
 
-  useEffect(() => {getArtwalks()}, [dispatch, sessionUser]);
+  useEffect(() => {
+    dispatch(artwalkActions.getUserArtwalks(sessionUser.id));
+  }, [dispatch, sessionUser]);
 
-  if (!loaded) return <span>Loading</span>;
+  // useEffect(()=> {
+  //   setLoaded(true)
+  // }, [artwalksArray])
+
+  // if (!loaded) return <span>Loading</span>;
 
   return (
     <>

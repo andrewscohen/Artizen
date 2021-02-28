@@ -14,6 +14,7 @@ def locations(id):
 
     return location.to_dict()
 
+
 @location_get_routes.route('/', methods=["POST"])
 @login_required
 def add_location():
@@ -50,3 +51,26 @@ def all_locations():
     data = [location.to_dict() for location in locations]
     res = json.dumps(data)
     return res
+
+
+@location_get_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_location(id):
+    location = Location.query.get(id)
+
+    new_location_obj = request.get_json()
+
+    location.title = new_location_obj["title"]
+    location.artist = new_location_obj["artist"]
+    location.description = new_location_obj["description"]
+    location.street_address = new_location_obj["street_address"]
+    location.city = new_location_obj["city"]
+    location.state = new_location_obj["state"]
+    location.zip_code = new_location_obj["zip_code"]
+    location.lat = new_location_obj["lat"]
+    location.long = new_location_obj["long"]
+
+    db.session.commit()
+
+    return location.to_dict()
+

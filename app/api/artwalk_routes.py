@@ -7,7 +7,7 @@ artwalk_routes = Blueprint('artwalks', __name__)
 
 @artwalk_routes.route('/<int:id>')
 @login_required
-def artwalk(id):    
+def artwalk(id):
     artwalk = ArtWalk.query.get(id)
     data = artwalk.to_dict()
     res = json.dumps(data)
