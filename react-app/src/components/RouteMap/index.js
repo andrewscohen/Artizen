@@ -1,12 +1,15 @@
 import React, {useState} from "react";
-import {GoogleMap, DirectionsService, DirectionsRenderer, useLoadScript, Marker} from "@react-google-maps/api";
+import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
 
 import map_marker from "../images/map_marker.png"
 
-export default function Directions({coordinates, mapContainerStyle, options}) {
-  const libraries = ["places"];
+export default function Directions({locationsArray, mapContainerStyle, options}) {
+  // const libraries = ["places"];
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
+  const coordinates = locationsArray.map(location => {
+    return {lat: location.lat, lng: location.long}
+  })
   const waypoints = coordinates.slice(1, coordinates.length -1).map(location => {
     return {location, stopover: true};
   })

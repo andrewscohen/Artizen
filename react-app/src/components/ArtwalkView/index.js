@@ -1,7 +1,7 @@
 
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Directions from '../RouteMap'
 import * as artwalkActions from "../../store/artwalks"
 import mapStyle from "../Maps/mapStyle";
@@ -11,23 +11,33 @@ export default function ArtwalkView() {
   const { artwalkId } = useParams();
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const artwalk = useSelector(state => state.artwalks.currentArtwalk);
-  let locationsArray = [];
-  let coordinates = [];
+  const { currentArtwalk } = useSelector(state => state.artwalks);
+  console.log("This is the current artwalk", currentArtwalk)
+  // let coordinates = useRef([])
+  // console.log("These are the coordinates", coordinates.current)
 
   useEffect(() => {
     dispatch(artwalkActions.getOneArtwalk(artwalkId));
     console.log("dispatched thunk")
-    setLoaded(true);
+    // setLoaded(true);
   }, [dispatch, artwalkId])
 
+  let locationsArray = currentArtwalk.locations || [];
+  console.log("This is the locations array", locationsArray)
 
-  if (Object.keys(artwalk).length > 0) {
-    locationsArray = artwalk.locations;
-    coordinates = locationsArray.map(location => {
-      return {lat: location.lat, lng: location.long}
-    })
-  }
+  // useEffect(() => {
+  //   coordinates.current = locationsArray.map(location => {
+  //     return {lat: location.lat, lng: location.long}
+  //   }) || [];
+  // }, [locationsArray])
+
+
+  // if (Object.keys(artwalk).length > 0) {
+  //   locationsArray = artwalk.locations;
+  //   coordinates = locationsArray.map(location => {
+  //     return {lat: location.lat, lng: location.long}
+  //   })
+  // }
 
   const mapContainerStyle = {
     height: "400px",
@@ -41,17 +51,17 @@ export default function ArtwalkView() {
     zoomControl: false,
   };
 
-  if (!loaded) return <span>Loading</span>;
+  // if (!loaded) return <span>Loading</span>;
 
 
     return (
       <>
-        {coordinates.length > 0 &&
+        {locationsArray.length > 0 &&
         <>
-          <h1>{artwalk.name}</h1>
+          <h1>{currentArtwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
           <div className="">
-            <Directions className="map" locations={locationsArray} coordinates={coordinates} mapContainerStyle={mapContainerStyle} options={options}/>
+            <Directions className="map" locations={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
         </>
         }
