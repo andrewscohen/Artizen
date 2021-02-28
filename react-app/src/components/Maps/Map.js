@@ -20,7 +20,7 @@ const options = {
   zoomControl: true,
 };
 const center = {
-  lat: 30.275528863705016,
+  lat: 30.260528863705016,
   lng: -97.74073530134736,
 };
 
@@ -70,7 +70,7 @@ export default function Gmap() {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={13}
         center={center}
         options={options}
         onClick={onMapClick}
@@ -86,6 +86,7 @@ export default function Gmap() {
                 scaledSize: new window.google.maps.Size(30, 30),
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(15, 15),
+                url: location.photos[0].url,
               }}
             />
           ))}
