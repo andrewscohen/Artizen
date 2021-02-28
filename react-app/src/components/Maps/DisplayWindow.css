@@ -1,0 +1,45 @@
+.map-display-window {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  padding: 1em;
+  top: 5em;
+  left: 1em;
+  background-color: white;
+  border: 1px solid black;
+  width: 18em;
+  border-radius: 5px;
+}
+
+.map-display-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.map-display-btn-container button {
+  background-color: #fe3a9e;
+  border: none;
+  color: black;
+  padding: 0.4em 0.9em;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.map-display-window h1 {
+  margin: 0;
+}
+
+.map-display-window img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.map-display-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15em;
+}

@@ -7,6 +7,7 @@ import Search from "./Search";
 import "@reach/combobox/styles.css";
 import mapStyle from "./mapStyle";
 import "./Map.css";
+import DisplayWindow from "./DisplayWindow";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -76,9 +77,7 @@ export default function Gmap() {
           <Search panTo={panTo} />
         </div>
         {showDisplayWindow && (
-          <div className="map-display-window">
-            <h1>{selected !== null && selected.street_address}</h1>
-          </div>
+          <DisplayWindow setShowDisplayWindow={setShowDisplayWindow} selected={selected} setSelected={setSelected} />
         )}
       </div>
       <GoogleMap
