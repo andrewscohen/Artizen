@@ -48,7 +48,7 @@ const center = {
 };
 
 
-const CreateArtWalk = () => {
+export default function CreateArtWalk(){
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
         libraries ,
@@ -57,12 +57,12 @@ const CreateArtWalk = () => {
     const [showModal, setShowModal] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [markers, setMarkers] = React.useState([]);
+    const [artWalkList, setArtWalkList] = useState();
     const [selected, setSelected] = React.useState(null);
 
 
     const dispatch = useDispatch();
     const locations = useSelector((state) => state.locations.locations)
-    console.log("THIS IS ONE LOCATION: ", locations);
 
     useEffect(() => {
         dispatch(getAllLocations());
@@ -84,10 +84,26 @@ const CreateArtWalk = () => {
           },
         ]);
       }, []);
+          
 
-    const addToWalk = (location) => {
-      console.log("THIS HAS BEEN ADDED TO THE WALK: ", location)
+    const addToWalk = (e) => {
+      if (!artWalkList){
+        setArtWalkList([e.target.id])
+        // setSelected(null)
+        console.log("AFTER CLICK: ", artWalkList)
+
+      }else{
+      setArtWalkList([...artWalkList, e.target.id])
+      setSelected(null)
+      console.log("AFTER CLICK: ", artWalkList)
+      }
     }
+
+    // useEffect() => {
+    //   setArtWalkList([])
+    //   if 
+    //   const addToWalk(artWalkList => setArtWalkList([...artWalkList, ])
+    // }
 
       const mapRef = React.useRef();
       const onMapLoad = React.useCallback((map) => {
@@ -155,9 +171,9 @@ const CreateArtWalk = () => {
                 position={{lat: selected.lat, lng: selected.long}}
                 >
                 <div>
-                <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
+                  <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
                   <p><b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}</b></p>
-                  <button onClick={addToWalk(selected)}>Add to Walk</button>
+                  <button id={selected.id} onClick={addToWalk}>Add to Walk</button>
                 </div>
               </InfoWindow>
               )}
@@ -166,9 +182,3 @@ const CreateArtWalk = () => {
         </>
     )
 }
-
-
-export default CreateArtWalk
-
-// name
-// use
