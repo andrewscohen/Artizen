@@ -1,7 +1,10 @@
+background-image: url(./expose-art-crop.jpg);
+
 .header__img {
     height: 100%;
-    width: 100%;
-    object-fit: cover;
+    /* width: 100%; */
+    object-fit: fill;
+    object-position: 100% 100%;
   }
   
   .splash-container {
@@ -39,7 +42,10 @@
   }
 
 .form-container {
+    
     position: relative;
+    height: 100vh;
+    width: 100%;
 }
 
 .heading {

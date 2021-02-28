@@ -65,9 +65,16 @@ const LocationForm = () => {
   return (
     <>
       {newLocation && <Redirect to={`/locations/${newLocation.id}`} />}
-      <div className="form-container">
+      <div 
+      className="form-container" 
+      // style={{
+      //     backgroundImage: `url(${splashImage})`, 
+      //     backgroundSize: "cover",
+      //     height: "100vh",
+      //     }} 
+      >
       <fieldset className="splash-container vertical-center">
-        <h1>Help Uncover Your City's True Colors</h1>
+        <h1>Uncover The Colors of Your City</h1>
         <h2>Found a neat piece of street art?</h2>
         <h2>Upload it here</h2>
         {errors.length > 0 && errors.map(error => <div key={error}>{error}</div>)}

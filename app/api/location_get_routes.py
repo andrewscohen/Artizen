@@ -46,4 +46,4 @@ def add_location():
 @location_get_routes.route('/all')
 def all_locations():
     locations = Location.query.all()
-    return locations.to_dict()
+    return locations
