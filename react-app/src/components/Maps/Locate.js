@@ -1,7 +1,9 @@
+import "./Map.css";
+
 const Locate = ({ panTo }) => {
   return (
     <button
-      className="locate"
+      className="locate map-compass-btn"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           position => {
