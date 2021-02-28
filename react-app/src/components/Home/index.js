@@ -6,7 +6,7 @@ export default function Home({display}) {
   return (
     <>
     {display && <div className="splash-container vertical-center">
-        <h1 className="title">Connecting Communities Through Public Art</h1>
+        <h1 className="title header">Connecting Communities Through Public Art</h1>
         <div className="subtitle">
           <h3 className="subtitle1">in Austin, <span className="subtitle2">Texas</span></h3>
         </div>

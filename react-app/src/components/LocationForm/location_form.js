@@ -19,7 +19,7 @@ const LocationForm = () => {
         <div className="splash-container-loc vertical-center" style={backgroundStyle}>
         {showContainer &&
         <>
-        <h1 className="heading1">Uncover Your City's True Colors</h1>
+        <h1 className="heading1 header">Uncover Your City's True Colors</h1>
         <h2>Found some neat street art?</h2>
         </>
         }

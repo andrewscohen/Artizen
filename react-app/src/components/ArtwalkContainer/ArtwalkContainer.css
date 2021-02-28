@@ -6,7 +6,6 @@
   border: 1px solid black;
   width: 70%;
   margin: 1.8em 0;
-
 }
 
 .artwalk-container__info {
@@ -16,5 +15,8 @@
   box-sizing: border-box;
   padding: 1rem 1rem 1rem 3rem;
   align-items: left;
+}
 
+.link {
+  text-decoration: none;
 }

@@ -26,7 +26,7 @@ export default function ArtwalkContainer({artwalk}) {
 
   if (locationsArray.length) {
     return (
-    <Link to={`/artwalks/${artwalk.id}`}>
+    <Link className="link" to={`/artwalks/${artwalk.id}`}>
       <div className="artwalk-container">
         {/* <img
             src={`https://maps.googleapis.com/maps/api/staticmap?size=350x200&maptype=roadmap&markers=color:0xFE3A9E%7C${coordinateString}&path=${pathenc}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
@@ -34,7 +34,7 @@ export default function ArtwalkContainer({artwalk}) {
           /> */}
         <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
         <div className="artwalk-container__info">
-          <h2>{artwalk.name}</h2>
+          <h2 className="header">{artwalk.name}</h2>
           <h3>{locationsArray[0].city}, {locationsArray[0].state}</h3>
         </div>
       </div>
