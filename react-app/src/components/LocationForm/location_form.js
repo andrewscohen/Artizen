@@ -12,7 +12,7 @@ const LocationForm = () => {
   return (
     <>
       {newLocation && <Redirect to={`/locations/${newLocation.id}`} />}
-      <div className="splash-container">
+      <div className="splash-container-loc">
         <h1 className="heading1">Uncover Your City's True Colors</h1>
         <h2>Found some neat street art?</h2>
         <LocationFormModal />
