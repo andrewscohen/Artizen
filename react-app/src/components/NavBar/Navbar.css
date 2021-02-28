@@ -7,7 +7,11 @@
   border-bottom: 2px solid black;
   /* box-shadow: 1px 1px 3px #555; */
   background-color: #1cc3d9;
-  height: 6em;
+  height: 7em;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 
 #logo {

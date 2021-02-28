@@ -37,13 +37,13 @@ export default function ArtwalkView() {
     return (
       <>
         {currentArtwalk &&
-        <>
+        <div className="main">
           <h1>{currentArtwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
           <div className="">
             <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
-        </>
+        </div>
         }
       </>
     )
