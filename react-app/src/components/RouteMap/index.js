@@ -5,6 +5,7 @@ import map_marker from "../images/map_marker.png"
 
 export default function Directions({locationsArray, mapContainerStyle, options}) {
   // const libraries = ["places"];
+  console.log("Route Map locations array", locationsArray)
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
   const coordinates = locationsArray.map(location => {

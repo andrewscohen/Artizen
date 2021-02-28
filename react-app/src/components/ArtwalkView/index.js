@@ -51,7 +51,7 @@ export default function ArtwalkView() {
     zoomControl: false,
   };
 
-  // if (!loaded) return <span>Loading</span>;
+  if (!locationsArray.length) return <span>Loading</span>;
 
 
     return (
@@ -61,7 +61,7 @@ export default function ArtwalkView() {
           <h1>{currentArtwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
           <div className="">
-            <Directions className="map" locations={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
+            <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
         </>
         }
