@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { getAllLocations } from "../../store/locations";
 import Locate from "./Locate";
 import Search from "./Search";
 import "@reach/combobox/styles.css";
@@ -23,11 +25,17 @@ const center = {
 };
 
 export default function Gmap() {
+  const dispatch = useDispatch();
+  const locations = useSelector(state => Object.values(state.locations.allLocations));
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
+
+  useEffect(() => {
+    dispatch(getAllLocations());
+  }, []);
 
   const onMapClick = React.useCallback(e => {
     setMarkers(current => [
@@ -69,6 +77,18 @@ export default function Gmap() {
         onLoad={onMapLoad}
       >
         {/* <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/> */}
+        {locations.length > 0 &&
+          locations.map(location => (
+            <Marker
+              key={location.id}
+              position={{ lat: location.lat, lng: location.long }}
+              icon={{
+                scaledSize: new window.google.maps.Size(30, 30),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(15, 15),
+              }}
+            />
+          ))}
       </GoogleMap>
     </div>
   );
