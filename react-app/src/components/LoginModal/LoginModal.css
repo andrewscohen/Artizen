@@ -7,6 +7,11 @@
     text-shadow: 0 0 2px rgba(0, 0, 0, .7);
 }
 
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
 .login-btn {
     background-color: #fe3a9e;
@@ -39,12 +44,16 @@
 
 .login-modal-form button {
     padding: 5px 10px;
+    width: 6rem;
+    flex-wrap: nowrap;
     color: white;
     border: 1px solid #fe3a9e;
     background-color: #1CC3D9;
     /* background-image: linear-gradient(to right, #1CC3D9, #FE3A9E); */
+    outline: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 0 1.5em;
 }
 
 .login-modal-form button:hover {
@@ -62,11 +71,6 @@
 
 .login-modal-form input:focus {
     box-shadow: 0 0 3px #1CC3D9;
-}
-
-.login-modal-form button {
-    border-radius: 5px;
-    width: 100%;
 }
 
 .login-modal-top-row {

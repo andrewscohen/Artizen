@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as locationActions from "../../store/locations";
 import { getCoords } from "../../services/maps";

@@ -1,4 +1,4 @@
-from flask import Blueprint, request 
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import db, Location
 from app.forms import LocationForm
@@ -13,6 +13,7 @@ def locations(id):
 
     return location.to_dict()
 
+
 @location_get_routes.route('/', methods=["POST"])
 @login_required
 def add_location():
@@ -22,7 +23,7 @@ def add_location():
     print('add location before validation: ', form.data)
     if form.validate_on_submit():
         print('add location after validation: ')
-    
+
         location = Location(
             user_id=form.data['user_id'],
             street_address=form.data['street_address'],
@@ -36,9 +37,9 @@ def add_location():
             long=form.data['long'],
         )
         db.session.add(location)
-       
+
         db.session.commit()
-        
+
         return location.to_dict()
     return form.errors
 
@@ -46,4 +47,26 @@ def add_location():
 @location_get_routes.route('/all')
 def all_locations():
     locations = Location.query.all()
-    return locations
+    return locations.to_dict()
+
+
+@location_get_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_location(id):
+    location = Location.query.get(id)
+
+    new_location_obj = request.get_json()
+
+    location.title = new_location_obj["title"]
+    location.artist = new_location_obj["artist"]
+    location.description = new_location_obj["description"]
+    location.street_address = new_location_obj["street_address"]
+    location.city = new_location_obj["city"]
+    location.state = new_location_obj["state"]
+    location.zip_code = new_location_obj["zip_code"]
+    location.lat = new_location_obj["lat"]
+    location.long = new_location_obj["long"]
+
+    db.session.commit()
+
+    return location.to_dict()

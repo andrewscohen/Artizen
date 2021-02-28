@@ -24,6 +24,18 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const demoUser = await login('demo@email.com', 'password');
+    if (!demoUser.errors) {
+      dispatch(setUser(demoUser))
+      setAuthenticated(true);
+      history.push("/dashboard");
+    } else {
+      setErrors(demoUser.errors);
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -61,9 +73,15 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
           onChange={updatePassword}
         />
       </div>
-      <div>
-        <button id="btn" type="submit">Login</button>
+      <div className="button-container">
+        <div>
+          <button id="btn" type="submit">Login</button>
+        </div>
+        <div>
+          <button id="btn2" type="submit" onClick={demoLogin}>Demo User</button>
+        </div>
       </div>
+
       <p className="modal-bottom-text">Don't have an account?</p>
       <p className="modal-bottom-text switch-text" onClick={() => setShowLoginForm(false)}>Sign Up Now</p>
     </form>
