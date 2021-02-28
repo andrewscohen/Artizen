@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.map-btns-and-display {
+  width: 200px;
+}
+
 .map-btn-container {
   display: flex;
   align-items: center;
@@ -25,4 +29,20 @@
   height: 100%;
   border-radius: 5px;
   width: 20em;
+}
+
+.map-display-window {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  top: 3em;
+  left: 1em;
+  background-color: white;
+  border: 1px solid black;
+  width: 20em;
+}
+
+.map-display-window h1 {
+  margin: 0;
 }

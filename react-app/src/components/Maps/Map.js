@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { getAllLocations } from "../../store/locations";
@@ -26,6 +26,8 @@ const center = {
 
 export default function Gmap() {
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState(null);
+  const [showDisplayWindow, setShowDisplayWindow] = useState(false);
   const locations = useSelector(state => Object.values(state.locations.allLocations));
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
@@ -58,14 +60,26 @@ export default function Gmap() {
     mapRef.current.setZoom(14);
   }, []);
 
+  function handleMarkerClick(location) {
+    setSelected(location);
+    setShowDisplayWindow(true);
+  }
+
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
   return (
     <div className="map-container">
-      <div className="map-btn-container">
-        <Locate panTo={panTo} />
-        <Search panTo={panTo} />
+      <div className="map-btns-and-display">
+        <div className="map-btn-container">
+          <Locate panTo={panTo} />
+          <Search panTo={panTo} />
+        </div>
+        {showDisplayWindow && (
+          <div className="map-display-window">
+            <h1>{selected !== null && selected.street_address}</h1>
+          </div>
+        )}
       </div>
       <GoogleMap
         id="map"
@@ -76,18 +90,18 @@ export default function Gmap() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {/* <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/> */}
         {locations.length > 0 &&
           locations.map(location => (
             <Marker
               key={location.id}
               position={{ lat: location.lat, lng: location.long }}
               icon={{
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(40, 40),
                 origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(15, 15),
+                anchor: new window.google.maps.Point(20, 20),
                 url: location.photos[0].url,
               }}
+              onClick={() => handleMarkerClick(location)}
             />
           ))}
       </GoogleMap>
