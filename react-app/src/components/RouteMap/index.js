@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {GoogleMap, DirectionsService, DirectionsRenderer, useLoadScript, Marker} from "@react-google-maps/api";
-import mapStyle from "../Maps/mapStyle";
+
 import map_marker from "../images/map_marker.png"
 
-export default function Directions({coordinates, mapContainerStyle}) {
+export default function Directions({coordinates, mapContainerStyle, options}) {
   const libraries = ["places"];
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
@@ -16,13 +16,7 @@ export default function Directions({coordinates, mapContainerStyle}) {
     libraries ,
   });
 
-  const options = {
-    styles: mapStyle,
-    disableDefaultUI: true,
-    zoomControl: false,
-  };
   const directionsCallback = (response) => {
-    console.log("RESPONSE: ", response)
 
     if (response !== null) {
       if (response.status === 'OK') {
@@ -49,7 +43,7 @@ export default function Directions({coordinates, mapContainerStyle}) {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={13}
+        zoom={12}
         center={center}
         options={options}
         onLoad={onMapLoad}

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Directions from '../RouteMap'
 import * as artwalkActions from "../../store/artwalks"
+import mapStyle from "../Maps/mapStyle";
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
@@ -34,6 +35,12 @@ export default function ArtwalkView() {
     // borderRadius: "5px 0 0 5px",
   }
 
+  const options = {
+    styles: mapStyle,
+    disableDefaultUI: true,
+    zoomControl: false,
+  };
+
   if (!loaded) return <span>Loading</span>;
 
 
@@ -44,7 +51,7 @@ export default function ArtwalkView() {
           <h1>{artwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
           <div className="">
-            <Directions className="map" locations={locationsArray} coordinates={coordinates} mapContainerStyle={mapContainerStyle}/>
+            <Directions className="map" locations={locationsArray} coordinates={coordinates} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
         </>
         }
