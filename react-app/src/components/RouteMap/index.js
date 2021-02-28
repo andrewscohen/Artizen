@@ -1,28 +1,26 @@
 import React, {useState} from "react";
-import {GoogleMap, DirectionsService, DirectionsRenderer, useLoadScript, Marker} from "@react-google-maps/api";
-import mapStyle from "../Maps/mapStyle";
+import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
+
 import map_marker from "../images/map_marker.png"
 
-export default function Directions({coordinates, mapContainerStyle}) {
-  const libraries = ["places"];
+export default function Directions({locationsArray, mapContainerStyle, options}) {
+  // const libraries = ["places"];
+  console.log("Route Map locations array", locationsArray)
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
+  const coordinates = locationsArray.map(location => {
+    return {lat: location.lat, lng: location.long}
+  })
   const waypoints = coordinates.slice(1, coordinates.length -1).map(location => {
     return {location, stopover: true};
   })
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries ,
-  });
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+  //   libraries ,
+  // });
 
-  const options = {
-    styles: mapStyle,
-    disableDefaultUI: true,
-    zoomControl: false,
-  };
   const directionsCallback = (response) => {
-    console.log("RESPONSE: ", response)
 
     if (response !== null) {
       if (response.status === 'OK') {
@@ -41,8 +39,8 @@ export default function Directions({coordinates, mapContainerStyle}) {
     mapRef.current = map;
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  // if (loadError) return "Error";
+  // if (!isLoaded) return "Loading...";
 
   return (
     <div className="map">

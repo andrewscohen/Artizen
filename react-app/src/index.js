@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import configureStore from './store';
-// import {LoadScript} from '@react-google-maps/api';
+import {LoadScript} from '@react-google-maps/api';
 
 
 const store = configureStore();
@@ -14,9 +14,9 @@ function Root() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-        {/* <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}> */}
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}>
           <App />
-        {/* </LoadScript> */}
+        </LoadScript>
       </BrowserRouter>
     </ReduxProvider>
   );

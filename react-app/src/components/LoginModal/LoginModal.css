@@ -50,6 +50,7 @@
     border: 1px solid #fe3a9e;
     background-color: #1CC3D9;
     /* background-image: linear-gradient(to right, #1CC3D9, #FE3A9E); */
+    outline: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 0 1.5em;
