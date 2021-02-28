@@ -3,7 +3,7 @@ from wtforms import StringField, TextField, IntegerField, DecimalField, FileFiel
 from wtforms.validators import DataRequired
 
 class LocationForm(FlaskForm):
-    print('hello from the form')
+    
     user_id=IntegerField('user_id', validators=[DataRequired()])
     street_address=StringField('street_address', validators=[DataRequired()])
     city=StringField('city', validators=[DataRequired()])
