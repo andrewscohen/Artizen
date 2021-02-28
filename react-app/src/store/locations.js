@@ -1,4 +1,6 @@
 const GET_ONE_LOCATION = "locations/GET_ONE_LOCATION";
+const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
+
 
 const getOneLocation = location => {
   return {
@@ -7,13 +9,9 @@ const getOneLocation = location => {
   };
 };
 
-const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
 
-const getEveryLocation = locations => {
-    return {
-        type: GET_EVERY_LOCATION,
-        payload: locations
-    }
+const getEveryLocation = (locations) => {
+    return { type: GET_EVERY_LOCATION, locations }
 }
 
 const NEW_LOCATION = "locations/add/new_LOCATION"
@@ -31,6 +29,7 @@ export const getLocation = locationId => async dispatch => {
     const data = await res.json();
 
     dispatch(getOneLocation(data));
+    return data;
   };
 
 export const getAllLocations = () => async dispatch => {
@@ -96,10 +95,11 @@ export const addLocation = (locationFile) => async (dispatch) => {
     }
 
 
-const initialState = {location: null}
+const initialState = {location: null, allLocations: {}}
 
 const locationsReducer = (state = initialState, action) => {
     let newState;
+    const updateState = {...state}
     switch (action.type) {
         case NEW_LOCATION:
             newState = Object.assign({}, state)
@@ -109,7 +109,10 @@ const locationsReducer = (state = initialState, action) => {
         case GET_ONE_LOCATION:
             return action.payload;
         case GET_EVERY_LOCATION:
-            return action.payload;
+            action.locations.forEach((location) => {
+                updateState.allLocations[location.id] = location
+            })
+            return updateState;
         default:
             return state
 

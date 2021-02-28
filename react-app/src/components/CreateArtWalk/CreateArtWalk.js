@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import {GoogleMap, Marker, InfoWindow} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
-import {getAllLocations} from "../../store/locations";
+import * as locationActions from "../../store/locations";
 import mapStyle from "../Maps/mapStyle.js"
-import Locate from '../Maps/Locate';
-import Search from '../Maps/Search';
+// import Locate from '../Maps/Locate';
+// import Search from '../Maps/Search';
 import "@reach/combobox/styles.css";
 
 const customStyles = {
@@ -48,19 +48,20 @@ const center = {
 
 
 export default function CreateArtWalk(){
+    // const {allLocations} = useSelector((state) => state.locations)
+    const locations = useSelector((state) => Object.values(state.locations.allLocations))
     const [artWalkName, setArtWalkName] = useState('');
     const [showModal, setShowModal] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [markers, setMarkers] = React.useState([]);
-    const [artWalkList, setArtWalkList] = useState();
+    const [artWalkList, setArtWalkList] = useState([]);
     const [selected, setSelected] = React.useState(null);
 
 
     const dispatch = useDispatch();
-    const locations = useSelector((state) => state.locations.locations)
 
     useEffect(() => {
-        dispatch(getAllLocations());
+        dispatch(locationActions.getAllLocations());
         setLoaded(true)
         }, [dispatch]);
 
@@ -81,17 +82,11 @@ export default function CreateArtWalk(){
       }, []);
 
 
-    const addToWalk = (e) => {
-      if (!artWalkList){
-        setArtWalkList([e.target.id])
-        // setSelected(null)
-        console.log("AFTER CLICK: ", artWalkList)
-
-      }else{
-      setArtWalkList([...artWalkList, e.target.id])
+    const addToWalk = async (e) => {
+      const id = (e.target.id - 1).toString();
+      const location = locations[id]
+      setArtWalkList(artWalkList => [...artWalkList, location])
       setSelected(null)
-      console.log("AFTER CLICK: ", artWalkList)
-      }
     }
 
     // useEffect() => {
@@ -130,8 +125,16 @@ export default function CreateArtWalk(){
                 </form>
             </Modal>
             <h1>New Art Walk: {artWalkName}</h1>
-            <Locate panTo={panTo} />
-            <Search panTo={panTo} />
+            {/* <Locate panTo={panTo} />
+            <Search panTo={panTo} /> */}
+            <div>
+              {artWalkList && artWalkList.map((location) => (
+                // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
+                // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
+                  <img src={location.photos[0].url} alt="image" styles={{width: "100px"}} />
+                ))
+            }
+            </div>
             <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
@@ -141,7 +144,7 @@ export default function CreateArtWalk(){
                 onClick={onMapClick}
                 onLoad={onMapLoad}
       >
-            {locations && locations.map((location) => (
+            {locations.length > 0 && locations.map((location) => (
                 <Marker
                 key={location.id}
                 position={{lat: location.lat, lng: location.long}}
