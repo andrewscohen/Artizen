@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./DisplayWindow.css";
 
 const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected }) => {
@@ -17,7 +18,12 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected }) => {
         <img src={selected.photos[0].url} />
       </div>
       <div className="map-display-text-container">
-        <p>{selected !== null && selected.street_address}</p>
+        <p>
+          {selected.street_address}, {selected.city}, {selected.state} {selected.zip_code}
+        </p>
+      </div>
+      <div className="map-display-link-container">
+        <Link to={`/locations/${selected.id}`}>See Details</Link>
       </div>
     </div>
   );
