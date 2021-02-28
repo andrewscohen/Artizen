@@ -3,6 +3,7 @@ from flask_login import login_required
 from app.models import Comment, Location, db, User
 from app.forms.comment_form import CommentForm
 from datetime import datetime
+from sqlalchemy import asc
 
 comment_routes = Blueprint("comments", __name__)
 
@@ -11,7 +12,7 @@ comment_routes = Blueprint("comments", __name__)
 @login_required
 def comments(location_id):
     comments = Comment.query.filter(
-        Comment.location_id == location_id).all()
+        Comment.location_id == location_id).order_by(asc(Comment.created_at)).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
 
@@ -41,7 +42,7 @@ def add_comment():
         db.session.commit()
 
         comments = Comment.query.filter(
-            Comment.location_id == location_id).all()
+            Comment.location_id == location_id).order_by(asc(Comment.created_at)).all()
         data = [comment.to_dict() for comment in comments]
         return json.dumps(data)
 
@@ -57,7 +58,7 @@ def delete_comment(id):
     db.session.commit()
 
     comments = Comment.query.filter(
-        Comment.location_id == location_id).all()
+        Comment.location_id == location_id).order_by(asc(Comment.created_at)).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
 
@@ -70,9 +71,10 @@ def edit_comment(id):
     location_id = comment.location_id
 
     comment.comment = request.get_json()["comment"]
+    comment.created_at = comment.created_at
     db.session.commit()
 
     comments = Comment.query.filter(
-        Comment.location_id == location_id).all()
+        Comment.location_id == location_id).order_by(asc(Comment.created_at)).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
