@@ -43,7 +43,7 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
     const address = `${editStreetAddress} ${editCity} ${editState} ${editZip}`;
     const { lat, long } = await getCoords(address);
 
-    dispatch(
+    await dispatch(
       updateLocation({
         id: location.id,
         user_id: userId,
@@ -59,8 +59,8 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
       })
     );
 
-    setUpdateContainer(prev => !prev);
-    setShowModal(false);
+    await setUpdateContainer(prev => !prev);
+    await setShowModal(false);
   };
 
   return (
