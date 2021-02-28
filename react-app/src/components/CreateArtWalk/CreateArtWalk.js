@@ -85,9 +85,9 @@ const CreateArtWalk = () => {
         ]);
       }, []);
 
-    // const addToWalk = () => {
-
-    // }
+    const addToWalk = (location) => {
+      console.log("THIS HAS BEEN ADDED TO THE WALK: ", location)
+    }
 
       const mapRef = React.useRef();
       const onMapLoad = React.useCallback((map) => {
@@ -157,7 +157,7 @@ const CreateArtWalk = () => {
                 <div>
                 <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
                   <p><b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}</b></p>
-                  <button >Add to Walk</button>
+                  <button onClick={addToWalk(selected)}>Add to Walk</button>
                 </div>
               </InfoWindow>
               )}
