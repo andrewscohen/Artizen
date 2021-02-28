@@ -3,9 +3,11 @@ import {GoogleMap, Marker, InfoWindow} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
 import * as locationActions from "../../store/locations";
-import mapStyle from "../Maps/mapStyle.js"
-import ArtCard from "../ArtCard/ArtCard.js"
-import './creatArtWalk.css'
+import * as artWalkActions from "../../store/artwalks";
+
+import mapStyle from "../Maps/mapStyle.js";
+import ArtCard from "../ArtCard/ArtCard.js";
+import './creatArtWalk.css';
 import "@reach/combobox/styles.css";
 
 const customStyles = {
@@ -29,7 +31,7 @@ const customStyles = {
         backgroundColor: "rgba(0, 0, 0, .6)",
         zIndex: "100",
     }
-};
+  };
 
 const mapContainerStyle = {
   height: "70vh",
@@ -47,9 +49,12 @@ const center = {
 };
 
 
+
 export default function CreateArtWalk(){
     // const {allLocations} = useSelector((state) => state.locations)
-    const locations = useSelector((state) => Object.values(state.locations.allLocations))
+    const locations = useSelector((state) => Object.values(state.locations.allLocations));
+    const sessionUser = useSelector((state) => state.session.user);
+
     const [artWalkName, setArtWalkName] = useState('');
     const [showModal, setShowModal] = useState(true);
     const [loaded, setLoaded] = useState(false);
@@ -89,11 +94,14 @@ export default function CreateArtWalk(){
       setSelected(null)
     }
 
-    // useEffect() => {
-    //   setArtWalkList([])
-    //   if
-    //   const addToWalk(artWalkList => setArtWalkList([...artWalkList, ])
-    // }
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      dispatch(artWalkActions.createArtWalk({
+        artWalkList,
+        user_id: sessionUser.id,
+        artWalkName
+      }))
+    }
 
       const mapRef = React.useRef();
       const onMapLoad = React.useCallback((map) => {
@@ -105,79 +113,83 @@ export default function CreateArtWalk(){
         mapRef.current.setZoom(14);
       }, []);
 
-    return (
-        <>
-            <Modal style={customStyles} isOpen={showModal}>
-                <form onSubmit={onClick}>
-                    <div>
-                        <h2>Create A Name For Your Walk</h2>
-                        <input
-                        type='text'
-                        placeholder='Art Walk Name'
-                        value={artWalkName}
-                        onChange={(e) => setArtWalkName(e.target.value)}
-                        >
-                        </input>
-                    </div>
-                    <div>
-                        <button type="submit" disabled={artWalkName.length ? false : true}>Enter</button>
-                    </div>
-                </form>
-            </Modal>
-            <h1>New Art Walk: {artWalkName}</h1>
-            {/* <Locate panTo={panTo} />
-            <Search panTo={panTo} /> */}
-            <div className="artWalkCardList">
-              {artWalkList && artWalkList.map((location) => (
-                // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
-                // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
-               <div className='artWalkCard'>
-                  <ArtCard location={location}/>
-               </div> 
-                
-                ))
-            }
+  return (
+    <>
+      <Modal style={customStyles} isOpen={showModal}>
+          <form onSubmit={onClick}>
+              <div>
+                  <h2>Create A Name For Your Walk</h2>
+                  <input
+                  type='text'
+                  placeholder='Art Walk Name'
+                  value={artWalkName}
+                  onChange={(e) => setArtWalkName(e.target.value)}
+                  >
+                  </input>
+              </div>
+              <div>
+                  <button type="submit" disabled={artWalkName.length ? false : true}>Enter</button>
+              </div>
+          </form>
+      </Modal>
+      <div className="artMapPageContainer">
+        <div className="artWalkCardList">
+        <h1>New Art Walk: {artWalkName}</h1>
+        {/* <Locate panTo={panTo} />
+        <Search panTo={panTo} /> */}
+          {artWalkList && artWalkList.map((location) => (
+            // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
+            // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
+            <div className='artWalkCard'>
+              <ArtCard location={location}/>
             </div>
-            <GoogleMap
-                id="map"
-                mapContainerStyle={mapContainerStyle}
-                zoom={12}
-                center={center}
-                options={options}
-                onClick={onMapClick}
-                onLoad={onMapLoad}
-      >
-            {locations.length > 0 && locations.map((location) => (
-                <Marker
-                key={location.id}
-                position={{lat: location.lat, lng: location.long}}
-                onClick={() => {
-                    setSelected(location);
-                }}
-                icon={{
-                    scaledSize: new window.google.maps.Size(30,30),
-                    origin: new window.google.maps.Point(0, 0),
-                    anchor: new window.google.maps.Point(15, 15)
-                  }}
-                />
-            ))}
+            ))
+        }
+            <button type="submit" onClick={handleSubmit}>Get Walkin!</button>
 
-            {selected && (
-                <InfoWindow
-                onCloseClick={() => {
-                    setSelected(null);
-                }}
-                position={{lat: selected.lat, lng: selected.long}}
-                >
-                <div>
-                  <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
-                  <p><b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}</b></p>
-                  <button id={selected.id} onClick={addToWalk}>Add to Walk</button>
-                </div>
-              </InfoWindow>
-              )}
-      </GoogleMap>
+      </div>
+      <div className="allArtMapContainer">
+        <GoogleMap
+            id="map"
+            mapContainerStyle={mapContainerStyle}
+            zoom={12}
+            center={center}
+            options={options}
+            onClick={onMapClick}
+            onLoad={onMapLoad}
+        >
+        {locations.length > 0 && locations.map((location) => (
+          <Marker
+          key={location.id}
+          position={{lat: location.lat, lng: location.long}}
+          onClick={() => {
+              setSelected(location);
+          }}
+          icon={{
+              scaledSize: new window.google.maps.Size(30,30),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15)
+            }}
+          />
+        ))}
 
-        </>
-    )
+        {selected && (
+          <InfoWindow
+            onCloseClick={() => {
+                setSelected(null);
+            }}
+            position={{lat: selected.lat, lng: selected.long}}
+          >
+            <div>
+              <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
+              <p><b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}</b></p>
+              <button id={selected.id} onClick={addToWalk}>Add to Walk</button>
+            </div>
+          </InfoWindow>
+        )}
+        </GoogleMap>
+      </div>
+    </div>
+    </>
+)
 }

@@ -2,6 +2,7 @@ from .db import db
 from .artwalk_location import Artwalk_Location
 from .location import Location
 
+
 class ArtWalk(db.Model):
     __tablename__ = 'art_walks'
 

@@ -29,6 +29,20 @@ export const getOneArtwalk = (artwalkId) => async dispatch => {
   return data;
 }
 
+export const createArtWalk = (artWalkObj) => async dispatch => {
+  const {artWalkList, user_id, artWalkName} = artWalkObj
+  const res = await fetch(`/api/artwalks/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({user_id, name: artWalkName})
+  })
+  let result = await res.json()
+  console.log("RESULT FROM THUNK: ", result)
+  console.log("ARTWALKLIST FROM THUNK: ", artWalkList)
+}
+
 const initialState = {currentArtwalk: {}, userArtwalks: {}};
 
 export default function artwalksReducer(state = initialState, action) {
