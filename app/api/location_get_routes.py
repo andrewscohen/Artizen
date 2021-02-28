@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.models import db, Location
 from app.forms import LocationForm
+import json
 
 location_get_routes = Blueprint("locations", __name__)
 
@@ -46,5 +47,6 @@ def add_location():
 @location_get_routes.route('/get/all')
 def all_locations():
     locations = Location.query.all()
-    print(locations)
-    return {"locations": [location.to_dict() for location in locations]}
+    data = [location.to_dict() for location in locations]
+    res = json.dumps(data)
+    return res
