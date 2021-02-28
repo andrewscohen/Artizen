@@ -4,8 +4,6 @@ import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-ma
 import map_marker from "../images/map_marker.png"
 
 export default function Directions({locationsArray, mapContainerStyle, options}) {
-  // const libraries = ["places"];
-  console.log("Route Map locations array", locationsArray)
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
   const coordinates = locationsArray.map(location => {
@@ -14,11 +12,6 @@ export default function Directions({locationsArray, mapContainerStyle, options})
   const waypoints = coordinates.slice(1, coordinates.length -1).map(location => {
     return {location, stopover: true};
   })
-
-  // const { isLoaded, loadError } = useLoadScript({
-  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-  //   libraries ,
-  // });
 
   const directionsCallback = (response) => {
 
@@ -38,9 +31,6 @@ export default function Directions({locationsArray, mapContainerStyle, options})
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
-
-  // if (loadError) return "Error";
-  // if (!isLoaded) return "Loading...";
 
   return (
     <div className="map">
