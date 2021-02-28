@@ -73,7 +73,31 @@ export const addLocation = locationFile => async dispatch => {
   }
 };
 
-export const updateLocation = locationObj => async dispatch => {};
+export const updateLocation = locationObj => async dispatch => {
+  const { id, user_id, title, artist, street_address, city, state, zip_code, description, lat, long } = locationObj;
+
+  const res = await fetch(`/api/locations/${id}/edit`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id,
+      title,
+      artist,
+      street_address,
+      city,
+      state,
+      zip_code,
+      description,
+      lat,
+      long,
+    }),
+  });
+
+  const data = await res.json();
+  dispatch(updateOneLocation(data));
+};
 
 const initialState = { location: null };
 

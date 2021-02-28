@@ -1,5 +1,9 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import { useDispatch } from "react-redux";
+import { getCoords } from "../../services/maps";
+import { updateLocation } from "../../store/locations";
+import "./LocationEditModal.css";
 
 const customStyles = {
   content: {
@@ -24,7 +28,8 @@ const customStyles = {
   },
 };
 
-const LocationEditModal = ({ location }) => {
+const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [editTitle, setEditTitle] = useState(location.title);
   const [editArtist, setEditArtist] = useState(location.artist);
@@ -33,6 +38,30 @@ const LocationEditModal = ({ location }) => {
   const [editCity, setEditCity] = useState(location.city);
   const [editState, setEditState] = useState(location.state);
   const [editZip, setEditZip] = useState(location.zip_code);
+
+  const handleSubmit = async () => {
+    const address = `${editStreetAddress} ${editCity} ${editState} ${editZip}`;
+    const { lat, long } = await getCoords(address);
+
+    dispatch(
+      updateLocation({
+        id: location.id,
+        user_id: userId,
+        title: editTitle,
+        artist: editArtist,
+        street_address: editStreetAddress,
+        city: editCity,
+        state: editState,
+        zip_code: editZip,
+        description: editDescription,
+        lat,
+        long,
+      })
+    );
+
+    setUpdateContainer(prev => !prev);
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -43,7 +72,7 @@ const LocationEditModal = ({ location }) => {
         <button className="btn__x" onClick={() => setShowModal(false)}>
           <i className="fas fa-times"></i>
         </button>
-        <form className="location-edit-form">
+        <div className="location-edit-form">
           <h1>Edit Location</h1>
           <div>
             <label htmlFor="title">Title</label>
@@ -83,8 +112,8 @@ const LocationEditModal = ({ location }) => {
             <label htmlFor="zip-code">ZIP Code</label>
             <input type="text" name="zip-code" value={editZip} onChange={e => setEditZip(e.target.value)} />
           </div>
-          <button type="submit">Submit</button>
-        </form>
+          <button onClick={handleSubmit}>Submit</button>
+        </div>
       </Modal>
     </>
   );

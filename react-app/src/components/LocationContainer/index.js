@@ -11,6 +11,7 @@ const LocationContainer = () => {
   const { locationId } = useParams();
   const location = useSelector(state => state.locations);
   const [loaded, setLoaded] = useState(false);
+  const [updateContainer, setUpdateContainer] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
 
   const getLocationLocal = async () => {
@@ -20,14 +21,16 @@ const LocationContainer = () => {
 
   useEffect(() => {
     getLocationLocal();
-  }, []);
+  }, [updateContainer]);
 
   if (!loaded) return <span>Loading</span>;
 
   return (
     <>
       <div className="location-container">
-        {location.user_id === sessionUser.id && <LocationEditModal location={location} />}
+        {location.user_id === sessionUser.id && (
+          <LocationEditModal setUpdateContainer={setUpdateContainer} userId={sessionUser.id} location={location} />
+        )}
         <div className="location-pic-container">
           <img className="location-art-img" src={location.photos[0].url} alt="art" />
         </div>

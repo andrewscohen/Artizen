@@ -64,6 +64,8 @@ def edit_location(id):
     location.city = new_location_obj["city"]
     location.state = new_location_obj["state"]
     location.zip_code = new_location_obj["zip_code"]
+    location.lat = new_location_obj["lat"]
+    location.long = new_location_obj["long"]
 
     db.session.commit()
 
