@@ -135,8 +135,8 @@ export default function CreateArtWalk(){
       <div className="artMapPageContainer">
         <div className="artWalkCardList">
         <h1>New Art Walk: {artWalkName}</h1>
-        {/* <Locate panTo={panTo} />
-        <Search panTo={panTo} /> */}
+          {artWalkList.length > 10 && 
+          <h2>You have added too many artwalks</h2>}
           {artWalkList && artWalkList.map((location) => (
             // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
             // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
@@ -145,7 +145,7 @@ export default function CreateArtWalk(){
             </div>
             ))
         }
-            <button type="submit" onClick={handleSubmit}>Get Walkin!</button>
+            <button type="submit" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>Get Walkin!</button>
 
       </div>
       <div className="allArtMapContainer">

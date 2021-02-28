@@ -34,9 +34,9 @@ export const createArtWalk = (artWalkObj) => async dispatch => {
   const res = await fetch(`/api/artwalks/`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({user_id, name: artWalkName})
+    body: JSON.stringify({user_id, name: artWalkName, artWalkList})
   })
   let result = await res.json()
   console.log("RESULT FROM THUNK: ", result)
