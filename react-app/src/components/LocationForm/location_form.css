@@ -7,7 +7,7 @@ background-image: url(./expose-art-crop.jpg);
     object-position: 100% 100%;
   }
   
-  .splash-container {
+  .splash-container-loc {
   
     font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
