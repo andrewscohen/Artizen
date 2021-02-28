@@ -79,3 +79,9 @@
 .location-container::-webkit-scrollbar-thumb:hover {
   background-color: #c52f7c;
 }
+
+.location-edit-form div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+}

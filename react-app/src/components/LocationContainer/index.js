@@ -26,8 +26,9 @@ const LocationContainer = () => {
       backgroundColor: "rgba(254, 58, 158, .7)",
       borderRadius: "2px",
       border: "none",
-      width: "40%",
+      width: "fit-content",
       boxSizing: "border-box",
+      fontFamily: `"Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif`,
     },
     overlay: {
       // backgroundColor: "transparent",
@@ -85,8 +86,36 @@ const LocationContainer = () => {
         <button className="btn__x" onClick={() => setShowModal(false)}>
           <i className="fas fa-times"></i>
         </button>
-        <form>
-          <input type="text" />
+        <form className="location-edit-form">
+          <h1>Edit Location</h1>
+          <div>
+            <label htmlFor="title">Title</label>
+            <input type="text" name="title" value={location.title} />
+          </div>
+          <div>
+            <label htmlFor="artist">Artist</label>
+            <input type="text" name="artist" value={location.artist} />
+          </div>
+          <div>
+            <label htmlFor="description">Description</label>
+            <input type="text" name="description" value={location.description} />
+          </div>
+          <div>
+            <label htmlFor="street-address">Street Address</label>
+            <input type="text" name="street-address" value={location.street_address} />
+          </div>
+          <div>
+            <label htmlFor="city">City</label>
+            <input type="text" name="city" value={location.city} />
+          </div>
+          <div>
+            <label htmlFor="state">State</label>
+            <input type="text" name="state" value={location.state} />
+          </div>
+          <div>
+            <label htmlFor="zip-code">ZIP Code</label>
+            <input type="text" name="zip-code" value={location.zip_code} />
+          </div>
         </form>
       </Modal>
     </>
