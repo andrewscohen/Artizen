@@ -46,7 +46,7 @@ export default function ArtwalkView() {
 
     return (
       <>
-        {coordinates.length &&
+        {coordinates.length > 0 &&
         <>
           <h1>{artwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>

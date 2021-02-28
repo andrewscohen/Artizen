@@ -11,10 +11,10 @@ export default function Directions({coordinates, mapContainerStyle, options}) {
     return {location, stopover: true};
   })
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries ,
-  });
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+  //   libraries ,
+  // });
 
   const directionsCallback = (response) => {
 
@@ -35,8 +35,8 @@ export default function Directions({coordinates, mapContainerStyle, options}) {
     mapRef.current = map;
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  // if (loadError) return "Error";
+  // if (!isLoaded) return "Loading...";
 
   return (
     <div className="map">
