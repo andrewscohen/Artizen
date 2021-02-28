@@ -10,34 +10,16 @@ import "./ArtwalkView.css"
 export default function ArtwalkView() {
   const { artwalkId } = useParams();
   const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState(false);
-  const { currentArtwalk } = useSelector(state => state.artwalks);
-  console.log("This is the current artwalk", currentArtwalk)
-  // let coordinates = useRef([])
-  // console.log("These are the coordinates", coordinates.current)
+  const locationsArray = useSelector(state => state.artwalks.currentArtwalk.locations);
+  const currentArtwalk = useSelector(state => state.artwalks.currentArtwalk)
+
 
   useEffect(() => {
     dispatch(artwalkActions.getOneArtwalk(artwalkId));
     console.log("dispatched thunk")
-    // setLoaded(true);
+
   }, [dispatch, artwalkId])
 
-  let locationsArray = currentArtwalk.locations || [];
-  console.log("This is the locations array", locationsArray)
-
-  // useEffect(() => {
-  //   coordinates.current = locationsArray.map(location => {
-  //     return {lat: location.lat, lng: location.long}
-  //   }) || [];
-  // }, [locationsArray])
-
-
-  // if (Object.keys(artwalk).length > 0) {
-  //   locationsArray = artwalk.locations;
-  //   coordinates = locationsArray.map(location => {
-  //     return {lat: location.lat, lng: location.long}
-  //   })
-  // }
 
   const mapContainerStyle = {
     height: "400px",
@@ -51,12 +33,10 @@ export default function ArtwalkView() {
     zoomControl: false,
   };
 
-  if (!locationsArray.length) return <span>Loading</span>;
-
-
+  if (currentArtwalk && locationsArray) {
     return (
       <>
-        {locationsArray.length > 0 &&
+        {currentArtwalk &&
         <>
           <h1>{currentArtwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
@@ -67,4 +47,6 @@ export default function ArtwalkView() {
         }
       </>
     )
+  }
+  return <span>Loading</span>;
 }

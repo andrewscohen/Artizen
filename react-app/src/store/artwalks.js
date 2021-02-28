@@ -24,9 +24,9 @@ export const getUserArtwalks = (userId) => async dispatch => {
 export const getOneArtwalk = (artwalkId) => async dispatch => {
   const res = await fetch(`/api/artwalks/${artwalkId}`);
   const data = await res.json();
-  res.data = data;
-  dispatch(loadOneArtwalk(res.data));
-  return res;
+
+  dispatch(loadOneArtwalk(data));
+  return data;
 }
 
 const initialState = {currentArtwalk: {}, userArtwalks: {}};
