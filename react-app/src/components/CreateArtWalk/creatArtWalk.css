@@ -1,0 +1,12 @@
+.artWalkCardList {
+    background-color: gray;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.artWalkCard {
+
+}

@@ -5,8 +5,7 @@ import Modal from "react-modal";
 import * as locationActions from "../../store/locations";
 import mapStyle from "../Maps/mapStyle.js"
 import ArtCard from "../ArtCard/ArtCard.js"
-// import Locate from '../Maps/Locate';
-// import Search from '../Maps/Search';
+import './creatArtWalk.css'
 import "@reach/combobox/styles.css";
 
 const customStyles = {
@@ -128,12 +127,14 @@ export default function CreateArtWalk(){
             <h1>New Art Walk: {artWalkName}</h1>
             {/* <Locate panTo={panTo} />
             <Search panTo={panTo} /> */}
-            <div>
+            <div className="artWalkCardList">
               {artWalkList && artWalkList.map((location) => (
                 // HERE WE WANT TO RENDER A CONTAINER COMPONENT FOR THE LIST OF LOCATIONS
                 // FOR EACH LOCATION IN ARRAY, CREATE JOINS RELATIONSHIP WITH NEW WALK BASED ON ID
-                <ArtCard location={location}/>
-                  // <img src={location.photos[0].url} alt="image" styles={{width: "100px"}} />
+               <div className='artWalkCard'>
+                  <ArtCard location={location}/>
+               </div> 
+                
                 ))
             }
             </div>

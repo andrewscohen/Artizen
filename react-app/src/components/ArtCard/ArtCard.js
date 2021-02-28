@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import "./artcard.css";
 
 const ArtCard = ({location}) => {
 return (
@@ -7,7 +8,7 @@ return (
         <Link to={`/locations/${location.id}`}>
             <div className="artContentContainer">
                 <div className="artImage">
-                    <img src={location.photos[0].url} alt="locationImage"/>
+                    <img style={{height: '100px', width: '100px'}} src={location.photos[0].url} alt="locationImage"/>
                 </div>
                 <div className="artContentInfo">
                     {location.title ? (
@@ -22,7 +23,7 @@ return (
                     <p>{location.city}</p>
                     <p>{location.state}</p>
                     <p>{location.zip_code}</p>
-                </div>
+                </div>tentCo
             </div>
         </Link>
 
