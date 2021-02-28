@@ -1,4 +1,4 @@
-from flask import Blueprint, request 
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import db, Location
 from app.forms import LocationForm
@@ -22,7 +22,7 @@ def add_location():
     print('add location before validation: ', form.data)
     if form.validate_on_submit():
         print('add location after validation: ')
-    
+
         location = Location(
             user_id=form.data['user_id'],
             street_address=form.data['street_address'],
@@ -36,14 +36,15 @@ def add_location():
             long=form.data['long'],
         )
         db.session.add(location)
-       
+
         db.session.commit()
-        
+
         return location.to_dict()
     return form.errors
 
 
-@location_get_routes.route('/all')
+@location_get_routes.route('/get/all')
 def all_locations():
     locations = Location.query.all()
-    return locations.to_dict()
+    print(locations)
+    return {"locations": [location.to_dict() for location in locations]}

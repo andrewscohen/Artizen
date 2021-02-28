@@ -69,7 +69,7 @@ export default function Gmap() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-      <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/>
+      {/* <Marker position={{lat: 30.275528863705016, lng: -97.74073530134736}}/> */}
       </GoogleMap>
     </div>
   );

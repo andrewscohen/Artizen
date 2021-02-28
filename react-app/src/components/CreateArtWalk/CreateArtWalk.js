@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api";
+import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
-import {useDispatch} from "react-redux";
-import Gmap from "../Maps/Map.js"
+import {getAllLocations} from "../../store/locations";
 import mapStyle from "../Maps/mapStyle.js"
+import Locate from '../Maps/Locate';
+import Search from '../Maps/Search';
+import "@reach/combobox/styles.css";
 
 const customStyles = {
     content : {
@@ -27,20 +31,71 @@ const customStyles = {
     }
 };
 
+const libraries = ["places"];
+const mapContainerStyle = {
+  height: "70vh",
+  width: "70vw",
+  float: "right"
+};
+const options = {
+  styles: mapStyle,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
+const center = {
+  lat: 30.275528863705016,
+  lng: -97.74073530134736,
+};
+
+
 const CreateArtWalk = () => {
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+        libraries ,
+      });
     const [artWalkName, setArtWalkName] = useState('');
     const [showModal, setShowModal] = useState(true);
+    const [loaded, setLoaded] = useState(false);
+    const [markers, setMarkers] = React.useState([]);
+    const [selected, setSelected] = React.useState(null);
 
-useEffect(() => {
-    async function locations() {
-        await dispatch(getLocations.all());
-      }
-      comment();
-    }, [dispatch, locationId]);
 
-const onClick = () => {
-    setShowModal(false)
-}
+    const dispatch = useDispatch();
+    const locations = useSelector((state) => state.locations.locations)
+    console.log("THIS IS ONE LOCATION: ", locations);
+
+    useEffect(() => {
+        dispatch(getAllLocations());
+        setLoaded(true)
+        }, [dispatch]);
+
+    const onClick = () => {
+        setShowModal(false)
+    }
+
+    const onMapClick = React.useCallback((e) => {
+        setMarkers((current) => [
+          ...current,
+          {
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng(),
+            time: new Date(),
+          },
+        ]);
+      }, []);
+
+      const mapRef = React.useRef();
+      const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+      }, []);
+
+      const panTo = React.useCallback(({ lat, lng }) => {
+        mapRef.current.panTo({ lat, lng });
+        mapRef.current.setZoom(14);
+      }, []);
+
+      if (loadError) return "Error";
+      if (!isLoaded) return "Loading...";
 
     return (
         <>
@@ -62,9 +117,46 @@ const onClick = () => {
                 </form>
             </Modal>
             <h1>New Art Walk: {artWalkName}</h1>
-            <div>
-            {/* <Gmap/> */}
-            </div>
+            <Locate panTo={panTo} />
+            <Search panTo={panTo} />
+            <GoogleMap
+                id="map"
+                mapContainerStyle={mapContainerStyle}
+                zoom={12}
+                center={center}
+                options={options}
+                onClick={onMapClick}
+                onLoad={onMapLoad}
+      >
+            {locations && locations.map((location) => (
+                <Marker
+                key={location.id}
+                position={{lat: location.lat, lng: location.long}}
+                onClick={() => {
+                    setSelected(location);
+                }}
+                icon={{
+                    origin: new window.google.maps.Point(0, 0),
+                    anchor: new window.google.maps.Point(15, 15)
+                  }}
+                />
+            ))}
+
+            {selected && (
+                <InfoWindow
+                onCloseClick={() => {
+                    setSelected(null);
+                }}
+                position={{lat: selected.lat, lng: selected.long}}
+                >
+                <div>
+                <img src={selected.photos[0].url} alt='wallArt'/>
+                  <p>{selected.street_address}</p>
+                  <p>{selected.id}</p>
+                </div>
+              </InfoWindow>
+              )}
+      </GoogleMap>
 
         </>
     )
