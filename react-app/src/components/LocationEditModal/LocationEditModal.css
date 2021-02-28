@@ -1,0 +1,5 @@
+.location-edit-form div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+}
