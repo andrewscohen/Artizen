@@ -12,9 +12,12 @@ const NavBar = ({ setAuthenticated, authenticated, setDisplay}) => {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
+          {!authenticated && <NavLink to="/" exact={true} activeClassName="active">
               <Logo id="logo"/>
-          </NavLink>
+          </NavLink>}
+          {authenticated && <NavLink to="/dashboard" exact={true} activeClassName="active">
+              <Logo id="logo"/>
+          </NavLink>}
         </li>
       </ul>
       <ul className="search-bar-container">

@@ -107,39 +107,40 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
         </button>
         <div className="new-location-form">
           <h1>Add Location</h1>
-            {errors.length > 0 && errors.map(error => <div key={error}>{error}</div>)}
+            {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)}
             <form onSubmit={handleSubmit}>
             <div>
-                <label>Artwork Title</label>
+                {/* <label>Artwork Title</label> */}
                 <input type="text" placeholder="Title (optional)" value={title} onChange={e => setTitle(e.target.value)} />
             </div>
             <div>
-                <label>Artist Name</label>
+                {/* <label>Artist Name</label> */}
                 <input type="text" placeholder="Artist (optional)" value={artist} onChange={e => setArtist(e.target.value)} />
             </div>
             <div>
-                <label>Street Address</label>
+                {/* <label>Street Address</label> */}
                 <input
                 type="text"
                 placeholder="Street Address"
                 value={street_address}
                 onChange={e => setAddress(e.target.value)}
+                required
                 />
             </div>
             <div>
-                <label>City</label>
-                <input type="text" placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
+                {/* <label>City</label> */}
+                <input type="text" placeholder="City" value={city} onChange={e => setCity(e.target.value)} required/>
             </div>
             <div>
-                <label>State</label>
-                <input type="text" placeholder="State" value={state} onChange={e => setState(e.target.value)} />
+                {/* <label>State</label> */}
+                <input type="text" placeholder="State" value={state} onChange={e => setState(e.target.value)} required/>
             </div>
             <div>
-                <label>Zip Code</label>
-                <input type="number" placeholder="Zip Code" value={zip_code} onChange={e => setZip(e.target.value)} />
+                {/* <label>Zip Code</label> */}
+                <input type="number" placeholder="Zip Code" value={zip_code} onChange={e => setZip(e.target.value)} required/>
             </div>
             <div>
-                <label>Description</label>
+                {/* <label>Description</label> */}
                 <input
                 type="textarea"
                 placeholder="Description (optional)"
@@ -149,7 +150,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
             </div>
             <div>
                 <label>Upload A Photo </label>
-                <input type="file" onChange={e => setPhoto(e.target.files[0])} />
+                <input type="file" onChange={e => setPhoto(e.target.files[0])} required/>
             </div>
 
             <div>
