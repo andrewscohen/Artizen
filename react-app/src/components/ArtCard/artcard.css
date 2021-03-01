@@ -1,29 +1,29 @@
-/* .artContainer {
-    height: 300px;
-    width: 300px;
-    border: solid medium black;
-    display: flex;
-
+.artContainer {
+	border: 1px solid blue;
+	border-radius: .25rem;
 }
-
+​
 .artContentContainer {
-    height: 80%;
-    width: 80%;
+	border: 1px solid blue;
+	border-radius: .25rem;
+	width: 90%;
+	margin: auto;
 }
-
+​
 .artImage {
-    height: 50%;
-    width: 50%;
-} */
-
-/* .artContentInfo {
-
+	background-size: cover;
+	background-position: center;
+	background-color: #ccc;
 }
-
-.artContentAddress{
-
+​
+.artContentInfo {
+	padding: 15px;
 }
-
-.remove-btn {
-
-} */
+​
+button {
+	background-color: transparent;
+	border: 1px solid #2196f3;
+	padding: .5rem 1rem;
+	cursor: pointer;
+	border-radius: .25rem;
+}

@@ -1,11 +1,12 @@
+.artMapPageContainer {
+	display: flex;
+}
+​
 .artWalkCardList {
-	background-color: gray;
-	height: 100%;
-	width: 30%;
+	background-color: lightgrey;
+	height: 92vh;
+	width: 20vw;
 	display: flex;
 	flex-direction: column;
-}
-
-.artMapPageContainerStyles {
-	display: flex;
+	overflow-y: scroll;
 }

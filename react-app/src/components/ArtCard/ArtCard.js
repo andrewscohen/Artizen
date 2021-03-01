@@ -23,10 +23,10 @@ return (
                     <p>{location.city}</p>
                     <p>{location.state}</p>
                     <p>{location.zip_code}</p>
-                </div>tentCo
+                </div>
             </div>
         </Link>
-
+​
         <button className="remove-btn">
             <i className="fas fa-times"></i>
         </button>
