@@ -8,7 +8,7 @@ return (
         <Link to={`/locations/${location.id}`}>
             <div className="artContentContainer">
                 <div className="artImage">
-                    <img style={{height: '100px', width: '100px'}} src={location.photos[0].url} alt="locationImage"/>
+                    <img src={location.photos[0].url} alt="locationImage" className="locationImage"/>
                 </div>
                 <div className="artContentInfo">
                     {location.title ? (
