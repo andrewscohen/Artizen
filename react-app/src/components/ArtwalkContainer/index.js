@@ -40,5 +40,7 @@ export default function ArtwalkContainer({artwalk}) {
       </div>
     </Link>
   )
+} else {
+  return ""
 }
 }
