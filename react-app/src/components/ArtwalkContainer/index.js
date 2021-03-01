@@ -4,7 +4,7 @@ import mapStyle from "../Maps/mapStyle";
 import "./ArtwalkContainer.css";
 import { useImperativeHandle } from "react";
 
-export default function ArtwalkContainer({ artwalk }) {
+export default function ArtwalkContainer({ artwalk, setChange }) {
   const locationsArray = Object.values(artwalk.locations);
   // const coordinatesObj = locationsArray.map(location => {
   //   return {lat: location.lat, lng: location.long}
@@ -23,8 +23,6 @@ export default function ArtwalkContainer({ artwalk }) {
     zoomControl: false,
     gestureHandling: "none",
   };
-
-  const handleDelete = id => {};
 
   if (locationsArray.length) {
     return (
@@ -49,7 +47,6 @@ export default function ArtwalkContainer({ artwalk }) {
             </div>
           </div>
         </Link>
-        <button onClick={() => handleDelete(artwalk.id)}>Delete Artwalk</button>
       </>
     );
   } else {

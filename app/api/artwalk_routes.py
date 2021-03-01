@@ -57,4 +57,4 @@ def delete_artwalk(id):
     db.session.delete(artwalk)
     db.session.commit()
 
-    return "it worked"
+    return Response("{'a':'b'}", status=201, mimetype='application/json')
