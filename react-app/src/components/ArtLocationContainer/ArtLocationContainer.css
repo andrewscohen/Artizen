@@ -38,6 +38,7 @@
 .artlocation-image {
   width: 100%;
   object-fit: cover;
+  border-radius: 3px 3px 0 0;
 }
 
 .artlocation-address {
