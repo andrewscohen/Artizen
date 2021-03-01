@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useHistory } from 'react-router-dom'
 import {GoogleMap, Marker, InfoWindow} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
 import Modal from "react-modal";
@@ -51,10 +52,11 @@ const center = {
 
 
 export default function CreateArtWalk(){
-    // const {allLocations} = useSelector((state) => state.locations)
+    const {allLocations} = useSelector((state) => state.locations)
     const locations = useSelector((state) => Object.values(state.locations.allLocations));
     const sessionUser = useSelector((state) => state.session.user);
 
+    const [newArtWalk, setNewArtWalk] = useState(false)
     const [artWalkName, setArtWalkName] = useState('');
     const [showModal, setShowModal] = useState(true);
     const [loaded, setLoaded] = useState(false);
@@ -64,6 +66,7 @@ export default function CreateArtWalk(){
 
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(locationActions.getAllLocations());
@@ -94,13 +97,14 @@ export default function CreateArtWalk(){
       setSelected(null)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault()
-      dispatch(artWalkActions.createArtWalk({
+      const res = await dispatch(artWalkActions.createArtWalk({
         artWalkList,
         user_id: sessionUser.id,
         artWalkName
       }))
+      history.push(`/artwalks/${res.id}`)
     }
 
       const mapRef = React.useRef();
@@ -115,6 +119,7 @@ export default function CreateArtWalk(){
 
   return (
     <>
+     
       <Modal style={customStyles} isOpen={showModal}>
           <form onSubmit={onClick}>
               <div>
