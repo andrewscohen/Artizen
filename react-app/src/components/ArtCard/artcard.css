@@ -1,26 +1,26 @@
 .artContainer {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	border-radius: .25rem;
-}
-​
-.artContentContainer {
-	border: 1px solid blue;
-	border-radius: .25rem;
-	width: 90%;
 	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding: 1em;
 }
-​
+
 .artImage {
 	background-size: cover;
 	background-position: center;
-	background-color: #ccc;
 }
-​
-.artContentInfo {
+
+.locationImage {
+	height: 230px;
+	width: 315px;
+}
+
+​ .artContentInfo {
 	padding: 15px;
 }
-​
-button {
+​ button {
 	background-color: transparent;
 	border: 1px solid #2196f3;
 	padding: .5rem 1rem;
