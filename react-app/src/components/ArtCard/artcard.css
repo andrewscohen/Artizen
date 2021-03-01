@@ -1,24 +1,31 @@
-.artContainer {
-	/* border: 1px solid blue; */
+/* .artContainer {
+	border: 1px solid;
 	border-radius: .25rem;
-	margin: auto;
+	margin-right: 1em;
 	margin-top: 1em;
 	margin-bottom: 1em;
 	padding: 1em;
-}
+	display: flex;
+	flex-direction: column;
+} */
 
-.artImage {
-	background-size: cover;
-	background-position: center;
+.artContainer {
+	display: flex;
+	flex-direction: column;
+	/* box-sizing: border-box; */
+	border-radius: 6px;
+	border: 3px solid black;
+	width: 300px;
+	margin: 1.8em;
+	background-color: #1cc3d9;
 }
 
 .locationImage {
-	height: 230px;
-	width: 315px;
-}
-
-​ .artContentInfo {
-	padding: 15px;
+	object-fit: cover;
+	height: 10em;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 3px 3px 0 0;
 }
 ​ button {
 	background-color: transparent;
@@ -26,4 +33,19 @@
 	padding: .5rem 1rem;
 	cursor: pointer;
 	border-radius: .25rem;
+}
+
+.artwalkContentInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 1rem;
+	align-items: left;
+}
+
+.artContentAddress {
+	text-shadow: 1px 1px 0px #fe3a9e;
+	margin: 0;
+	font-size: 1em;
 }
