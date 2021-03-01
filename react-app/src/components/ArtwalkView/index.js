@@ -1,26 +1,24 @@
-
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import Directions from '../RouteMap'
-import * as artwalkActions from "../../store/artwalks"
+import { deleteOneArtwalk } from "../../store/artwalks";
+import Directions from "../RouteMap";
+import * as artwalkActions from "../../store/artwalks";
 import mapStyle from "../Maps/mapStyle";
 import ArtCard from "../ArtCard/ArtCard.js"
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
+  const history = useHistory();
   const { artwalkId } = useParams();
   const dispatch = useDispatch();
   const locationsArray = useSelector(state => state.artwalks.currentArtwalk.locations);
-  const currentArtwalk = useSelector(state => state.artwalks.currentArtwalk)
-
+  const currentArtwalk = useSelector(state => state.artwalks.currentArtwalk);
 
   useEffect(() => {
     dispatch(artwalkActions.getOneArtwalk(artwalkId));
-    console.log("dispatched thunk")
-
-  }, [dispatch, artwalkId])
-
+    console.log("dispatched thunk");
+  }, [dispatch, artwalkId]);
 
   const mapContainerStyle = {
     height: "375px",
@@ -31,6 +29,11 @@ export default function ArtwalkView() {
     styles: mapStyle,
     disableDefaultUI: true,
     zoomControl: false,
+  };
+
+  const handleDelete = id => {
+    dispatch(deleteOneArtwalk(id));
+    history.push("/dashboard");
   };
 
   if (currentArtwalk && locationsArray) {
@@ -46,10 +49,11 @@ export default function ArtwalkView() {
           {locationsArray.map(location => {
             return (<ArtCard location={location}/>)
           })}
+           <button onClick={() => handleDelete(currentArtwalk.id)}>Delete Artwalk</button>
         </div>
         }
       </>
-    )
+    );
   }
   return <span>Loading</span>;
 }
