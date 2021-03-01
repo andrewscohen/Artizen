@@ -2,6 +2,7 @@ const LOAD_ALL_ARTWALKS = "artwalks/LOAD_ALL_ARTWALKS"
 const LOAD_ONE_ARTWALK = "artwalks/LOAD_ONE_ARTWALK"
 const USER_LOGOUT = "USER_LOGOUT"
 
+
 export const logout = () => {
   return { type: USER_LOGOUT }
 }
@@ -13,6 +14,7 @@ export const loadArtwalks = (artwalks) => {
 export const loadOneArtwalk = (artwalk) => {
   return { type: LOAD_ONE_ARTWALK, artwalk };
 }
+
 
 export const getUserArtwalks = (userId) => async dispatch => {
   const res = await fetch(`/api/users/${userId}/artwalks`);
@@ -27,6 +29,19 @@ export const getOneArtwalk = (artwalkId) => async dispatch => {
 
   dispatch(loadOneArtwalk(data));
   return data;
+}
+
+export const createArtWalk = (artWalkObj) => async dispatch => {
+  const {artWalkList, user_id, artWalkName} = artWalkObj
+  const res = await fetch(`/api/artwalks/`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({user_id, name: artWalkName, artWalkList})
+  })
+  let result = await res.json()
+  return result;
 }
 
 const initialState = {currentArtwalk: {}, userArtwalks: {}};
@@ -44,6 +59,7 @@ export default function artwalksReducer(state = initialState, action) {
       updateState.currentArtwalk = action.artwalk;
       return updateState;
       /* falls through */
+
     case USER_LOGOUT:
       updateState.userArtwalks = {}
       return updateState;

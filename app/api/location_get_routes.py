@@ -21,9 +21,7 @@ def add_location():
     form = LocationForm()
     # print(request.get_json())
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('add location before validation: ', form.data)
     if form.validate_on_submit():
-        print('add location after validation: ')
 
         location = Location(
             user_id=form.data['user_id'],
@@ -73,4 +71,3 @@ def edit_location(id):
     db.session.commit()
 
     return location.to_dict()
-
