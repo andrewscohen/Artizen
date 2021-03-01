@@ -27,7 +27,7 @@ const LocationContainer = () => {
 
   return (
     <>
-      <div className="location-container">
+      <div className="location-container main">
         {location.user_id === sessionUser.id && (
           <LocationEditModal setUpdateContainer={setUpdateContainer} userId={sessionUser.id} location={location} />
         )}
