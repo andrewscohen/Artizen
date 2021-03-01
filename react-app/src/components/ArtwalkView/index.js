@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import Directions from '../RouteMap'
 import * as artwalkActions from "../../store/artwalks"
 import mapStyle from "../Maps/mapStyle";
+import ArtCard from "../ArtCard/ArtCard.js"
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
@@ -22,9 +23,8 @@ export default function ArtwalkView() {
 
 
   const mapContainerStyle = {
-    height: "400px",
-    width: "1000px",
-    // borderRadius: "5px 0 0 5px",
+    height: "375px",
+    width: "100%",
   }
 
   const options = {
@@ -38,11 +38,14 @@ export default function ArtwalkView() {
       <>
         {currentArtwalk &&
         <div className="main">
-          <h1>{currentArtwalk.name}</h1>
-          <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
-          <div className="">
+          <div className="artwalk-map">
             <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
+          <h1>{currentArtwalk.name}</h1>
+          <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
+          {locationsArray.map(location => {
+            return (<ArtCard location={location}/>)
+          })}
         </div>
         }
       </>
