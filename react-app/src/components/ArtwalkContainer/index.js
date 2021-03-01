@@ -15,7 +15,7 @@ export default function ArtwalkContainer({ artwalk, change, setChange }) {
   const mapContainerStyle = {
     height: "200px",
     width: "300px",
-    borderRadius: "5px 5px 0 0",
+    borderRadius: "3px 3px 0 0",
     zoomControl: false,
   };
 
@@ -26,21 +26,16 @@ export default function ArtwalkContainer({ artwalk, change, setChange }) {
     gestureHandling: "none",
   };
 
-  const handleDelete = async (id) => {
-    console.log(id)
-    await dispatch(artwalkActions.deleteOneArtwalk(id))
+  const handleDelete = async (event) => {
+    event.stopPropagation();
+    await dispatch(artwalkActions.deleteOneArtwalk(artwalk.id))
       .then(() =>  setChange((change) => !change))
   };
 
   if (locationsArray.length) {
     return (
-      <>
-        <Link className="link" to={`/artwalks/${artwalk.id}`}>
-          <div className="artwalk-container">
-            {/* <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?size=350x200&maptype=roadmap&markers=color:0xFE3A9E%7C${coordinateString}&path=${pathenc}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
-            alt="map"
-          /> */}
+        <div className="artwalk-container">
+          <Link className="link" to={`/artwalks/${artwalk.id}`}>
             <Directions
               className="map"
               locationsArray={locationsArray}
@@ -53,10 +48,9 @@ export default function ArtwalkContainer({ artwalk, change, setChange }) {
                 {locationsArray[0].city}, {locationsArray[0].state}
               </h3>
             </div>
-          </div>
-        </Link>
-        <button onClick={() => handleDelete(artwalk.id)}>Delete Artwalk</button>
-      </>
+          </Link>
+          <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button>
+        </div>
     );
   } else {
     return "";

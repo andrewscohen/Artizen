@@ -40,10 +40,10 @@ const Comment = ({ comment, setUpdateContainer }) => {
       {sessionUser.id === comment.user_id && (
         <>
           <button onClick={() => setShowEditForm(true)}>
-            <i class="far fa-edit"></i>
+            <i className="far fa-edit"></i>
           </button>
           <button onClick={() => handleDelete(comment.id)}>
-            <i class="far fa-trash-alt"></i>
+            <i className="far fa-trash-alt"></i>
           </button>
         </>
       )}

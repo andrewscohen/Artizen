@@ -7,6 +7,8 @@
   width: 300px;
   margin: 1.8em;
   background-color: #1cc3d9;
+  min-height: 417px;
+  justify-content: space-between;
 }
 
 .artwalk-container__info {
@@ -20,6 +22,10 @@
 
 .artwalk-city {
   margin: .8em 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .artwalk-title {
@@ -30,4 +36,22 @@
 
 .link {
   color: #000;
+}
+
+.trash {
+  outline: none;
+  background-color: #FFE41C;
+  border: none;
+  width: 2em;
+  height: 1.8em;
+  box-sizing: border-box;
+  border-radius: 4px;
+  z-index: 100;
+  align-self: flex-end;
+  margin: 0 1em 1em 0;
+  font-size: 1.2em;
+}
+
+.trash:hover {
+  background-color: #f1d91e;
 }
