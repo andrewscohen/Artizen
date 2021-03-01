@@ -10,6 +10,7 @@ import "./ArtwalkView.css"
 export default function ArtwalkView() {
   const { artwalkId } = useParams();
   const dispatch = useDispatch();
+  const showDelete = false;
   const locationsArray = useSelector(state => state.artwalks.currentArtwalk.locations);
   const currentArtwalk = useSelector(state => state.artwalks.currentArtwalk);
 
@@ -35,7 +36,7 @@ export default function ArtwalkView() {
     return (
       <>
         {currentArtwalk &&
-        <div className="main">
+        <div className="main artwalk-main">
           <div className="artwalk-map">
             <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
@@ -45,7 +46,7 @@ export default function ArtwalkView() {
           </div>
           <div className="locationsContainer">
             {locationsArray.map(location => {
-              return (<ArtLocationContainer location={location}/>)
+              return (<ArtLocationContainer showDelete={showDelete} location={location}/>)
             })}
           </div>
         </div>

@@ -16,6 +16,7 @@ export default function UserProfile() {
   const sessionUser = useSelector(state => state.session.user);
   const { userArtwalks } = useSelector(state => state.artwalks);
   const { userLocations } = useSelector(state => state.locations);
+  const showDelete = true;
   // console.log("These are the artwalks", userArtwalks)
   let artwalksArray = Object.values(userArtwalks);
   let locationsArray = Object.values(userLocations);
@@ -65,7 +66,7 @@ export default function UserProfile() {
       {locationsArray.length > 0 && (
         <div className="user_main">
           {locationsArray.map(location => {
-            return <ArtLocationContainer location={location} change={change} setChange={setChange} />;
+            return <ArtLocationContainer showDelete={showDelete} location={location} change={change} setChange={setChange} />;
           })}
         </div>
       )}

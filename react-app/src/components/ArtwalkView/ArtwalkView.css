@@ -3,7 +3,7 @@
 }
 
 .artwalkview-city {
-
+  font-size: 1.2em;
 }
 
 .artwalkview-info {
@@ -11,6 +11,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.artwalk-main {
+  margin-bottom: 12em;
 }
 
 .artwalkview-title {
@@ -25,4 +29,5 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10em;
 }

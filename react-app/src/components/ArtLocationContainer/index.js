@@ -5,7 +5,7 @@ import * as locationActions from "../../store/locations";
 import "./ArtLocationContainer.css";
 
 
-export default function ArtLocationContainer({ location, change, setChange }) {
+export default function ArtLocationContainer({showDelete, location, change, setChange }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ export default function ArtLocationContainer({ location, change, setChange }) {
               </h3>
             </div>
           </Link>
-          <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button>
+          {showDelete && <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button>}
         </div>
     );
 }
