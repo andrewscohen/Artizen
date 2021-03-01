@@ -21,10 +21,14 @@
   background-color: white;
   border: none;
   outline: none;
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-family: "Ubuntu Mono";
   box-sizing: border-box;
-  padding-top: .3em;
+  padding: .3em 1em 0 1em;
+}
+
+.profile_nav-btn:hover {
+  text-shadow: 1px 0 0 #fe3a9e
 }
 
 .profile_title {
@@ -35,7 +39,7 @@
 .profile_nav-links {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding: 0 6em 0 6em ;
+  justify-content: space-between;
+  /* padding: 0 1em; */
   text-decoration: underline;
 }
