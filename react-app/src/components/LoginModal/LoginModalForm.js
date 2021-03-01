@@ -50,11 +50,13 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
 
   return (
     <form className="login-modal-form" onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
+      {errors.length > 0 &&
+        <div className="errors">
+          {errors.map((error) => (
           <div>{error}</div>
-        ))}
-      </div>
+          ))}
+        </div>
+      }
       <div>
         <input
           name="email"
