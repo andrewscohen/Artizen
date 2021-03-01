@@ -44,8 +44,8 @@ export const deleteOneArtwalk = id => async dispatch => {
   });
 
   const data = await res.json();
-  res.data = data;
-  dispatch(loadArtwalks(res.data));
+  dispatch(loadArtwalks(data));
+  return data;
 };
 
 export const createArtWalk = artWalkObj => async dispatch => {
