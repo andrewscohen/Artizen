@@ -4,6 +4,10 @@
   object-fit: cover;
 }
 
+.home_main {
+  overflow: hidden;
+}
+
 .splash-container {
   display: flex;
   z-index: 50;

@@ -12,7 +12,7 @@ export default function Home({display}) {
         </div>
     </div>
     }
-    <div className="main">
+    <div className="main home_main">
       {display &&
 
       <img className="header__img" src={splashImage} alt="Colorful mural with dragon"/>

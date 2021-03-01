@@ -40,6 +40,10 @@
   transform: translateY(-50%);
 } */
 
+.location_main {
+  overflow: hidden;
+}
+
 .form-container {
   position: relative;
   height: 100vh;

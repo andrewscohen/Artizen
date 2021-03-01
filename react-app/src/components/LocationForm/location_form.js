@@ -25,7 +25,7 @@ const LocationForm = () => {
         }
           <LocationFormModal showContainer={showContainer} setShowContainer={setShowContainer} setBackgroundStyle={setBackgroundStyle}/>
         </div>
-      <div className="main">
+      <div className="main location_main">
         <img className="background__img" src={splashImage} alt="Uncovering Colorful Street Art"/>
       </div>
       </>
