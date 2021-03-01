@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Directions from "../RouteMap";
 import mapStyle from "../Maps/mapStyle";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as artwalkActions from "../../store/artwalks";
 import "./ArtwalkContainer.css";
@@ -9,7 +8,6 @@ import "./ArtwalkContainer.css";
 
 export default function ArtwalkContainer({ artwalk, change, setChange }) {
   const locationsArray = Object.values(artwalk.locations);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const mapContainerStyle = {

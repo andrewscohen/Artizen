@@ -18,7 +18,7 @@ class Location(db.Model):
     artist = db.Column(db.String(50))
 
     user = db.relationship("User", back_populates="locations")
-    photos = db.relationship("Photo", back_populates="location")
+    photos = db.relationship("Photo", back_populates="location", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="location")
     art_walks = db.relationship("ArtWalk",
                                 secondary=Artwalk_Location,

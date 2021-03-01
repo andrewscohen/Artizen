@@ -6,9 +6,16 @@ import "./ArtLocationContainer.css";
 
 
 export default function ArtLocationContainer({ location, change, setChange }) {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
+
+  const handleDelete = async (event) => {
+    event.stopPropagation();
+    console.log(location.id)
+    await dispatch(locationActions.deleteOneLocation(location.id))
+      .then(() =>  setChange((change) => !change))
+  };
 
     return (
         <div className="artlocation-container">
@@ -26,7 +33,7 @@ export default function ArtLocationContainer({ location, change, setChange }) {
               </h3>
             </div>
           </Link>
-          {/* <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button> */}
+          <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button>
         </div>
     );
 }

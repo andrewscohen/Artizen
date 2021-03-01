@@ -3,6 +3,7 @@ const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
 const UPDATE_LOCATION = "locations/UPDATE_LOCATION";
 const NEW_LOCATION = "locations/add/new_LOCATION";
 const GET_EVERY_USER_LOCATION = "locations/GET_EVERY_USER_LOCATION";
+const DELETE_LOCATION = "locations/DELETE_LOCATION";
 
 const getOneLocation = location => {
   return {
@@ -17,6 +18,10 @@ const getEveryLocation = (locations) => {
 
 const getEveryUserLocation = (locations) => {
   return { type: GET_EVERY_USER_LOCATION, locations}
+}
+
+const deleteLocation = (id) => {
+  return { type: DELETE_LOCATION, id}
 }
 
 const newLocation = (location) => {
@@ -53,6 +58,16 @@ export const getUserLocations = (userId) => async dispatch => {
   const data = await res.json();
   dispatch(getEveryUserLocation(data));
   return data;
+}
+
+export const deleteOneLocation = (id) => async dispatch => {
+  const res = await fetch(`/api/locations/delete/${id}`, {
+    method: "DELETE"
+  });
+  if (res.ok) {
+    dispatch(deleteLocation(id));
+    return res;
+  }
 }
 
 export const addLocation = (locationFile) => async (dispatch) => {
@@ -148,7 +163,9 @@ const locationsReducer = (state = initialState, action) => {
             newState.location = action.payload
             return newState
         case GET_ONE_LOCATION:
-            return action.payload;
+            newState = Object.assign({}, state)
+            newState.location = action.payload
+            return newState
         case GET_EVERY_LOCATION:
             action.locations.forEach((location) => {
                 updateState.allLocations[location.id] = location
@@ -158,6 +175,9 @@ const locationsReducer = (state = initialState, action) => {
           action.locations.forEach((location) => {
               updateState.userLocations[location.id] = location
           })
+          return updateState;
+        case DELETE_LOCATION:
+          delete updateState.userLocations[action.id];
           return updateState;
         default:
             return state

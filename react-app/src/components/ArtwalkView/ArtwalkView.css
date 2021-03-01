@@ -1,3 +1,28 @@
 .artwalk-map {
   width: 100%;
 }
+
+.artwalkview-city {
+
+}
+
+.artwalkview-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.artwalkview-title {
+  font-size: 3.8em;
+  margin-bottom: 0;
+}
+
+.locationsContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 2em;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

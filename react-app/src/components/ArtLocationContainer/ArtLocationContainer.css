@@ -7,7 +7,7 @@
   width: 300px;
   margin: 1.8em;
   background-color: #1cc3d9;
-  height: 450px;
+  height: 510px;
   justify-content: space-between;
 }
 
@@ -43,7 +43,7 @@
 .artlocation-address {
   display: flex;
   flex-direction: column;
-
+  margin-bottom: 0;
 }
 
 .link {
