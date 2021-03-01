@@ -26,7 +26,7 @@ def create_art_walk():
         locations1 = data['artWalkList']
         json.dumps(locations1)
         location_ids = [location['id'] for location in locations1]
-        print('HELLLLOOOOOOOOOOOOOO', location_ids)
+        
 
         artwalk = ArtWalk(
             user_id=form.data['user_id'],

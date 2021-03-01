@@ -1,6 +1,8 @@
 const LOAD_ALL_ARTWALKS = "artwalks/LOAD_ALL_ARTWALKS"
 const LOAD_ONE_ARTWALK = "artwalks/LOAD_ONE_ARTWALK"
+const CREATE_NEW_ARTWALK = "artwalks/CREATE_NEW_ARTWALK"
 const USER_LOGOUT = "USER_LOGOUT"
+
 
 export const logout = () => {
   return { type: USER_LOGOUT }
@@ -12,6 +14,10 @@ export const loadArtwalks = (artwalks) => {
 
 export const loadOneArtwalk = (artwalk) => {
   return { type: LOAD_ONE_ARTWALK, artwalk };
+}
+
+export const createNewArtWalk = (artwalk) => {
+  return { type: CREATE_NEW_ARTWALK, artwalk}
 }
 
 export const getUserArtwalks = (userId) => async dispatch => {
@@ -39,8 +45,8 @@ export const createArtWalk = (artWalkObj) => async dispatch => {
     body: JSON.stringify({user_id, name: artWalkName, artWalkList})
   })
   let result = await res.json()
-  console.log("RESULT FROM THUNK: ", result)
-  console.log("ARTWALKLIST FROM THUNK: ", artWalkList)
+  dispatch(createNewArtWalk(result));
+  return result;
 }
 
 const initialState = {currentArtwalk: {}, userArtwalks: {}};
@@ -58,6 +64,10 @@ export default function artwalksReducer(state = initialState, action) {
       updateState.currentArtwalk = action.artwalk;
       return updateState;
       /* falls through */
+    case CREATE_NEW_ARTWALK:
+      updateState.userArtwalks = action.artwalk;
+      return updateState;
+
     case USER_LOGOUT:
       updateState.userArtwalks = {}
       return updateState;
