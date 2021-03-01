@@ -11,7 +11,7 @@ export default function ArtwalkContainer({ artwalk, setChange }) {
   // })
 
   const mapContainerStyle = {
-    height: "225px",
+    height: "200px",
     width: "300px",
     borderRadius: "5px 5px 0 0",
     zoomControl: false,
