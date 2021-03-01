@@ -1,20 +1,18 @@
-.new-location-form div {
+  .new-location-form div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.8em;
   }
 
   .modal-toggle-btn {
-      height: 45px;
-      width: 175px;
-      position: absolute;
-      left: 45%;
-      top: 40%;
-      background-color: #FE3A9E;
-      border-radius: 15px;
+      height: 2.2em;
+      width: 10em;
+      position: relative;
+      /* background-color: #FE3A9E;
+      border-radius: 15px;*/
       color: white;
-      font-size: large;
-      font-weight: bold;
+      /* font-size: large;
+      font-weight: bold; */
   }
 
   .modal-container {

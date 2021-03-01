@@ -1,6 +1,9 @@
 .user_main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   box-sizing: border-box;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 10em;
+  flex-wrap: wrap;
 }

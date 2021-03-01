@@ -29,7 +29,7 @@ const customStyles = {
     },
     };
 
-const LocationFormModal = () => {
+const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState("");
@@ -89,11 +89,20 @@ const LocationFormModal = () => {
   return (
     <>
       <div className="modal-container">
-      <button className="modal-toggle-btn" onClick={() => setShowModal(true)}>
+      {showContainer && <button className="btn-main modal-toggle-btn" onClick={() => {
+        setShowModal(true);
+        setShowContainer(false);
+        setBackgroundStyle({backgroundColor: ""});
+      }}>
         Upload It Here
       </button>
+      }
       <Modal style={customStyles} isOpen={showModal}>
-        <button className="btn__x" onClick={() => setShowModal(false)}>
+        <button className="btn__x" onClick={() => {
+        setShowModal(false);
+        setShowContainer(true);
+        setBackgroundStyle({backgroundColor: "rgba(0, 0, 0, 0.7)"})
+      }}>
           <i className="fas fa-times"></i>
         </button>
         <div className="new-location-form">
@@ -155,12 +164,3 @@ const LocationFormModal = () => {
 };
 
 export default LocationFormModal;
-
-
-
-
-
-
-
-
-
