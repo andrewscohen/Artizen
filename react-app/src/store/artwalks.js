@@ -15,8 +15,8 @@ export const loadOneArtwalk = artwalk => {
   return { type: LOAD_ONE_ARTWALK, artwalk };
 };
 
-export const deleteArtwalk = artwalk => {
-  return { type: DELETE_ARTWALK, artwalk };
+export const deleteArtwalk = id => {
+  return { type: DELETE_ARTWALK, id };
 };
 
 export const getUserArtwalks = userId => async dispatch => {
@@ -36,16 +36,12 @@ export const getOneArtwalk = artwalkId => async dispatch => {
 
 export const deleteOneArtwalk = id => async dispatch => {
   const res = await fetch(`/api/artwalks/delete/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id }),
+    method: "DELETE"
   });
-
-  const data = await res.json();
-  dispatch(loadArtwalks(data));
-  return data;
+  if (res.ok) {
+    dispatch(deleteArtwalk(id));
+    return res;
+  }
 };
 
 export const createArtWalk = artWalkObj => async dispatch => {
@@ -76,10 +72,12 @@ export default function artwalksReducer(state = initialState, action) {
       updateState.currentArtwalk = action.artwalk;
       return updateState;
     /* falls through */
-
-    case USER_LOGOUT:
-      updateState.userArtwalks = {};
+    case DELETE_ARTWALK:
+      delete updateState.userArtwalks[action.id];
       return updateState;
+    /* falls through */
+    case USER_LOGOUT:
+      
     /* falls through */
     default:
       return state;

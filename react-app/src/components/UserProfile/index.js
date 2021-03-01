@@ -7,7 +7,7 @@ import "./UserProfile.css";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
-  // const [change, setChange] = useState(false);
+  const [change, setChange] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const { userArtwalks } = useSelector(state => state.artwalks);
@@ -16,7 +16,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(artwalkActions.getUserArtwalks(sessionUser.id));
-  }, [dispatch, sessionUser]);
+  }, [dispatch, sessionUser, change]);
 
   // useEffect(()=> {
   //   setLoaded(true)
@@ -30,7 +30,7 @@ export default function UserProfile() {
       {artwalksArray.length > 0 && (
         <div className="user_main">
           {artwalksArray.map(artwalk => {
-            return <ArtwalkContainer artwalk={artwalk} />;
+            return <ArtwalkContainer artwalk={artwalk} change={change} setChange={setChange} />;
           })}
         </div>
       )}

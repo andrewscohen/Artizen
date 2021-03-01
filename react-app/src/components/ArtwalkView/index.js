@@ -30,11 +30,7 @@ export default function ArtwalkView() {
     zoomControl: false,
   };
 
-  const handleDelete = (id) => {
-    console.log(id)
-    dispatch(artwalkActions.deleteOneArtwalk(id))
-    .then(history.push("/dashboard"));
-    };
+
 
   if (currentArtwalk && locationsArray) {
     return (
@@ -46,7 +42,6 @@ export default function ArtwalkView() {
           </div>
           <h1>{currentArtwalk.name}</h1>
           <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
-          <button onClick={() => handleDelete(currentArtwalk.id)}>Delete Artwalk</button>
           {locationsArray.map(location => {
             return (<ArtCard location={location}/>)
           })}

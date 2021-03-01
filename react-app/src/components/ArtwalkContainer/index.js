@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import Directions from "../RouteMap";
 import mapStyle from "../Maps/mapStyle";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as artwalkActions from "../../store/artwalks";
 import "./ArtwalkContainer.css";
-import { useImperativeHandle } from "react";
 
-export default function ArtwalkContainer({ artwalk, setChange }) {
+
+export default function ArtwalkContainer({ artwalk, change, setChange }) {
   const locationsArray = Object.values(artwalk.locations);
-  // const coordinatesObj = locationsArray.map(location => {
-  //   return {lat: location.lat, lng: location.long}
-  // })
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const mapContainerStyle = {
     height: "200px",
@@ -22,6 +24,12 @@ export default function ArtwalkContainer({ artwalk, setChange }) {
     disableDefaultUI: true,
     zoomControl: false,
     gestureHandling: "none",
+  };
+
+  const handleDelete = async (id) => {
+    console.log(id)
+    await dispatch(artwalkActions.deleteOneArtwalk(id))
+      .then(() =>  setChange((change) => !change))
   };
 
   if (locationsArray.length) {
@@ -47,6 +55,7 @@ export default function ArtwalkContainer({ artwalk, setChange }) {
             </div>
           </div>
         </Link>
+        <button onClick={() => handleDelete(artwalk.id)}>Delete Artwalk</button>
       </>
     );
   } else {
