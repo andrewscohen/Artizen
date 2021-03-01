@@ -1,17 +1,23 @@
 .artMapPageContainer {
 	display: flex;
 	flex-direction: row;
+	overflow: hidden;
 }
 
 #artWalkCardList {
 	background-color: lightgrey;
 	height: 1000px;
-	width: 350px;
+	width: 30%;
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
+	padding-bottom: 10em;
 }
 
-.artWalkCard {
-	margin-bottom: 50px;
+p {
+	color: black;
 }
+/*
+.artWalkCard {
+	margin-right: 100px;
+} */

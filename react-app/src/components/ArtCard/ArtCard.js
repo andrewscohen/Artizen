@@ -7,22 +7,18 @@ return (
     <div className="artContainer">
         <Link to={`/locations/${location.id}`}>
             <div className="artContentContainer">
-                <div className="artImage">
                     <img src={location.photos[0].url} alt="locationImage" className="locationImage"/>
-                </div>
                 <div className="artContentInfo">
                     {location.title ? (
-                    <h1>{location.title}</h1>
-                    ) : <h1>Title Unknown</h1>}
+                    <p>{location.title}</p>
+                    ) : <p>Title Unknown</p>}
                     {location.artist ? (
-                    <h2>{location.artist}</h2>
-                    ) : <h2>Artist Unknown</h2>}
+                    <p>{location.artist}</p>
+                    ) : <p>Artist Unknown</p>}
                 </div>
                 <div className="artContentAddress">
                     <p>{location.street_address}</p>
-                    <p>{location.city}</p>
-                    <p>{location.state}</p>
-                    <p>{location.zip_code}</p>
+                    <p>{location.city}, {location.state} {location.zip_code}</p>
                 </div>
             </div>
         </Link>
