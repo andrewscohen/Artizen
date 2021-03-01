@@ -48,15 +48,22 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
           </div>
           <div>
             <li className="dropdown__li">
+              <Link to="/map">
+                <button className="btn--dropdown"><i class="fas fa-globe-americas btn--dropdown-icon"></i><p className="btn--dropdown-text">Explore</p></button>
+              </Link>
+            </li>
+          </div>
+          <div>
+            <li className="dropdown__li">
               <Link to="/locations/add/new">
-                <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Add An Art Location</p></button>
+                <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Add Art Location</p></button>
               </Link>
             </li>
           </div>
           <div>
             <li className="dropdown__li">
               <Link to="/artwalks/add/new">
-              <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Create A New Art Walk</p></button>
+              <button className="btn--dropdown"><i className="fas fa-plus btn--dropdown-icon"></i><p className="btn--dropdown-text">Create New Art Walk</p></button>
               </Link>
             </li>
           </div>

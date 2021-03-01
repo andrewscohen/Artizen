@@ -15,7 +15,7 @@
 }
 
 #logo {
-  max-width: 220px;
+  max-width: 300px;
   box-sizing: border-box;
   padding-left: 1em;
 }
@@ -36,8 +36,7 @@
 .nav .login-nav-buttons {
   display: flex;
   justify-content: space-between;
-  font-family: "Aktiv Grotesk", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: "Rubik";
   box-sizing: border-box;
   padding-right: 1em;
 }
