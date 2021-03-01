@@ -1,5 +1,5 @@
 .location-container {
-  font-family: "Ubuntu Mono", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Ubuntu Mono";
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: 1fr 1fr;
@@ -68,5 +68,3 @@
   margin: 0;
   font-size: 2em;
 }
-
-

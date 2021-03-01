@@ -20,11 +20,11 @@ const NavBar = ({ setAuthenticated, authenticated, setDisplay}) => {
           </NavLink>}
         </li>
       </ul>
-      <ul className="search-bar-container">
+      {/* <ul className="search-bar-container">
         <li>
           <SearchBar className="search-bar" />
         </li>
-      </ul>
+      </ul> */}
       {!authenticated ? (
         <ul className="login-nav-buttons">
           <li>

@@ -12,7 +12,7 @@
   border-radius: 0 0 .5em .5em;
   height: fit-content;
   z-index: 100;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Rubik";
   background-color: #1cc3d9;
   text-align: right;
 }
@@ -28,6 +28,7 @@
   width: 100%;
   align-content: center;
   box-sizing: border-box;
+
 }
 
 .dropdown__header--name,
@@ -35,8 +36,8 @@
   color: black;
   box-sizing: border-box;
   margin: 0;
-  font-size: .6em;
-  padding: .5em .3em .5em 2em;
+  font-size: 1.2em;
+  padding: .3em .5em .3em 2em;
   height: 100%;
 }
 
@@ -71,6 +72,8 @@
   width: 100%;
   height: 2.2em;
   text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
 }
 
 a {
@@ -86,6 +89,7 @@ a {
   font-size: 1.2em;
   text-align: center;
   justify-self: center;
+  text-shadow: 1px 0 0 black;
 }
 
 .btn--dropdown-text {

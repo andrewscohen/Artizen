@@ -17,11 +17,12 @@
     background-color: #fe3a9e;
     border: none;
     color: black;
-    padding: 0.4em .9em;
+    padding: 0.6em 1.2em;
     border-radius: 5px;
     outline: none;
     margin-right: 0.5em;
-    cursor: pointer;
+    font-family: "Rubik";
+    font-size: 1em;
 }
 
 .login-btn:hover {
@@ -43,17 +44,18 @@
 }
 
 .login-modal-form button {
-    padding: 5px 10px;
-    width: 6rem;
+    padding: 7px 10px;
+    width: 7rem;
     flex-wrap: nowrap;
     color: white;
     border: 1px solid #fe3a9e;
     background-color: #1CC3D9;
-    /* background-image: linear-gradient(to right, #1CC3D9, #FE3A9E); */
+    font-family: "Rubik";
     outline: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 0 1.5em;
+    font-size: 1em;
 }
 
 .login-modal-form button:hover {
@@ -81,7 +83,7 @@
 }
 
 .login-modal-top-row h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Rubik";
 }
 
 .login-modal-top-row button {
@@ -99,7 +101,7 @@
 }
 
 .modal-bottom-text {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Rubik";
     margin: 0;
     text-align: center;
     font-size: 0.9em;
