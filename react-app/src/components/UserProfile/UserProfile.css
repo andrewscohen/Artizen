@@ -7,3 +7,35 @@
   margin-bottom: 10em;
   flex-wrap: wrap;
 }
+
+.profile_nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 1em;
+  justify-content: space-around;
+}
+
+.profile_nav-btn {
+  background-color: white;
+  border: none;
+  outline: none;
+  font-size: 1.5em;
+  font-family: "Ubuntu Mono";
+  box-sizing: border-box;
+  padding-top: .3em;
+}
+
+.profile_title {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.profile_nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 6em 0 6em ;
+  text-decoration: underline;
+}
