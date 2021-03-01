@@ -1,0 +1,66 @@
+.map-display-window {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  padding: 0.5em;
+  top: 5em;
+  left: 1em;
+  background-color: #1cc3d9;
+  color: white;
+  width: 19em;
+  border-radius: 5px;
+}
+
+.map-display-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.map-display-btn-container button {
+  background-color: #fe3a9e;
+  border: none;
+  color: black;
+  padding: 0.4em 0.9em;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.map-display-window h1 {
+  margin: 0;
+}
+
+.map-display-window img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+.map-display-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15em;
+}
+
+.map-display-text-container {
+  font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  text-align: center;
+  height: 3em;
+}
+
+.map-display-link-container {
+  text-align: center;
+  padding-top: 1em;
+  text-decoration: underline;
+}
+
+.map-display-link-container a {
+  font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}

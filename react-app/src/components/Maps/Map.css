@@ -1,0 +1,32 @@
+.map-container {
+  position: relative;
+}
+
+.map-btns-and-display {
+  width: 200px;
+}
+
+.map-btn-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  top: 1em;
+  left: 1em;
+}
+
+.map-compass-btn {
+  background-color: #fe3a9e;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin-right: 1em;
+}
+
+.map-search-input {
+  border: 2px solid #fe3a9e;
+  height: 100%;
+  border-radius: 5px;
+  width: 20em;
+}
