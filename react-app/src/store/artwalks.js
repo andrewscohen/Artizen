@@ -77,7 +77,8 @@ export default function artwalksReducer(state = initialState, action) {
       return updateState;
     /* falls through */
     case USER_LOGOUT:
-      
+      updateState.userArtwalks = {};
+      return updateState;
     /* falls through */
     default:
       return state;
