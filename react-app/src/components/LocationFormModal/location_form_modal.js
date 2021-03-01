@@ -110,15 +110,15 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
             {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)}
             <form onSubmit={handleSubmit}>
             <div>
-                {/* <label>Artwork Title</label> */}
+                <label>Artwork Title</label>
                 <input type="text" placeholder="Title (optional)" value={title} onChange={e => setTitle(e.target.value)} />
             </div>
             <div>
-                {/* <label>Artist Name</label> */}
+                <label>Artist Name</label>
                 <input type="text" placeholder="Artist (optional)" value={artist} onChange={e => setArtist(e.target.value)} />
             </div>
             <div>
-                {/* <label>Street Address</label> */}
+                <label>Street Address</label>
                 <input
                 type="text"
                 placeholder="Street Address"
@@ -128,19 +128,19 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
             </div>
             <div>
-                {/* <label>City</label> */}
+                <label>City</label>
                 <input type="text" placeholder="City" value={city} onChange={e => setCity(e.target.value)} required/>
             </div>
             <div>
-                {/* <label>State</label> */}
+                <label>State</label>
                 <input type="text" placeholder="State" value={state} onChange={e => setState(e.target.value)} required/>
             </div>
             <div>
-                {/* <label>Zip Code</label> */}
+                <label>Zip Code</label>
                 <input type="number" placeholder="Zip Code" value={zip_code} onChange={e => setZip(e.target.value)} required/>
             </div>
             <div>
-                {/* <label>Description</label> */}
+                <label>Description</label>
                 <input
                 type="textarea"
                 placeholder="Description (optional)"
