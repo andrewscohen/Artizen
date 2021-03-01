@@ -9,7 +9,7 @@ import LocationEditModal from "../LocationEditModal";
 const LocationContainer = () => {
   const dispatch = useDispatch();
   const { locationId } = useParams();
-  const location = useSelector(state => state.locations);
+  const location = useSelector(state => state.locations.location);
   const [loaded, setLoaded] = useState(false);
   const [updateContainer, setUpdateContainer] = useState(false);
   const sessionUser = useSelector(state => state.session.user);

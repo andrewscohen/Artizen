@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, Response
 from flask_login import login_required
 from app.models import db, Location
 from app.forms import LocationForm
@@ -71,3 +71,14 @@ def edit_location(id):
     db.session.commit()
 
     return location.to_dict()
+
+
+@location_get_routes.route("/delete/<int:id>", methods=["DELETE"])
+@login_required
+def delete_location(id):
+    location = Location.query.get(id)
+
+    db.session.delete(location)
+    db.session.commit()
+
+    return Response("{'a':'b'}", status=201, mimetype='application/json')

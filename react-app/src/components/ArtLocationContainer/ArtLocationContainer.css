@@ -1,0 +1,51 @@
+.artlocation-container {
+  display: flex;
+  flex-direction: column;
+  /* box-sizing: border-box; */
+  border-radius: 6px;
+  border: 3px solid black;
+  width: 300px;
+  margin: 1.8em;
+  background-color: #1cc3d9;
+  height: 510px;
+  justify-content: space-between;
+}
+
+.artlocation-container__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem;
+  align-items: left;
+}
+
+.artlocation-artist {
+  margin: .8em 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.artlocation-title {
+  text-shadow: 1px 1px 0px #fe3a9e;
+  margin: 0;
+  font-size: 2.8em;
+}
+
+.artlocation-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.artlocation-address {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.link {
+  color: #000;
+}

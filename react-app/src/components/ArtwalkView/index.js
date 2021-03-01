@@ -1,16 +1,16 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import Directions from "../RouteMap";
 import * as artwalkActions from "../../store/artwalks";
 import mapStyle from "../Maps/mapStyle";
-import ArtCard from "../ArtCard/ArtCard.js"
+import ArtLocationContainer from "../ArtLocationContainer"
 import "./ArtwalkView.css"
 
 export default function ArtwalkView() {
-  const history = useHistory();
   const { artwalkId } = useParams();
   const dispatch = useDispatch();
+  const showDelete = false;
   const locationsArray = useSelector(state => state.artwalks.currentArtwalk.locations);
   const currentArtwalk = useSelector(state => state.artwalks.currentArtwalk);
 
@@ -36,15 +36,19 @@ export default function ArtwalkView() {
     return (
       <>
         {currentArtwalk &&
-        <div className="main">
+        <div className="main artwalk-main">
           <div className="artwalk-map">
             <Directions className="map" locationsArray={locationsArray} mapContainerStyle={mapContainerStyle} options={options}/>
           </div>
-          <h1>{currentArtwalk.name}</h1>
-          <h2>{locationsArray[0].city}, {locationsArray[0].state}</h2>
-          {locationsArray.map(location => {
-            return (<ArtCard location={location}/>)
-          })}
+          <div className="artwalkview-info">
+            <h1 className="artwalkview-title">{currentArtwalk.name}</h1>
+            <h2 className="artwalkview-city">{locationsArray[0].city}, {locationsArray[0].state}</h2>
+          </div>
+          <div className="locationsContainer">
+            {locationsArray.map(location => {
+              return (<ArtLocationContainer showDelete={showDelete} location={location}/>)
+            })}
+          </div>
         </div>
         }
       </>
