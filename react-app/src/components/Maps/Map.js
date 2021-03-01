@@ -70,7 +70,7 @@ export default function Gmap() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div className="map-container">
+    <div className="map-container main">
       <div className="map-btns-and-display">
         <div className="map-btn-container">
           <Locate panTo={panTo} />
