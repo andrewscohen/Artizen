@@ -4,6 +4,7 @@ const UPDATE_LOCATION = "locations/UPDATE_LOCATION";
 const NEW_LOCATION = "locations/add/new_LOCATION";
 const GET_EVERY_USER_LOCATION = "locations/GET_EVERY_USER_LOCATION";
 const DELETE_LOCATION = "locations/DELETE_LOCATION";
+const USER_LOGOUT = "USER_LOGOUT";
 
 const getOneLocation = location => {
   return {
@@ -178,6 +179,11 @@ const locationsReducer = (state = initialState, action) => {
           return updateState;
         case DELETE_LOCATION:
           delete updateState.userLocations[action.id];
+          return updateState;
+        case USER_LOGOUT:
+          updateState.location = null;
+          updateState.allLocations = {};
+          updateState.userLocations = {};
           return updateState;
         default:
             return state
