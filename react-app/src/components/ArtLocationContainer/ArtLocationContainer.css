@@ -4,10 +4,10 @@
   /* box-sizing: border-box; */
   border-radius: 6px;
   border: 3px solid black;
-  width: 300px;
+  width: 320px;
   margin: 1.8em;
   background-color: #1cc3d9;
-  height: 510px;
+  min-height: 510px;
   justify-content: space-between;
 }
 
@@ -37,6 +37,7 @@
 
 .artlocation-image {
   width: 100%;
+  height: 230px;
   object-fit: cover;
   border-radius: 3px 3px 0 0;
 }

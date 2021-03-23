@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import ArtwalkContainer from "../ArtwalkContainer";
@@ -46,8 +46,8 @@ export default function UserProfile() {
       <div className="profile_nav">
         <h1 className="profile_title">Welcome, {sessionUser.first_name}!</h1>
         <div className="profile_nav-links">
-          <button className="profile_nav-btn" onClick={showArtwalks}>Your Art Walks</button>
-          <button className="profile_nav-btn" onClick={showLocations}>Your Art Locations</button>
+          <button className={`profile_nav-btn ${artwalks ? "profile_nav-links--selected" : ""}`} onClick={showArtwalks}>Your Art Walks</button>
+          <button className={`profile_nav-btn ${!artwalks ? "profile_nav-links--selected" : ""}`} onClick={showLocations}>Your Art Locations</button>
         </div>
       </div>
       {artwalks &&
