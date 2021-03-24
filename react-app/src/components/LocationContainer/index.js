@@ -1,4 +1,4 @@
-import { getLocation } from "../../store/locations";
+import { getLocation, resetNewLocation } from "../../store/locations";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ const LocationContainer = () => {
 
   const getLocationLocal = async () => {
     await dispatch(getLocation(locationId));
+    dispatch(resetNewLocation())
     setLoaded(true);
   };
 

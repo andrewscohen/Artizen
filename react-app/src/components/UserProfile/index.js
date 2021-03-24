@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import ArtwalkContainer from "../ArtwalkContainer";
@@ -12,15 +11,13 @@ export default function UserProfile() {
   const dispatch = useDispatch();
   const [change, setChange] = useState(false);
   const [artwalks, setArtwalks] = useState(true);
-  const [loaded, setLoaded] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const { userArtwalks } = useSelector(state => state.artwalks);
   const { userLocations } = useSelector(state => state.locations);
   const showDelete = true;
-  // console.log("These are the artwalks", userArtwalks)
   let artwalksArray = Object.values(userArtwalks);
   let locationsArray = Object.values(userLocations);
-  console.log(artwalksArray, locationsArray)
 
   useEffect(() => {
     dispatch(artwalkActions.getUserArtwalks(sessionUser.id));

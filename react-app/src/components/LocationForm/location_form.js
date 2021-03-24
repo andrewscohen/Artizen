@@ -7,7 +7,7 @@ import './location_form.css'
 
 const LocationForm = () => {
 
-  const newLocation = useSelector(state => state.locations.location);
+  const newLocation = useSelector(state => state.locations.newLocation);
   const [showContainer, setShowContainer] = useState(true);
   const [backgroundStyle, setBackgroundStyle] = useState({backgroundColor: "rgba(0, 0, 0, 0.7)"})
 

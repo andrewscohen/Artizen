@@ -1,7 +1,8 @@
 const GET_ONE_LOCATION = "locations/GET_ONE_LOCATION";
 const GET_EVERY_LOCATION = "locations/GET_EVERY_LOCATION";
 const UPDATE_LOCATION = "locations/UPDATE_LOCATION";
-const NEW_LOCATION = "locations/add/new_LOCATION";
+const NEW_LOCATION = "locations/NEW_LOCATION";
+const RESET_NEW_LOCATION = "locations/RESET_NEW_LOCATION"
 const GET_EVERY_USER_LOCATION = "locations/GET_EVERY_USER_LOCATION";
 const DELETE_LOCATION = "locations/DELETE_LOCATION";
 const USER_LOGOUT = "USER_LOGOUT";
@@ -30,6 +31,10 @@ const newLocation = (location) => {
         type: NEW_LOCATION,
         payload: location,
     }
+}
+
+export const resetNewLocation = () => {
+  return { type: RESET_NEW_LOCATION }
 }
 
 const updateOneLocation = location => {
@@ -152,7 +157,7 @@ export const updateLocation = locationObj => async dispatch => {
 };
 
 
-const initialState = {location: null, allLocations: {}, userLocations: {}}
+const initialState = {location: null, newLocation: null, allLocations: {}, userLocations: {}}
 
 const locationsReducer = (state = initialState, action) => {
     let newState;
@@ -161,8 +166,11 @@ const locationsReducer = (state = initialState, action) => {
         case NEW_LOCATION:
             newState = Object.assign({}, state)
             // { [location.id] : location }
-            newState.location = action.payload
+            newState.newLocation = action.payload
             return newState
+        case RESET_NEW_LOCATION:
+            updateState.newLocation = null;
+            return updateState;
         case GET_ONE_LOCATION:
             newState = Object.assign({}, state)
             newState.location = action.payload
@@ -182,6 +190,7 @@ const locationsReducer = (state = initialState, action) => {
           return updateState;
         case USER_LOGOUT:
           updateState.location = null;
+          updateState.newLocation = null;
           updateState.allLocations = {};
           updateState.userLocations = {};
           return updateState;
