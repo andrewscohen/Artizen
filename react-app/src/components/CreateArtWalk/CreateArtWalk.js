@@ -93,8 +93,8 @@ export default function CreateArtWalk(){
 
 
     const addToWalk = async (e) => {
-      const id = (e.target.id - 1).toString();
-      const location = locations[id]
+      const id = (e.target.id).toString();
+      const location = allLocations[id]
       setArtWalkList(artWalkList => [...artWalkList, location])
       setSelected(null)
     }
@@ -147,6 +147,7 @@ export default function CreateArtWalk(){
               <h2>You have added too many artwalks</h2>}
               {artWalkList && artWalkList.map((location) => (
                 <div className='artWalkCard'>
+                  {console.log(location)}
                   <ArtCard location={location}/>
                 </div>
                 ))

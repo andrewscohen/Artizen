@@ -23,7 +23,7 @@ export default function ArtLocationContainer({showDelete, location, change, setC
             <img className="artlocation-image" src={location.photos[0].url}/>
             <div className="artlocation-container__info">
               {location.title && <h2 className="header artlocation-title">{location.title}</h2>}
-              {location.artist && <h3 className="header artlocation-artist">{location.artist}</h3>}
+              {location.artist && <h3 className="header artlocation-artist">Artist: {location.artist}</h3>}
               <h3 className="artlocation-address">
                 {location.street_address}
                 <div>

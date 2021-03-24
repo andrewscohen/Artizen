@@ -27,7 +27,8 @@
   padding: .3em 1em 0 1em;
 }
 
-.profile_nav-btn:hover {
+.profile_nav-btn:hover,
+.profile_nav-links--selected {
   text-shadow: 1px 0 0 #fe3a9e
 }
 

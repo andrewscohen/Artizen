@@ -56,9 +56,9 @@ function App() {
           {/* <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
             <UsersList />
           </ProtectedRoute> */}
-          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+          {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
             <User />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <ProtectedRoute path="/locations/:locationId" exact={true} authenticated={authenticated}>
             <LocationContainer />
           </ProtectedRoute>

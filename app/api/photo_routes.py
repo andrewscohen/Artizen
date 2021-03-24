@@ -20,14 +20,7 @@ def add_photo():
 
     file = request.files["photo"]
 
-    # form['csrf_token'].data = request.cookies['csrf_token']
-
-    # if file.filename == "":
-    #     return "Please select a file"
-
-    # if file and allowed_file(file.filename):
     if file:
-        # file.filename = secure_filename(file.filename)
         photo_url = upload_file_to_s3(file, Config.S3_BUCKET)
         photo = Photo(
             user_id=request.form.get('user_id'),
