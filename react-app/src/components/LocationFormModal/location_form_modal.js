@@ -31,7 +31,7 @@ const customStyles = {
 
 const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}) => {
 
-  const [showModal, setShowModal] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [street_address, setAddress] = useState("");
@@ -45,6 +45,19 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
   const sessionUser = useSelector(state => state.session.user);
 
   const dispatch = useDispatch();
+
+  function openModal() {
+    setIsOpen(true);
+    setShowContainer(false);
+    setBackgroundStyle({backgroundColor: "rgba(0, 0, 0, 0.0)"})
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setShowContainer(true);
+    setBackgroundStyle({backgroundColor: "rgba(0, 0, 0, 0.7)"})
+
+  }
   //   const history = useHistory();
 
   const handleSubmit = async e => {
@@ -85,24 +98,22 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
         }
       });
   };
-
   return (
     <>
       <div className="modal-container">
-      {showContainer && <button className="btn-main modal-toggle-btn" onClick={() => {
-        setShowModal(true);
-        setShowContainer(false);
-        setBackgroundStyle({backgroundColor: ""});
-      }}>
+      {showContainer && (
+      <button
+        className="btn-main modal-toggle-btn"
+        onClick={openModal}>
         Upload It Here
       </button>
-      }
-      <Modal style={customStyles} isOpen={showModal}>
-        <button className="btn__x" onClick={() => {
-        setShowModal(false);
-        setShowContainer(true);
-        setBackgroundStyle({backgroundColor: "rgba(0, 0, 0, 0.7)"})
-      }}>
+      )}
+      <Modal
+        style={customStyles}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+          >
+        <button className="btn__x" onClick={closeModal}>
           <i className="fas fa-times"></i>
         </button>
         <div className="new-location-form">
@@ -154,9 +165,9 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
             </div>
 
             <div>
-                <button type="submit">Create Location</button>
+             <button type="submit">Create Location</button>
             </div>
-            </form>
+          </form>
         </div>
       </Modal>
       </div>
