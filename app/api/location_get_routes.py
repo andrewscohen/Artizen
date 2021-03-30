@@ -1,6 +1,6 @@
 from flask import Blueprint, request, Response
 from flask_login import login_required
-from app.models import db, Location
+from app.models import db, Location, Comment
 from app.forms import LocationForm
 import json
 
@@ -19,7 +19,7 @@ def locations(id):
 @login_required
 def add_location():
     form = LocationForm()
-    # print(request.get_json())
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
 
@@ -77,6 +77,8 @@ def edit_location(id):
 @login_required
 def delete_location(id):
     location = Location.query.get(id)
+
+    Comment.query.filter(Comment.location_id == id).delete()
 
     db.session.delete(location)
     db.session.commit()
