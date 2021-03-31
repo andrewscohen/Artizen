@@ -15,7 +15,7 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected }) => {
         </button>
       </div>
       <div className="map-display-img-container">
-        <img src={selected.photos[0].url} />
+        <img src={selected.photos[0].url} alt="selected places" />
       </div>
       <div className="map-display-text-container">
         <p>

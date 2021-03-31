@@ -29,8 +29,7 @@ const customStyles = {
 };
 
 const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
-  const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [editTitle, setEditTitle] = useState(location.title);
   const [editArtist, setEditArtist] = useState(location.artist);
   const [editDescription, setEditDescription] = useState(location.description);
@@ -38,8 +37,27 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
   const [editCity, setEditCity] = useState(location.city);
   const [editState, setEditState] = useState(location.state);
   const [editZip, setEditZip] = useState(location.zip_code);
+  const dispatch = useDispatch();
 
-  const handleSubmit = async () => {
+  // FUNCTIONS TO BE PASSED INTO RETURN
+
+  // Passed to onClick to open location form modal
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  // Passed to onClick to close location form modal
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
+  // Executed once form is submit.
+  // Coerces regular address into geocoded values for Google Maps API
+  // Sends Input information to updateLocation thunk in store
+  // Returns Errors if any
+  // Clears form by reseting local state variable
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const address = `${editStreetAddress} ${editCity} ${editState} ${editZip}`;
     const { lat, long } = await getCoords(address);
 
@@ -58,29 +76,44 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
         long,
       })
     );
-
     await setUpdateContainer(prev => !prev);
-    await setShowModal(false);
+    await setIsOpen(false);
   };
 
   return (
     <>
-      <button className="location-edit-btn" onClick={() => setShowModal(true)}>
+      <button className="location-edit-btn" onClick={openModal}>
         Edit Location
       </button>
-      <Modal style={customStyles} isOpen={showModal}>
-        <button className="btn__x" onClick={() => setShowModal(false)}>
-          <i className="fas fa-times"></i>
+      <Modal
+        style={customStyles}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+      >
+        <button
+          className="btn__x"
+          onClick={closeModal}>
+          <i className="fas fa-times" />
         </button>
         <div className="location-edit-form">
           <h1>Edit Location</h1>
           <div>
             <label htmlFor="title">Title</label>
-            <input type="text" name="title" value={editTitle} onChange={e => setEditTitle(e.target.value)} />
+            <input
+              type="text"
+              name="title"
+              value={editTitle}
+              onChange={e => setEditTitle(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="artist">Artist</label>
-            <input type="text" name="artist" value={editArtist} onChange={e => setEditArtist(e.target.value)} />
+            <input
+              type="text"
+              name="artist"
+              value={editArtist}
+              onChange={e => setEditArtist(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="description">Description</label>
@@ -102,15 +135,30 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
           </div>
           <div>
             <label htmlFor="city">City</label>
-            <input type="text" name="city" value={editCity} onChange={e => setEditCity(e.target.value)} />
+            <input
+              type="text"
+              name="city"
+              value={editCity}
+              onChange={e => setEditCity(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="state">State</label>
-            <input type="text" name="state" value={editState} onChange={e => setEditState(e.target.value)} />
+            <input
+              type="text"
+              name="state"
+              value={editState}
+              onChange={e => setEditState(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="zip-code">ZIP Code</label>
-            <input type="text" name="zip-code" value={editZip} onChange={e => setEditZip(e.target.value)} />
+            <input
+              type="text"
+              name="zip-code"
+              value={editZip}
+              onChange={e => setEditZip(e.target.value)}
+            />
           </div>
           <button onClick={handleSubmit}>Submit</button>
         </div>

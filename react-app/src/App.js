@@ -17,6 +17,8 @@ import { setUser } from "./store/session"
 import "./components/NavBar/Navbar.css"
 import LocationForm from "./components/LocationForm/location_form"
 import CreateArtWalk from "./components/CreateArtWalk/CreateArtWalk"
+import Modal from "react-modal"
+Modal.setAppElement('#root');
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
