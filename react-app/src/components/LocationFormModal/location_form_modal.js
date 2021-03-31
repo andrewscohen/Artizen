@@ -15,7 +15,7 @@ const customStyles = {
         bottom: "auto",
         marginRight: "-50%",
         transform: "translate(-50%, -50%)",
-        padding: "1.5em",
+        padding: "2.5em",
         backgroundColor: "rgba(254, 58, 158, .7)",
         borderRadius: "2px",
         border: "none",
@@ -125,7 +125,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
             >
-          
+
           <div className="new-location-form">
             <div className='new-location-top-row'>
             <h1 >Add Location</h1>
@@ -202,7 +202,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                     type="file"
                     onChange={e => setPhoto(e.target.files[0])}
                     required
-                  /> 
+                  />
                 </label>
                 </div>
                 <div>
