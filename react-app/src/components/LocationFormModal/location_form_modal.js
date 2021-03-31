@@ -125,32 +125,32 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
             >
-          <button className="btn__x" onClick={closeModal}>
-            <i className="fas fa-times" />
-          </button>
+          
           <div className="new-location-form">
-            <h1>Add Location</h1>
+            <div>
+            <h1 className='new-location-top-row'>Add Location</h1>
               {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)}
+              <button className="btn__x" onClick={closeModal}>
+                <i className="fas fa-times" />
+              </button>
+            </div>
             <form onSubmit={handleSubmit}>
               <div>
-                <label>Artwork Title</label>
                 <input
                   type="text"
-                  placeholder="Title (optional)"
+                  placeholder="Artwork Title (optional)"
                   value={title}
                   onChange={e => setTitle(e.target.value)} />
               </div>
               <div>
-                <label>Artist Name</label>
                 <input
                   type="text"
-                  placeholder="Artist (optional)"
+                  placeholder="Artist Name (optional)"
                   value={artist}
                   onChange={e => setArtist(e.target.value)}
                 />
               </div>
               <div>
-                <label>Street Address</label>
                 <input
                   type="text"
                   placeholder="Street Address"
@@ -160,7 +160,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>City</label>
                 <input
                   type="text"
                   placeholder="City"
@@ -170,7 +169,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>State</label>
                 <input
                   type="text"
                   placeholder="State"
@@ -180,7 +178,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>Zip Code</label>
                 <input
                   type="number"
                   placeholder="Zip Code"
@@ -190,7 +187,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>Description</label>
                 <input
                   type="textarea"
                   placeholder="Description (optional)"
@@ -206,7 +202,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                   required
                 />
               </div>
-              <div>
+              <div className='new-location-submit'>
                 <button type="submit">Create Location</button>
               </div>
             </form>
