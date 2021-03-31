@@ -1,8 +1,8 @@
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = ({ bottomOfPage }) => {
   return (
-    <div className="footer">
+    <div className="footer" id={bottomOfPage ? "bottom-footer" : ""}>
       <div className="footer-section">
         <p>Andrew Cohen</p>
         <a href="https://github.com/andrewscohen" target="_blank">
