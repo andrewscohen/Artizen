@@ -9,37 +9,37 @@ import * as artWalkActions from "../../store/artwalks";
 import mapStyle from "../Maps/mapStyle.js";
 import ArtCard from "../ArtCard/ArtCard.js";
 import "../ArtCard/artcard.css";
-import './creatArtWalk.css';
+import "./creatArtWalk.css";
 import "@reach/combobox/styles.css";
+import Footer from "../Footer";
 
 const customStyles = {
-    content : {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: "1.5em",
-      backgroundColor: "rgba(254, 58, 158, .7)",
-      borderRadius: "2px",
-      border: "none",
-      width: "40%",
-      boxSizing: "border-box",
-
-    },
-    overlay : {
-        // backgroundColor: "transparent",
-        backgroundColor: "rgba(0, 0, 0, .6)",
-        zIndex: "100",
-    }
-  };
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    padding: "1.5em",
+    backgroundColor: "rgba(254, 58, 158, .7)",
+    borderRadius: "2px",
+    border: "none",
+    width: "40%",
+    boxSizing: "border-box",
+  },
+  overlay: {
+    // backgroundColor: "transparent",
+    backgroundColor: "rgba(0, 0, 0, .6)",
+    zIndex: "100",
+  },
+};
 
 const mapContainerStyle = {
   height: "88vh",
   width: "80vw",
   // marginLeft: "20em",
-  float: "left"
+  float: "left",
 };
 const options = {
   styles: mapStyle,
@@ -51,7 +51,48 @@ const center = {
   lng: -97.74073530134736,
 };
 
+export default function CreateArtWalk() {
+  const { allLocations } = useSelector(state => state.locations);
+  const locations = useSelector(state => Object.values(state.locations.allLocations));
+  const sessionUser = useSelector(state => state.session.user);
 
+  const [newArtWalk, setNewArtWalk] = useState(false);
+  const [artWalkName, setArtWalkName] = useState("");
+  const [showModal, setShowModal] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const [markers, setMarkers] = React.useState([]);
+  const [artWalkList, setArtWalkList] = useState([]);
+  const [selected, setSelected] = React.useState(null);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(locationActions.getAllLocations());
+    setLoaded(true);
+  }, [dispatch]);
+
+  const onClick = () => {
+    setShowModal(false);
+  };
+
+  const onMapClick = React.useCallback(e => {
+    setMarkers(current => [
+      ...current,
+      {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+  }, []);
+
+  const addToWalk = async e => {
+    const id = e.target.id.toString();
+    const location = allLocations[id];
+    setArtWalkList(artWalkList => [...artWalkList, location]);
+    setSelected(null);
+  };
 
 export default function CreateArtWalk(){
     const {allLocations} = useSelector((state) => state.locations)
@@ -108,10 +149,11 @@ export default function CreateArtWalk(){
       const res = await dispatch(artWalkActions.createArtWalk({
         artWalkList,
         user_id: sessionUser.id,
-        artWalkName
-      }))
-      history.push(`/artwalks/${res.id}`)
-    }
+        artWalkName,
+      })
+    );
+    history.push(`/artwalks/${res.id}`);
+  };
 
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
@@ -150,7 +192,7 @@ export default function CreateArtWalk(){
               </div>
           </form>
       </Modal>
-      <div className='main'>
+      <div className="main">
         <div className="artMapPageContainer">
           <div id="artWalkCardList">
             <h1>New Art Walk: {artWalkName}</h1>
@@ -226,6 +268,7 @@ export default function CreateArtWalk(){
           </div>
         </div>
       </div>
+      <Footer bottomOfPage={true} />
     </>
-)
+  );
 }

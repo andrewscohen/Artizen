@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ArtwalkContainer from "../ArtwalkContainer";
-import ArtLocationContainer from "../ArtLocationContainer"
+import ArtLocationContainer from "../ArtLocationContainer";
 import * as artwalkActions from "../../store/artwalks";
 import * as locationActions from "../../store/locations";
 import "./UserProfile.css";
+import Footer from "../Footer";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
@@ -26,64 +27,83 @@ export default function UserProfile() {
   }, [dispatch, sessionUser, change]);
 
   const showArtwalks = () => {
-    setArtwalks(true)
-  }
+    setArtwalks(true);
+  };
 
   const showLocations = () => {
-    setArtwalks(false)
-  }
+    setArtwalks(false);
+  };
 
   const newWalk = () => {
-    history.push("/artwalks/add/new")
-  }
+    history.push("/artwalks/add/new");
+  };
 
   const newLocation = () => {
-    history.push("/locations/add/new")
-  }
+    history.push("/locations/add/new");
+  };
 
   return (
     <div className="main">
       <div className="profile_nav">
         <h1 className="profile_title">Welcome, {sessionUser.first_name}!</h1>
         <div className="profile_nav-links">
-          <button className={`profile_nav-btn ${artwalks ? "profile_nav-links--selected" : ""}`} onClick={showArtwalks}>Your Art Walks</button>
-          <button className={`profile_nav-btn ${!artwalks ? "profile_nav-links--selected" : ""}`} onClick={showLocations}>Your Art Locations</button>
+          <button className={`profile_nav-btn ${artwalks ? "profile_nav-links--selected" : ""}`} onClick={showArtwalks}>
+            Your Art Walks
+          </button>
+          <button
+            className={`profile_nav-btn ${!artwalks ? "profile_nav-links--selected" : ""}`}
+            onClick={showLocations}
+          >
+            Your Art Locations
+          </button>
         </div>
       </div>
-      {artwalks &&
-      <>
-      {artwalksArray.length === 0 &&
-        <div className="no-data">
-          <h2>You haven't created any art walks yet.</h2>
-          <button className="login-btn" onClick={newWalk}>Create an Art Walk</button>
-        </div>
-      }
-      {artwalksArray.length > 0 && (
-        <div className="user_main">
-          {artwalksArray.map(artwalk => {
-            return <ArtwalkContainer artwalk={artwalk} change={change} setChange={setChange} />;
-          })}
-        </div>
+      {artwalks && (
+        <>
+          {artwalksArray.length === 0 && (
+            <div className="no-data">
+              <h2>You haven't created any art walks yet.</h2>
+              <button className="login-btn" onClick={newWalk}>
+                Create an Art Walk
+              </button>
+            </div>
+          )}
+          {artwalksArray.length > 0 && (
+            <div className="user_main">
+              {artwalksArray.map(artwalk => {
+                return <ArtwalkContainer artwalk={artwalk} change={change} setChange={setChange} />;
+              })}
+            </div>
+          )}
+        </>
       )}
-      </>
-      }
-      {!artwalks &&
-      <>
-      {locationsArray.length === 0 &&
-        <div className="no-data">
-          <h2>You haven't created any art locations yet.</h2>
-          <button className="login-btn" onClick={newLocation}>Create an Art Location</button>
-        </div>
-      }
-      {locationsArray.length > 0 && (
-        <div className="user_main">
-          {locationsArray.map(location => {
-            return <ArtLocationContainer showDelete={showDelete} location={location} change={change} setChange={setChange} />;
-          })}
-        </div>
+      {!artwalks && (
+        <>
+          {locationsArray.length === 0 && (
+            <div className="no-data">
+              <h2>You haven't created any art locations yet.</h2>
+              <button className="login-btn" onClick={newLocation}>
+                Create an Art Location
+              </button>
+            </div>
+          )}
+          {locationsArray.length > 0 && (
+            <div className="user_main">
+              {locationsArray.map(location => {
+                return (
+                  <ArtLocationContainer
+                    showDelete={showDelete}
+                    location={location}
+                    change={change}
+                    setChange={setChange}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
-      </>
-      }
+      <Footer />
     </div>
   );
 }
