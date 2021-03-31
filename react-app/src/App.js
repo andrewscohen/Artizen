@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Home from "./components/Home";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/UserProfile";
 import LocationContainer from "./components/LocationContainer";
 import Gmap from "./components/Maps/Map.js";
-// import Directions from "./components/Maps/DirectionsMap.js";
 import ArtwalkView from "./components/ArtwalkView";
 import { authenticate } from "./services/auth";
 import { setUser } from "./store/session";
@@ -54,18 +51,6 @@ function App() {
           <Route exact path="/">
             <Home display={display} />
           </Route>
-          <Route path="/login" exact={true}>
-            <LoginForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          </Route>
-          {/* <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-            <UsersList />
-          </ProtectedRoute> */}
-          {/* <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-            <User />
-          </ProtectedRoute> */}
           <ProtectedRoute path="/locations/:locationId" exact={true} authenticated={authenticated}>
             <LocationContainer />
           </ProtectedRoute>
