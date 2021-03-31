@@ -68,12 +68,12 @@ body {
 }
 
 .vertical-center {
-	/* margin: 0; */
-	position: absolute;
-	top: 50%;
+	margin: 0 auto;
+  position: absolute;
+  top: 50%;
 	left: 25%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .main::-webkit-scrollbar {

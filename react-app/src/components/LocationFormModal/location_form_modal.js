@@ -103,7 +103,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
       <div className="modal-container">
       {showContainer && (
       <button
-        className="btn-main modal-toggle-btn"
+        className="login-btn"
         onClick={openModal}>
         Upload It Here
       </button>

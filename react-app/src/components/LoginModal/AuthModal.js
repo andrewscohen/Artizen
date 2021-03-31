@@ -13,13 +13,12 @@ const customStyles = {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      padding: "1.5em",
+      padding: "2.5em",
       backgroundColor: "rgba(254, 58, 158, .7)",
-      borderRadius: "2px",
+      borderRadius: "5px",
       border: "none",
-      width: "40%",
+      width: "400px",
       boxSizing: "border-box",
-
     },
     overlay : {
         // backgroundColor: "transparent",

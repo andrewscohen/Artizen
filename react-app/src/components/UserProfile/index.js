@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ArtwalkContainer from "../ArtwalkContainer";
 import ArtLocationContainer from "../ArtLocationContainer"
 import * as artwalkActions from "../../store/artwalks";
@@ -9,6 +9,7 @@ import "./UserProfile.css";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [change, setChange] = useState(false);
   const [artwalks, setArtwalks] = useState(true);
   // const [loaded, setLoaded] = useState(false);
@@ -32,11 +33,13 @@ export default function UserProfile() {
     setArtwalks(false)
   }
 
-  // useEffect(()=> {
-  //   setLoaded(true)
-  // }, [artwalksArray])
+  const newWalk = () => {
+    history.push("/artwalks/add/new")
+  }
 
-  // if (!loaded) return <span>Loading</span>;
+  const newLocation = () => {
+    history.push("/locations/add/new")
+  }
 
   return (
     <div className="main">
@@ -49,6 +52,12 @@ export default function UserProfile() {
       </div>
       {artwalks &&
       <>
+      {artwalksArray.length === 0 &&
+        <div className="no-data">
+          <h2>You haven't created any art walks yet.</h2>
+          <button className="login-btn" onClick={newWalk}>Create an Art Walk</button>
+        </div>
+      }
       {artwalksArray.length > 0 && (
         <div className="user_main">
           {artwalksArray.map(artwalk => {
@@ -60,6 +69,12 @@ export default function UserProfile() {
       }
       {!artwalks &&
       <>
+      {locationsArray.length === 0 &&
+        <div className="no-data">
+          <h2>You haven't created any art locations yet.</h2>
+          <button className="login-btn" onClick={newLocation}>Create an Art Location</button>
+        </div>
+      }
       {locationsArray.length > 0 && (
         <div className="user_main">
           {locationsArray.map(location => {
