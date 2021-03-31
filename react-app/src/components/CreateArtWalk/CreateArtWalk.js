@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback, useRef} from "react";
 import { useHistory } from 'react-router-dom'
 import {GoogleMap, Marker, InfoWindow} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
@@ -60,7 +60,7 @@ export default function CreateArtWalk(){
 
     const [newArtWalk, setNewArtWalk] = useState(false)
     const [artWalkName, setArtWalkName] = useState('');
-    const [showModal, setShowModal] = useState(true);
+    const [modalIsOpen, setIsOpen] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [markers, setMarkers] = React.useState([]);
     const [artWalkList, setArtWalkList] = useState([]);
@@ -77,10 +77,14 @@ export default function CreateArtWalk(){
 
 
     const onClick = () => {
-        setShowModal(false)
+        setIsOpen(false)
     }
 
-    const onMapClick = React.useCallback((e) => {
+    const openModal = () => {
+      setIsOpen(true)
+    }
+
+    const onMapClick = useCallback((e) => {
         setMarkers((current) => [
           ...current,
           {
@@ -109,32 +113,40 @@ export default function CreateArtWalk(){
       history.push(`/artwalks/${res.id}`)
     }
 
-      const mapRef = React.useRef();
-      const onMapLoad = React.useCallback((map) => {
+      const mapRef = useRef();
+      const onMapLoad = useCallback((map) => {
         mapRef.current = map;
       }, []);
 
-      const panTo = React.useCallback(({ lat, lng }) => {
+      const panTo = useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
       }, []);
 
   return (
     <>
-      <Modal style={customStyles} isOpen={showModal}>
+      <Modal
+        style={customStyles}
+        isOpen={modalIsOpen}
+        onRequestClose={onClick}
+        >
           <form onSubmit={onClick}>
               <div>
-                  <h2>Create A Name For Your Walk</h2>
-                  <input
+                <h2>Create A Name For Your Walk</h2>
+                <input
                   type='text'
                   placeholder='Art Walk Name'
                   value={artWalkName}
                   onChange={(e) => setArtWalkName(e.target.value)}
-                  >
-                  </input>
+                />
               </div>
               <div>
-                  <button type="submit" disabled={artWalkName.length ? false : true}>Enter</button>
+                <button
+                  type="submit"
+                  disabled={artWalkName.length ? false : true}
+                >
+                  Enter
+                </button>
               </div>
           </form>
       </Modal>
@@ -142,34 +154,46 @@ export default function CreateArtWalk(){
         <div className="artMapPageContainer">
           <div id="artWalkCardList">
             <h1>New Art Walk: {artWalkName}</h1>
-            <button type="submit" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>Get Walkin!</button>
-              {artWalkList.length > 10 &&
-              <h2>You have added too many artwalks</h2>}
-              {artWalkList && artWalkList.map((location) => (
-                <div className='artWalkCard'>
-                  {console.log(location)}
-                  <ArtCard location={location}/>
-                </div>
-                ))
-              }
+            {!artWalkName.length ? (
+              <button
+                type="button"
+                onClick={openModal}
+              >
+                Step 1: Create A Name For Your Walk
+              </button>
+            ) : (
+            <button
+              type="submit"
+              disabled={!artWalkList.length || artWalkList.length > 10}
+              onClick={handleSubmit}
+            >
+              Get Walkin!
+            </button>) }
+
+          {artWalkList.length > 10 &&
+            <h2>You have added too many artwalks</h2>}
+            {artWalkList && artWalkList.map((location) => (
+              <div className='artWalkCard'>
+                {console.log(location)}
+                <ArtCard location={location}/>
+              </div>
+            ))}
           </div>
           <div className="allArtMapContainer">
             <GoogleMap
-                id="map"
-                mapContainerStyle={mapContainerStyle}
-                zoom={12}
-                center={center}
-                options={options}
-                onClick={onMapClick}
-                onLoad={onMapLoad}
+              id="map"
+              mapContainerStyle={mapContainerStyle}
+              zoom={12}
+              center={center}
+              options={options}
+              onClick={onMapClick}
+              onLoad={onMapLoad}
             >
             {locations.length > 0 && locations.map((location) => (
-              <Marker
+            <Marker
               key={location.id}
               position={{lat: location.lat, lng: location.long}}
-              onClick={() => {
-                  setSelected(location);
-              }}
+              onClick={() => {setSelected(location)}}
               icon={{
                   scaledSize: new window.google.maps.Size(30,30),
                   origin: new window.google.maps.Point(0, 0),
@@ -177,7 +201,6 @@ export default function CreateArtWalk(){
                 }}
               />
             ))}
-
             {selected && (
               <InfoWindow
                 onCloseClick={() => {
@@ -186,13 +209,20 @@ export default function CreateArtWalk(){
                 position={{lat: selected.lat, lng: selected.long}}
               >
                 <div>
-                  <img src={selected.photos[0].url} alt='wallArt' style={{height: "300px", width: "300px"}}/>
-                  <p><b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}</b></p>
-                  <button id={selected.id} onClick={addToWalk}>Add to Walk</button>
-                </div>
+                  <img
+                    src={selected.photos[0].url}
+                    alt='wallArt'
+                    style={{height: "300px", width: "300px"}}
+                  />
+                  <p>
+                    <b>Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
+                  </b>
+                </p>
+                <button id={selected.id} onClick={addToWalk}>Add to Walk</button>
+              </div>
               </InfoWindow>
             )}
-            </GoogleMap>
+              </GoogleMap>
           </div>
         </div>
       </div>
