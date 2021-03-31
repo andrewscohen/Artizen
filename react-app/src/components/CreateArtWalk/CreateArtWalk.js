@@ -129,9 +129,14 @@ export default function CreateArtWalk(){
         isOpen={modalIsOpen}
         onRequestClose={onClick}
         >
-          <form onSubmit={onClick}>
-              <div>
-                <h2>Create A Name For Your Walk</h2>
+          <form className='create-modal-form' onSubmit={onClick}>
+              <div className='create-modal-top-row'>
+                <h1>Create A Name For Your Walk</h1>
+                <button className="btn__x" onClick={onClick}>
+                    <i className="fas fa-times"></i>
+                </button>
+             </div>
+             <div>
                 <input
                   type='text'
                   placeholder='Art Walk Name'
@@ -139,7 +144,7 @@ export default function CreateArtWalk(){
                   onChange={(e) => setArtWalkName(e.target.value)}
                 />
               </div>
-              <div>
+              <div className='create-modal-enter'>
                 <button
                   type="submit"
                   disabled={artWalkName.length ? false : true}
