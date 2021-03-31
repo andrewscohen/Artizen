@@ -1,3 +1,27 @@
 .footer {
   background-color: rgb(36, 34, 34);
+  position: absolute;
+  bottom: 7em;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-section {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 1em;
+}
+
+.footer-section a {
+  color: white;
+}
+
+.footer-section a:hover {
+  color: #fe3a9e;
+}
+
+.footer p {
+  color: white;
 }
