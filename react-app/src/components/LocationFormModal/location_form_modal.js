@@ -127,8 +127,8 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
             >
           
           <div className="new-location-form">
-            <div>
-            <h1 className='new-location-top-row'>Add Location</h1>
+            <div className='new-location-top-row'>
+            <h1 >Add Location</h1>
               {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)}
               <button className="btn__x" onClick={closeModal}>
                 <i className="fas fa-times" />
@@ -194,16 +194,20 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                   onChange={e => setDescription(e.target.value)}
                 />
               </div>
-              <div>
-                <label>Upload A Photo </label>
-                <input
-                  type="file"
-                  onChange={e => setPhoto(e.target.files[0])}
-                  required
-                />
-              </div>
               <div className='new-location-submit'>
-                <button type="submit">Create Location</button>
+                <div >
+                  <label >Upload A Photo
+                  <input
+                    className='add-photo-btn'
+                    type="file"
+                    onChange={e => setPhoto(e.target.files[0])}
+                    required
+                  /> 
+                </label>
+                </div>
+                <div>
+                  <button type="submit">Create Location</button>
+                </div>
               </div>
             </form>
           </div>
