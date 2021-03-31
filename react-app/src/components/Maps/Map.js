@@ -34,22 +34,10 @@ export default function Gmap() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
 
   useEffect(() => {
     dispatch(getAllLocations());
-  }, []);
-
-  const onMapClick = React.useCallback(e => {
-    setMarkers(current => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
+  }, [dispatch]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback(map => {
@@ -86,7 +74,6 @@ export default function Gmap() {
         zoom={13}
         center={center}
         options={options}
-        onClick={onMapClick}
         onLoad={onMapLoad}
       >
         {locations.length > 0 &&
