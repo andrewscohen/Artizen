@@ -5,37 +5,37 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-section">
         <p>Andrew Cohen</p>
-        <a href="#">
+        <a href="https://github.com/andrewscohen" target="_blank">
           <i class="fab fa-github"></i>
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/mrandrewcohen/" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
       <div className="footer-section">
         <p>Austin Howard</p>
-        <a href="#">
+        <a href="https://github.com/Austin-from-TX" target="_blank">
           <i class="fab fa-github"></i>
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/stevenaustinhoward/" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
       <div className="footer-section">
         <p>Matt Kufchak</p>
-        <a href="#">
+        <a href="https://github.com/cellomatt" target="_blank">
           <i class="fab fa-github"></i>
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/mattkufchak/" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
       <div className="footer-section">
         <p>Rob Daraban</p>
-        <a href="#">
+        <a href="https://github.com/darabandev" target="_blank">
           <i class="fab fa-github"></i>
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/robertdaraban/" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>

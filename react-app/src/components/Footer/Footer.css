@@ -16,6 +16,8 @@
 
 .footer-section a {
   color: white;
+  transition: 0.2s all;
+  font-size: 1.2em;
 }
 
 .footer-section a:hover {
