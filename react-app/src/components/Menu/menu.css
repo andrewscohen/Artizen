@@ -48,7 +48,6 @@
 .btn--hamburger {
   background-color: transparent;
   border: none;
-  /* border-radius: 5px; */
   outline: none;
   color: black;
   padding: .3em .4em .2em;
@@ -60,6 +59,7 @@
 }
 
 .btn--dropdown {
+  outline: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -68,7 +68,6 @@
   background-color: transparent;
   border: none;
   padding: 0.5em 0.6em;
-  /* border-radius: 5px; */
   width: 100%;
   height: 2.2em;
   text-align: right;
