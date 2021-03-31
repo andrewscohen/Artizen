@@ -28,23 +28,23 @@ const customStyles = {
 };
 
 const AuthModal = ({setAuthenticated, setDisplay}) => {
-    const [showModal, setShowModal] = useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [showLoginForm, setShowLoginForm] = useState(true);
 
     const showSignUpModal = () => {
         setShowLoginForm(false)
-        setShowModal(true)
+        setIsOpen(true)
         setDisplay(false)
     }
 
     const showLoginModal = () => {
         setShowLoginForm(true)
-        setShowModal(true)
+        setIsOpen(true)
         setDisplay(false)
     }
 
     const onClick = () => {
-        setShowModal(false);
+        setIsOpen(false);
         setDisplay(true);
     }
 
@@ -53,7 +53,11 @@ const AuthModal = ({setAuthenticated, setDisplay}) => {
         <>
             <button className="login-btn" onClick={() => showLoginModal()}><i className="fas fa-user"></i>Login</button>
             <button className="signup-btn" onClick={() => showSignUpModal()}>Sign Up</button>
-            <Modal style={customStyles} isOpen={showModal} ariaHideApp={false}>
+            <Modal
+                style={customStyles}
+                isOpen={modalIsOpen}
+                onRequestClose={onClick}
+                >
             {
                 showLoginForm ?
                 <>
