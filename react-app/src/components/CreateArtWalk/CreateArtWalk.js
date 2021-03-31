@@ -51,49 +51,6 @@ const center = {
   lng: -97.74073530134736,
 };
 
-export default function CreateArtWalk() {
-  const { allLocations } = useSelector(state => state.locations);
-  const locations = useSelector(state => Object.values(state.locations.allLocations));
-  const sessionUser = useSelector(state => state.session.user);
-
-  const [newArtWalk, setNewArtWalk] = useState(false);
-  const [artWalkName, setArtWalkName] = useState("");
-  const [showModal, setShowModal] = useState(true);
-  const [loaded, setLoaded] = useState(false);
-  const [markers, setMarkers] = React.useState([]);
-  const [artWalkList, setArtWalkList] = useState([]);
-  const [selected, setSelected] = React.useState(null);
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  useEffect(() => {
-    dispatch(locationActions.getAllLocations());
-    setLoaded(true);
-  }, [dispatch]);
-
-  const onClick = () => {
-    setShowModal(false);
-  };
-
-  const onMapClick = React.useCallback(e => {
-    setMarkers(current => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
-
-  const addToWalk = async e => {
-    const id = e.target.id.toString();
-    const location = allLocations[id];
-    setArtWalkList(artWalkList => [...artWalkList, location]);
-    setSelected(null);
-  };
-
 export default function CreateArtWalk(){
     const {allLocations} = useSelector((state) => state.locations)
     const locations = useSelector((state) => Object.values(state.locations.allLocations));
