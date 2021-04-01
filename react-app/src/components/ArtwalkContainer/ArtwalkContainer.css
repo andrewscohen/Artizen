@@ -9,6 +9,7 @@
   background-color: #1cc3d9;
   min-height: 417px;
   justify-content: space-between;
+  position: relative;
 }
 
 .artwalk-container__info {
@@ -48,8 +49,12 @@
   border-radius: 4px;
   z-index: 100;
   align-self: flex-end;
+  /* justify-self: flex-end; */
   margin: 0 1em 1em 0;
   font-size: 1.2em;
+  position: absolute;
+  bottom: 0;
+  /* right: 0; */
 }
 
 .trash:hover {

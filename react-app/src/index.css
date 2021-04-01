@@ -24,6 +24,15 @@ body {
 	background-color: #fc2393;
 }
 
+.btn-main:disabled{
+	background-color: #e77cb3;
+	color: rgb(92, 81, 81);
+}
+
+.btn-main:disabled:hover {
+	box-shadow: none;
+}
+
 .btn-secondary {
 	padding: 5px 10px;
 	width: 6rem;

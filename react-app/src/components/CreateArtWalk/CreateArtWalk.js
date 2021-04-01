@@ -7,12 +7,13 @@ import Modal from "react-modal";
 // COMPONENT IMPORTS
 import Footer from "../Footer";
 import ArtCard from "../ArtCard/ArtCard";
+import ArtLocationContainer from "../ArtLocationContainer";
 import DisplayWindow from "../Maps/DisplayWindow"
 
 // CSS/STYING IMPORTS
 import "@reach/combobox/styles.css";
 import "../ArtCard/artcard.css";
-import "./creatArtWalk.css";
+import "./createArtWalk.css";
 import mapStyle from "../Maps/mapStyle.js";
 
 // REDUX STORE IMPORTS
@@ -44,10 +45,8 @@ const customStyles = {
 };
 
 const mapContainerStyle = {
-  height: "88vh",
-  width: "80vw",
-  // marginLeft: "20em",
-  float: "left",
+  height: "100vh",
+  width: "100%",
 };
 const options = {
   styles: mapStyle,
@@ -146,31 +145,34 @@ export default function CreateArtWalk() {
               </div>
           </form>
       </Modal >
-      <div className="main">
+      <div className="main" style={{overflow: "hidden" }}>
         <div className="artMapPageContainer">
-          <div id="artWalkCardList">
-            <h1>New Art Walk: {artWalkName}</h1>
-            {!artWalkName.length ? (
-              <button type="button" onClick={openModal}>
-                Name Your Art Walk
-              </button>
-            ) : (
-              <button type="submit" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>
-                Get Walkin!
-              </button>
-            )}
-
+          <div id="artWalkCardListContainer">
+            <div className="artWalkTitleContainer">
+              <h1>New Art Walk: <br/>{artWalkName}</h1>
+              {!artWalkName.length ? (
+                <button type="button" className="btn-main" onClick={openModal}>
+                  Name Your Art Walk
+                </button>
+              ) : (
+                <button type="submit" className="btn-main" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>
+                  Get Walkin!
+                </button>
+              )}
+            </div>
             {artWalkList.length > 10 && <h2>You have added too many artwalks</h2>}
-            {artWalkList &&
-              artWalkList.map(location => (
-                <div className="artWalkCard" key={location.id}>
-                  <ArtCard
-                    location={location}
-                    artWalkList={artWalkList}
-                    setArtWalkList={setArtWalkList}
-                  />
-                </div>
-              ))}
+            <div className="artWalkCardList">
+              {artWalkList &&
+                artWalkList.map(location => (
+                  <div className="artWalkCard" key={location.id}>
+                    <ArtCard
+                      location={location}
+                      artWalkList={artWalkList}
+                      setArtWalkList={setArtWalkList}
+                      />
+                  </div>
+                ))}
+            </div>
           </div>
           <div className="allArtMapContainer">
             {/* {showDisplayWindow && (

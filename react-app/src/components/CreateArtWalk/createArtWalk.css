@@ -1,17 +1,42 @@
+.allArtMapContainer {
+width: 100%;
+height: 100%;
+}
+
 .artMapPageContainer {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  height: 100vh;
+  margin-bottom: 20em;
 }
 
-#artWalkCardList {
+.artWalkCardList {
+  height: 100%;
+  overflow-y: auto;
+  overflow: overlay;
+  padding-bottom: 10em;
+}
+
+#artWalkCardListContainer {
   background-color: lightgrey;
-  height: 1000px;
-  width: 30%;
+  height: 100%;
+  width: 550px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  padding-bottom: 10em;
+  /* overflow: hidden; */
+  padding-bottom: 30em;
+  align-items: center;
+}
+
+.artWalkTitleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em 2em;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 p {
