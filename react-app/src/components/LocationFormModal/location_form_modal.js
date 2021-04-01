@@ -17,7 +17,7 @@ const customStyles = {
         transform: "translate(-50%, -50%)",
         padding: "2.5em",
         backgroundColor: "rgba(254, 58, 158, .7)",
-        borderRadius: "2px",
+        borderRadius: "5px",
         border: "none",
         width: "fit-content",
         boxSizing: "border-box",
@@ -134,7 +134,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 <i className="fas fa-times" />
               </button>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className="location-form" onSubmit={handleSubmit}>
               <div>
                 <input
                   type="text"
@@ -194,17 +194,19 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                   onChange={e => setDescription(e.target.value)}
                 />
               </div>
+              <div className="file-input-div">
+                {/* <label for="photo-upload">Upload A Photo */}
+                {/* </label> */}
+                <input
+                  className="file-input"
+                  id="photo-upload"
+                  type="file"
+                  accept="image/*"
+                  onChange={e => setPhoto(e.target.files[0])}
+                  required
+                />
+              </div>
               <div className='new-location-submit'>
-                <div >
-                  <label >Upload A Photo
-                  <input
-                    className='add-photo-btn'
-                    type="file"
-                    onChange={e => setPhoto(e.target.files[0])}
-                    required
-                  />
-                </label>
-                </div>
                 <div>
                   <button type="submit">Create Location</button>
                 </div>

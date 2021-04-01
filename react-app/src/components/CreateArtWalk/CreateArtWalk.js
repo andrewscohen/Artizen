@@ -23,14 +23,14 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     padding: "1.5em",
     backgroundColor: "rgba(254, 58, 158, .7)",
-    borderRadius: "2px",
+    borderRadius: "5px",
     border: "none",
-    width: "40%",
+    width: "400px",
     boxSizing: "border-box",
   },
   overlay: {
     // backgroundColor: "transparent",
-    backgroundColor: "rgba(0, 0, 0, .6)",
+    backgroundColor: "rgba(0, 0, 0, .8)",
     zIndex: "100",
   },
 };
@@ -112,7 +112,7 @@ export default function CreateArtWalk() {
         >
           <form className='create-modal-form' onSubmit={onClick}>
               <div className='create-modal-top-row'>
-                <h1>Create A Name For Your Walk</h1>
+                <h1>Name Your Art Walk</h1>
                 <button className="btn__x" onClick={onClick}>
                     <i className="fas fa-times"></i>
                 </button>
@@ -120,7 +120,7 @@ export default function CreateArtWalk() {
              <div>
                 <input
                   type='text'
-                  placeholder='Art Walk Name'
+                  placeholder='i.e. "Artsy Stroll"'
                   value={artWalkName}
                   onChange={(e) => setArtWalkName(e.target.value)}
                 />
@@ -141,7 +141,7 @@ export default function CreateArtWalk() {
             <h1>New Art Walk: {artWalkName}</h1>
             {!artWalkName.length ? (
               <button type="button" onClick={openModal}>
-                Step 1: Create A Name For Your Walk
+                Name Your Art Walk
               </button>
             ) : (
               <button type="submit" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>

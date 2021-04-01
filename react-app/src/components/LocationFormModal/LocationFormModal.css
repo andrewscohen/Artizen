@@ -1,3 +1,10 @@
+  .location-form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .new-location-form div {
     display: flex;
     justify-content: space-between;
@@ -16,9 +23,7 @@
   }
 
   .modal-container {
-
     font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
   }
 
   .btn__x {
@@ -65,12 +70,13 @@
 
 .new-location-submit {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .new-location-submit button {
   padding: 7px 10px;
-  width: 7rem;
   flex-wrap: nowrap;
   color: white;
   border: 1px solid #fe3a9e;
@@ -83,7 +89,7 @@
   font-size: 1em;
 }
 
-.new-location-submit label {
+/* .new-location-submit label {
   padding: 7px 10px;
   width: 7rem;
   flex-wrap: nowrap;
@@ -96,28 +102,55 @@
   cursor: pointer;
   margin: 0 1.5em;
   font-size: 1em;
-}
+} */
 
-.new-location-submit button:hover {
+.new-location-submit button:hover,
+input::-webkit-file-upload-button:hover
+{
   box-shadow: 0 0 4px #FFE41C;
   background-color: #18b9ce;
 }
 
-.new-location-submit label:hover {
+/* .new-location-submit label:hover {
   box-shadow: 0 0 4px #FFE41C;
   background-color: #18b9ce;
+} */
+
+.file-input-div {
+  width: 100%;
 }
 
-.new-location-form input {
+.file-input {
+  background-color: rgba(255,  255,  255, 0.5);
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: .3em 0;
+  /* padding: .3em; */
+  outline: none;
+}
+
+input::-webkit-file-upload-button {
+  padding: 4px 10px;
+  color: white;
+  border: 1px solid #fe3a9e;
+  background-color: #1CC3D9;
+  font-family: "Rubik";
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* margin: 0 1.5em; */
+  font-size: 1em;
+}
+
+.location-form input {
   border: 1px solid #1CC3D9;
   border-radius: 2px;
   padding: 0.3em;
   outline: none;
   width: 100%;
-
 }
 
-.new-location-form input:focus {
+.location-form input:focus {
   box-shadow: 0 0 3px #1CC3D9;
 }
 
