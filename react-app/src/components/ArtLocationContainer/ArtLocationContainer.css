@@ -7,8 +7,9 @@
   width: 320px;
   margin: 1.8em;
   background-color: #1cc3d9;
-  min-height: 510px;
+  min-height: 450px;
   justify-content: space-between;
+  position: relative;
 }
 
 .artlocation-container__info {
@@ -32,7 +33,7 @@
 .artlocation-title {
   text-shadow: 1px 1px 0px #fe3a9e;
   margin: 0;
-  font-size: 2.8em;
+  font-size: 2.6em;
 }
 
 .artlocation-image {

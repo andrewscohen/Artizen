@@ -12,7 +12,7 @@ import DisplayWindow from "../Maps/DisplayWindow"
 // CSS/STYING IMPORTS
 import "@reach/combobox/styles.css";
 import "../ArtCard/artcard.css";
-import "./creatArtWalk.css";
+import "./createArtWalk.css";
 import mapStyle from "../Maps/mapStyle.js";
 
 // REDUX STORE IMPORTS
@@ -44,10 +44,8 @@ const customStyles = {
 };
 
 const mapContainerStyle = {
-  height: "88vh",
-  width: "80vw",
-  // marginLeft: "20em",
-  float: "left",
+  height: "calc(100vh - 7em)",
+  width: "100%",
 };
 const options = {
   styles: mapStyle,
@@ -55,9 +53,11 @@ const options = {
   zoomControl: true,
 };
 const center = {
-  lat: 30.275528863705016,
-  lng: -97.74073530134736,
+  lat: 30.27057,
+  lng: -97.74307,
 };
+
+
 
 export default function CreateArtWalk() {
   const { allLocations } = useSelector(state => state.locations);
@@ -156,31 +156,34 @@ export default function CreateArtWalk() {
               </div>
           </form>
       </Modal >
-      <div className="main">
+      <div className="main" style={{overflow: "hidden" }}>
         <div className="artMapPageContainer">
-          <div id="artWalkCardList">
-            <h1>New Art Walk: {artWalkName}</h1>
-            {!artWalkName.length ? (
-              <button type="button" onClick={openModal}>
-                Name Your Art Walk
-              </button>
-            ) : (
-              <button type="submit" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>
-                Get Walkin!
-              </button>
-            )}
-
+          <div id="artWalkCardListContainer">
+            <div className="artWalkTitleContainer">
+              <h1>New Art Walk: <br/>{artWalkName}</h1>
+              {!artWalkName.length ? (
+                <button type="button" className="btn-main" onClick={openModal}>
+                  Name Your Art Walk
+                </button>
+              ) : (
+                <button type="submit" className="btn-main" disabled={artWalkList.length < 2 || artWalkList.length > 10} onClick={handleSubmit}>
+                  Get Walkin!
+                </button>
+              )}
+            </div>
             {artWalkList.length > 10 && <h2>You have added too many artwalks</h2>}
-            {artWalkList &&
-              artWalkList.map(location => (
-                <div className="artWalkCard" key={location.id}>
-                  <ArtCard
-                    location={location}
-                    artWalkList={artWalkList}
-                    setArtWalkList={setArtWalkList}
-                  />
-                </div>
-              ))}
+            <div className="artWalkCardList">
+              {artWalkList &&
+                artWalkList.map(location => (
+                  <div className="artWalkCard" key={location.id}>
+                    <ArtCard
+                      location={location}
+                      artWalkList={artWalkList}
+                      setArtWalkList={setArtWalkList}
+                      />
+                  </div>
+                ))}
+            </div>
           </div>
           <div className="allArtMapContainer">
             {/* {showDisplayWindow && (
@@ -195,7 +198,7 @@ export default function CreateArtWalk() {
               <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
-                zoom={12}
+                zoom={13}
                 center={center}
                 options={options}
                 onLoad={onMapLoad}
@@ -211,9 +214,9 @@ export default function CreateArtWalk() {
                       }}
                       icon={{
                         url: location.photos[0].url,
-                        scaledSize: new window.google.maps.Size(30, 30),
+                        scaledSize: new window.google.maps.Size(40, 40),
                         origin: new window.google.maps.Point(0, 0),
-                        anchor: new window.google.maps.Point(15, 15),
+                        anchor: new window.google.maps.Point(20, 20),
                       }}
                       onLoad={onMapLoad}
                     />

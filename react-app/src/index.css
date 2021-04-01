@@ -24,6 +24,15 @@ body {
 	background-color: #fc2393;
 }
 
+.btn-main:disabled{
+	background-color: #e77cb3;
+	color: rgb(92, 81, 81);
+}
+
+.btn-main:disabled:hover {
+	box-shadow: none;
+}
+
 .btn-secondary {
 	padding: 5px 10px;
 	width: 6rem;
@@ -76,14 +85,17 @@ body {
   transform: translateY(-50%);
 }
 
-.main::-webkit-scrollbar {
+.main::-webkit-scrollbar,
+.artWalkCardList::-webkit-scrollbar {
 	width: 13px;
 }
 
-.main::-webkit-scrollbar-thumb {
+.main::-webkit-scrollbar-thumb,
+.artWalkCardList::-webkit-scrollbar-thumb {
 	background-color: #fe3a9e;
 }
 
-.main::-webkit-scrollbar-thumb:hover {
+.main::-webkit-scrollbar-thumb:hover,
+.artWalkCardList::-webkit-scrollbar-thumb:hover {
 	background-color: #c52f7c;
 }
