@@ -71,7 +71,7 @@ export default function UserProfile() {
           {artwalksArray.length > 0 && (
             <div className="user_main">
               {artwalksArray.map(artwalk => {
-                return <ArtwalkContainer artwalk={artwalk} change={change} setChange={setChange} />;
+                return <ArtwalkContainer key={artwalk.id} artwalk={artwalk} change={change} setChange={setChange} />;
               })}
             </div>
           )}

@@ -51,7 +51,7 @@ export default function ArtwalkView() {
             </div>
             <div className="locationsContainer">
               {locationsArray.map(location => {
-                return <ArtLocationContainer showDelete={showDelete} location={location} />;
+                return <ArtLocationContainer key={location.id} showDelete={showDelete} location={location} />;
               })}
             </div>
           </div>
