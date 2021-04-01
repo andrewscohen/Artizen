@@ -163,7 +163,7 @@ export default function CreateArtWalk() {
             {artWalkList.length > 10 && <h2>You have added too many artwalks</h2>}
             {artWalkList &&
               artWalkList.map(location => (
-                <div className="artWalkCard">
+                <div className="artWalkCard" key={location.id}>
                   <ArtCard
                     location={location}
                     artWalkList={artWalkList}
@@ -173,7 +173,7 @@ export default function CreateArtWalk() {
               ))}
           </div>
           <div className="allArtMapContainer">
-            {showDisplayWindow && (
+            {/* {showDisplayWindow && (
               <DisplayWindow
                 setShowDisplayWindow={setShowDisplayWindow}
                 setSelected={setSelected}
@@ -181,7 +181,7 @@ export default function CreateArtWalk() {
                 addToWalk={addToWalk}
                 id="artwalkListDisplayWindow"
               />
-            )}
+            )} */}
               <GoogleMap
                 id="map"
                 mapContainerStyle={mapContainerStyle}
@@ -208,7 +208,7 @@ export default function CreateArtWalk() {
                       onLoad={onMapLoad}
                     />
                   ))}
-                {/* {selected && (
+                {selected && (
                   <InfoWindow
                     onCloseClick={() => {
                       setSelected(null);
@@ -227,7 +227,7 @@ export default function CreateArtWalk() {
                       </button>
                     </div>
                   </InfoWindow>
-                )} */}
+                )}
               </GoogleMap>
           </div>
         </div>
