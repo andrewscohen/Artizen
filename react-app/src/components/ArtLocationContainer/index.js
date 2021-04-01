@@ -6,7 +6,6 @@ export default function ArtLocationContainer({ showDelete, location, change, set
   const dispatch = useDispatch();
   const handleDelete = async event => {
     event.stopPropagation();
-    console.log(location.id);
     await dispatch(locationActions.deleteOneLocation(location.id)).then(() => setChange(change => !change));
   };
 

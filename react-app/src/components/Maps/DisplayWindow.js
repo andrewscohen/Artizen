@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./DisplayWindow.css";
 
-const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected }) => {
+const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk }) => {
+
+  const currentLocation = useLocation()
+
   const handleDisplayWindowClose = () => {
     setShowDisplayWindow(false);
     setSelected(null);
@@ -23,7 +26,11 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected }) => {
         </p>
       </div>
       <div className="map-display-link-container">
-        <Link to={`/locations/${selected.id}`}>See Details</Link>
+        {currentLocation.pathname === "/artwalks/add/new" ? (
+            <button id={selected.id} onClick={addToWalk}>
+            Add to Walk
+          </button>
+        ) : (<Link to={`/locations/${selected.id}`}>See Details</Link>)}
       </div>
     </div>
   );

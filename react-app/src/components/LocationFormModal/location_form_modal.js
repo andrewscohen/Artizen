@@ -76,7 +76,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
     e.preventDefault();
     let newErrors = [];
     const address = `${street_address} ${city} ${state} ${zip_code}`;
-    console.log("ADDRESS: ", address);
     const { lat, long } = await getCoords(address);
     dispatch(
       locationActions.addLocation({

@@ -10,6 +10,7 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const [repeatPassword, setRepeatPassword] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +23,11 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
         dispatch(setUser(user));
         setAuthenticated(true);
         history.push("/dashboard")
+      } else {
+        setErrors(user.errors);
       }
+    } else {
+      return setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
 
@@ -56,6 +61,13 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
 
   return (
     <form className="signup-modal-form" onSubmit={onSignUp}>
+      {errors.length > 0 &&
+        <div className="errors">
+          {errors.map((error) => (
+          <div>{error}</div>
+          ))}
+        </div>
+      }
       <div>
         <input
           type="text"
