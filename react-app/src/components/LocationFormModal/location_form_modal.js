@@ -15,9 +15,9 @@ const customStyles = {
         bottom: "auto",
         marginRight: "-50%",
         transform: "translate(-50%, -50%)",
-        padding: "1.5em",
+        padding: "2.5em",
         backgroundColor: "rgba(254, 58, 158, .7)",
-        borderRadius: "2px",
+        borderRadius: "5px",
         border: "none",
         width: "fit-content",
         boxSizing: "border-box",
@@ -124,32 +124,32 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
             >
-          <button className="btn__x" onClick={closeModal}>
-            <i className="fas fa-times" />
-          </button>
+
           <div className="new-location-form">
-            <h1>Add Location</h1>
+            <div className='new-location-top-row'>
+            <h1 >Add Location</h1>
               {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)}
-            <form onSubmit={handleSubmit}>
+              <button className="btn__x" onClick={closeModal}>
+                <i className="fas fa-times" />
+              </button>
+            </div>
+            <form className="location-form" onSubmit={handleSubmit}>
               <div>
-                <label>Artwork Title</label>
                 <input
                   type="text"
-                  placeholder="Title (optional)"
+                  placeholder="Artwork Title (optional)"
                   value={title}
                   onChange={e => setTitle(e.target.value)} />
               </div>
               <div>
-                <label>Artist Name</label>
                 <input
                   type="text"
-                  placeholder="Artist (optional)"
+                  placeholder="Artist Name (optional)"
                   value={artist}
                   onChange={e => setArtist(e.target.value)}
                 />
               </div>
               <div>
-                <label>Street Address</label>
                 <input
                   type="text"
                   placeholder="Street Address"
@@ -159,7 +159,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>City</label>
                 <input
                   type="text"
                   placeholder="City"
@@ -169,7 +168,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>State</label>
                 <input
                   type="text"
                   placeholder="State"
@@ -179,7 +177,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>Zip Code</label>
                 <input
                   type="number"
                   placeholder="Zip Code"
@@ -189,7 +186,6 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <label>Description</label>
                 <input
                   type="textarea"
                   placeholder="Description (optional)"
@@ -197,16 +193,22 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                   onChange={e => setDescription(e.target.value)}
                 />
               </div>
-              <div>
-                <label>Upload A Photo </label>
+              <div className="file-input-div">
+                <label for="photo-upload">Upload A Photo
                 <input
+                  className="file-input"
+                  id="photo-upload"
                   type="file"
+                  accept="image/*"
                   onChange={e => setPhoto(e.target.files[0])}
                   required
-                />
+                  />
+                </label>
               </div>
-              <div>
-                <button type="submit">Create Location</button>
+              <div className='new-location-submit'>
+                <div>
+                  <button type="submit">Create Location</button>
+                </div>
               </div>
             </form>
           </div>

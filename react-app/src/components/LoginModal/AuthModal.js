@@ -51,7 +51,7 @@ const AuthModal = ({setAuthenticated, setDisplay}) => {
 
     return (
         <>
-            <button className="login-btn" onClick={() => showLoginModal()}><i className="fas fa-user"></i>Login</button>
+            <button className="login-btn" onClick={() => showLoginModal()}><i className="fas fa-user"></i> Login</button>
             <button className="signup-btn" onClick={() => showSignUpModal()}>Sign Up</button>
             <Modal
                 style={customStyles}

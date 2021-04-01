@@ -17,11 +17,111 @@
 p {
   color: black;
 }
-/*
-.artWalkCard {
-	margin-right: 100px;
-} */
 
-#artwalkListDisplayWindow {
-  margin: auto;
+.btn__x {
+    outline: none;
+    border: none;
+}
+
+.btn__x:hover {
+    text-shadow: 0 0 2px rgba(0, 0, 0, .7);
+}
+
+.create-modal-form {
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+}
+
+.create-modal-form div {
+    margin-bottom: 1.5em;
+}
+
+.create-modal-form div:last-of-type {
+    margin-bottom: 0.8em;
+}
+
+.create-modal-enter button {
+    padding: 7px 10px;
+    width: 7rem;
+    flex-wrap: nowrap;
+    color: white;
+    border: 1px solid #fe3a9e;
+    background-color: #1CC3D9;
+    font-family: "Rubik";
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 1.5em;
+    font-size: 1em;
+}
+
+.create-modal-enter button:hover {
+    box-shadow: 0 0 4px #FFE41C;
+    background-color: #18b9ce;
+}
+
+.create-modal-form input {
+    border: 1px solid #1CC3D9;
+    border-radius: 2px;
+    padding: 0.3em;
+    outline: none;
+    width: 100%;
+
+}
+
+.create-modal-form input:focus {
+    box-shadow: 0 0 3px #1CC3D9;
+}
+
+.create-modal-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.create-modal-top-row h1 {
+    font-family: "Rubik";
+}
+
+.create-modal-top-row button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding-top: 10px;
+    padding-right: 12px;
+}
+
+.create-modal-top-row button {
+    cursor: pointer;
+}
+
+.modal-bottom-text {
+    font-family: "Rubik";
+    margin: 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.switch-text {
+    color: #1CC3D9;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.create-modal-top-row {
+    color: #1CC3D9;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+::placeholder {
+    color: #fe3a9e;
+}
+
+.Overlay {
+    background-color: rgba(0, 0, 0, 0.5);
 }
