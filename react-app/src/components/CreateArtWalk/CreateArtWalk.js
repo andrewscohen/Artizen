@@ -90,12 +90,22 @@ export default function CreateArtWalk() {
     setIsOpen(true);
   };
 
+  // const artExists = () => {
+  //   for (let i = 0; i< artWalkList.length; i++) {
+  //      console.log("ARTWALKLISTID: ", artWalkList[i])
+  //   }
+  // }
+
   const addToWalk = async e => {
     const id = e.target.id.toString();
     const location = allLocations[id];
-    setShowDisplayWindow(false);
-    setArtWalkList(artWalkList => [...artWalkList, location]);
-    setSelected(null);
+    if (artWalkList.includes(location) === true) {
+        return
+      } else {
+        setShowDisplayWindow(false);
+        setArtWalkList(artWalkList => [...artWalkList, location]);
+        setSelected(null);
+    }
   };
 
   const handleSubmit = async e => {
@@ -222,9 +232,12 @@ export default function CreateArtWalk() {
                           Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
                         </b>
                       </p>
+                      {!artWalkList.includes(selected) ? (
                       <button id={selected.id} onClick={addToWalk}>
                         Add to Walk
                       </button>
+                      ) : <p>This art piece is currently in your walk</p>
+                      }
                     </div>
                   </InfoWindow>
                 )}
