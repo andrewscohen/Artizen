@@ -195,8 +195,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div className="file-input-div">
-                {/* <label for="photo-upload">Upload A Photo */}
-                {/* </label> */}
+                <label for="photo-upload">Upload A Photo
                 <input
                   className="file-input"
                   id="photo-upload"
@@ -204,7 +203,8 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                   accept="image/*"
                   onChange={e => setPhoto(e.target.files[0])}
                   required
-                />
+                  />
+                </label>
               </div>
               <div className='new-location-submit'>
                 <div>
