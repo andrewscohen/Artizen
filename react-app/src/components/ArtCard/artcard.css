@@ -9,18 +9,16 @@
 	flex-direction: column;
 } */
 
-.artWalkCard {
-	position: relative;
-}
+
 
 .artContainer {
 	display: flex;
 	flex-direction: column;
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 	border-radius: 6px;
 	border: 3px solid black;
-	width: 325px;
-	margin: 1.8em;
+	width: 315px;
+	margin: 1em;
 	background-color: #1cc3d9;
 	position: relative;
 }
