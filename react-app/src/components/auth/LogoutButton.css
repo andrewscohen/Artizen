@@ -1,4 +1,5 @@
 .logout-button {
+  outline: none;
   border-radius: 0 0 .5rem .5rem;
   display: flex;
   flex-direction: row;
