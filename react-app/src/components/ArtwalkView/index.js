@@ -17,7 +17,6 @@ export default function ArtwalkView() {
 
   useEffect(() => {
     dispatch(artwalkActions.getOneArtwalk(artwalkId));
-    console.log("dispatched thunk");
   }, [dispatch, artwalkId]);
 
   const mapContainerStyle = {

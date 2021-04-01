@@ -2,11 +2,11 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { getAllLocations } from "../../store/locations";
+import "@reach/combobox/styles.css";
+import "./Map.css";
 import Locate from "./Locate";
 import Search from "./Search";
-import "@reach/combobox/styles.css";
 import mapStyle from "./mapStyle";
-import "./Map.css";
 import DisplayWindow from "./DisplayWindow";
 
 const mapContainerStyle = {
@@ -48,8 +48,6 @@ export default function Gmap() {
     setSelected(location);
     setShowDisplayWindow(true);
   }
-
-
 
   return (
     <div className="map-container main">

@@ -123,7 +123,6 @@ export const addLocation = (locationFile) => async (dispatch) => {
     })
 
     let p_result = await photoRes.json()
-    console.log(p_result)
     if (res.ok && photoRes.ok){
             result['photos'].push(p_result.url)
             dispatch(newLocation(result))

@@ -1,17 +1,25 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
-import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
+
+// COMPONENT IMPORTS
+import Footer from "../Footer";
+import ArtCard from "../ArtCard/ArtCard";
+import DisplayWindow from "../Maps/DisplayWindow"
+
+// CSS/STYING IMPORTS
+import "@reach/combobox/styles.css";
+import "../ArtCard/artcard.css";
+import "./creatArtWalk.css";
+import mapStyle from "../Maps/mapStyle.js";
+
+// REDUX STORE IMPORTS
 import * as locationActions from "../../store/locations";
 import * as artWalkActions from "../../store/artwalks";
 
-import mapStyle from "../Maps/mapStyle.js";
-import ArtCard from "../ArtCard/ArtCard.js";
-import "../ArtCard/artcard.css";
-import "./creatArtWalk.css";
-import "@reach/combobox/styles.css";
-import Footer from "../Footer";
+
 
 const customStyles = {
   content: {
@@ -58,11 +66,14 @@ export default function CreateArtWalk() {
   const [loaded, setLoaded] = useState(false);
   const [artWalkList, setArtWalkList] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [showDisplayWindow, setShowDisplayWindow] = useState(false);
 
   const locations = useSelector(state => Object.values(state.locations.allLocations));
   const sessionUser = useSelector(state => state.session.user);
+
   const dispatch = useDispatch();
   const history = useHistory();
+  const mapRef = useRef();
 
   useEffect(() => {
     if (!loaded) {
@@ -82,12 +93,10 @@ export default function CreateArtWalk() {
   const addToWalk = async e => {
     const id = e.target.id.toString();
     const location = allLocations[id];
+    setShowDisplayWindow(false);
     setArtWalkList(artWalkList => [...artWalkList, location]);
-    console.log("ARTWALK LIST: ", artWalkList)
     setSelected(null);
   };
-
-
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -101,14 +110,17 @@ export default function CreateArtWalk() {
     history.push(`/artwalks/${res.id}`);
   };
 
-  const mapRef = useRef();
   const onMapLoad = useCallback(map => {
     mapRef.current = map;
   }, []);
 
   return (
     <>
-      <Modal style={customStyles} isOpen={modalIsOpen} onRequestClose={onClick}>
+      <Modal
+        style={customStyles}
+        isOpen={modalIsOpen}
+        onRequestClose={onClick}
+      >
         <form onSubmit={onClick}>
           <div>
             <h2>Create A Name For Your Walk</h2>
@@ -144,7 +156,6 @@ export default function CreateArtWalk() {
             {artWalkList &&
               artWalkList.map(location => (
                 <div className="artWalkCard">
-                  {console.log(location)}
                   <ArtCard
                     location={location}
                     artWalkList={artWalkList}
@@ -154,52 +165,62 @@ export default function CreateArtWalk() {
               ))}
           </div>
           <div className="allArtMapContainer">
-            <GoogleMap
-              id="map"
-              mapContainerStyle={mapContainerStyle}
-              zoom={12}
-              center={center}
-              options={options}
-              onLoad={onMapLoad}
-            >
-              {locations.length > 0 &&
-                locations.map(location => (
-                  <Marker
-                    key={location.id}
-                    position={{ lat: location.lat, lng: location.long }}
-                    onClick={() => {
-                      setSelected(location);
+            {showDisplayWindow && (
+              <DisplayWindow
+                setShowDisplayWindow={setShowDisplayWindow}
+                setSelected={setSelected}
+                selected={selected}
+                addToWalk={addToWalk}
+                id="artwalkListDisplayWindow"
+              />
+            )}
+              <GoogleMap
+                id="map"
+                mapContainerStyle={mapContainerStyle}
+                zoom={12}
+                center={center}
+                options={options}
+                onLoad={onMapLoad}
+              >
+                {locations.length > 0 &&
+                  locations.map(location => (
+                    <Marker
+                      key={location.id}
+                      position={{ lat: location.lat, lng: location.long }}
+                      onClick={() => {
+                        setSelected(location);
+                        setShowDisplayWindow(true);
+                      }}
+                      icon={{
+                        url: location.photos[0].url,
+                        scaledSize: new window.google.maps.Size(30, 30),
+                        origin: new window.google.maps.Point(0, 0),
+                        anchor: new window.google.maps.Point(15, 15),
+                      }}
+                      onLoad={onMapLoad}
+                    />
+                  ))}
+                {/* {selected && (
+                  <InfoWindow
+                    onCloseClick={() => {
+                      setSelected(null);
                     }}
-                    icon={{
-                      url: location.photos[0].url,
-                      scaledSize: new window.google.maps.Size(30, 30),
-                      origin: new window.google.maps.Point(0, 0),
-                      anchor: new window.google.maps.Point(15, 15),
-                    }}
-                    onLoad={onMapLoad}
-                  />
-                ))}
-              {selected && (
-                <InfoWindow
-                  onCloseClick={() => {
-                    setSelected(null);
-                  }}
-                  position={{ lat: selected.lat, lng: selected.long }}
-                >
-                  <div>
-                    <img src={selected.photos[0].url} alt="wallArt" style={{ height: "300px", width: "300px" }} />
-                    <p>
-                      <b>
-                        Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
-                      </b>
-                    </p>
-                    <button id={selected.id} onClick={addToWalk}>
-                      Add to Walk
-                    </button>
-                  </div>
-                </InfoWindow>
-              )}
-            </GoogleMap>
+                    position={{ lat: selected.lat, lng: selected.long }}
+                  >
+                    <div>
+                      <img src={selected.photos[0].url} alt="wallArt" style={{ height: "300px", width: "300px" }} />
+                      <p>
+                        <b>
+                          Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
+                        </b>
+                      </p>
+                      <button id={selected.id} onClick={addToWalk}>
+                        Add to Walk
+                      </button>
+                    </div>
+                  </InfoWindow>
+                )} */}
+              </GoogleMap>
           </div>
         </div>
       </div>
