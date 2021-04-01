@@ -53,14 +53,14 @@ const center = {
 
 export default function CreateArtWalk() {
   const { allLocations } = useSelector(state => state.locations);
-  const locations = useSelector(state => Object.values(state.locations.allLocations));
-  const sessionUser = useSelector(state => state.session.user);
   const [artWalkName, setArtWalkName] = useState("");
   const [modalIsOpen, setIsOpen] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const [artWalkList, setArtWalkList] = useState([]);
   const [selected, setSelected] = useState(null);
 
+  const locations = useSelector(state => Object.values(state.locations.allLocations));
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -83,8 +83,11 @@ export default function CreateArtWalk() {
     const id = e.target.id.toString();
     const location = allLocations[id];
     setArtWalkList(artWalkList => [...artWalkList, location]);
+    console.log("ARTWALK LIST: ", artWalkList)
     setSelected(null);
   };
+
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -142,7 +145,11 @@ export default function CreateArtWalk() {
               artWalkList.map(location => (
                 <div className="artWalkCard">
                   {console.log(location)}
-                  <ArtCard location={location} />
+                  <ArtCard
+                    location={location}
+                    artWalkList={artWalkList}
+                    setArtWalkList={setArtWalkList}
+                  />
                 </div>
               ))}
           </div>
