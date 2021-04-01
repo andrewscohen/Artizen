@@ -7,7 +7,6 @@ import Modal from "react-modal";
 // COMPONENT IMPORTS
 import Footer from "../Footer";
 import ArtCard from "../ArtCard/ArtCard";
-import ArtLocationContainer from "../ArtLocationContainer";
 import DisplayWindow from "../Maps/DisplayWindow"
 
 // CSS/STYING IMPORTS
@@ -167,7 +166,7 @@ export default function CreateArtWalk() {
                   Name Your Art Walk
                 </button>
               ) : (
-                <button type="submit" className="btn-main" disabled={!artWalkList.length || artWalkList.length > 10} onClick={handleSubmit}>
+                <button type="submit" className="btn-main" disabled={artWalkList.length < 2 || artWalkList.length > 10} onClick={handleSubmit}>
                   Get Walkin!
                 </button>
               )}
