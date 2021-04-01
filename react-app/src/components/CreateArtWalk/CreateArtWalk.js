@@ -171,10 +171,12 @@ export default function CreateArtWalk() {
                       setSelected(location);
                     }}
                     icon={{
+                      url: location.photos[0].url,
                       scaledSize: new window.google.maps.Size(30, 30),
                       origin: new window.google.maps.Point(0, 0),
                       anchor: new window.google.maps.Point(15, 15),
                     }}
+                    onLoad={onMapLoad}
                   />
                 ))}
               {selected && (

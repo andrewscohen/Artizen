@@ -12,15 +12,15 @@ return (
     <div className="artContainer">
         <Link to={`/locations/${location.id}`}>
             <div className="artContentContainer">
-                    <img
-                        src={location.photos[0].url}
-                        alt="locationImage"
-                        className="locationImage"
-                    />
+                <img
+                    src={location.photos[0].url}
+                    alt="locationImage"
+                    className="locationImage"
+                />
                 <div className="artContentInfo">
                     {location.title ? (
-                        <p>{location.title}</p>
-                        ) : <p>Title Unknown</p>
+                        <p>{location.title}</p>)
+                         : <p>Title Unknown</p>
                     }
                     {location.artist ? (
                         <p>{location.artist}</p>

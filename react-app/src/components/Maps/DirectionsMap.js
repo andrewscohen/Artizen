@@ -1,26 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useCallback, useRef} from "react";
 import {GoogleMap, DirectionsService, DirectionsRenderer} from "@react-google-maps/api";
 
 const Directions = () => {
   const [response, setResponse] = useState(null);
   const [services, setServices] = useState(true)
-
+  const mapRef = useRef();
 
   const directionsCallback = (response) => {
-    console.log("RESPONSE: ", response)
-
     if (response !== null) {
       if (response.status === 'OK') {
         setServices(false)
         setResponse(response)
-      } else {
+        } else {
         console.log('RESPONSE NOT OK: ', response)
-        }
       }
+    }
   }
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
