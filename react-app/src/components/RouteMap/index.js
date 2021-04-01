@@ -9,6 +9,7 @@ export default function Directions({ locationsArray, mapContainerStyle, options 
   const coordinates = locationsArray.map(location => {
     return { lat: location.lat, lng: location.long };
   });
+
   const waypoints = coordinates.slice(1, coordinates.length - 1).map(location => {
     return { location, stopover: true };
   });

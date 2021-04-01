@@ -33,6 +33,7 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
       {showMenu && (
         <>
         <div className="dropdown">
+            <ul>
           <div>
             <li className="dropdown__li dropdown__header--name dropdown__header--background">Welcome, {sessionUser.first_name}!</li>
           </div>
@@ -49,7 +50,7 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
           <div>
             <li className="dropdown__li">
               <Link to="/map">
-                <button className="btn--dropdown"><i class="fas fa-globe-americas btn--dropdown-icon"></i><p className="btn--dropdown-text">Explore</p></button>
+                <button className="btn--dropdown"><i className="fas fa-globe-americas btn--dropdown-icon"></i><p className="btn--dropdown-text">Explore</p></button>
               </Link>
             </li>
           </div>
@@ -72,6 +73,7 @@ export default function ProfileButton({ setAuthenticated, setDisplay }) {
               <LogoutButton setAuthenticated={setAuthenticated} setDisplay={setDisplay} />
             </li>
           </div>
+            </ul>
         </div>
         </>
       )}

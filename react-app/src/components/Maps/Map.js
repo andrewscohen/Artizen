@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import { getAllLocations } from "../../store/locations";
+import "@reach/combobox/styles.css";
+import "./Map.css";
 import Locate from "./Locate";
 import Search from "./Search";
-import "@reach/combobox/styles.css";
 import mapStyle from "./mapStyle";
-import "./Map.css";
 import DisplayWindow from "./DisplayWindow";
 
-const libraries = ["places"];
 const mapContainerStyle = {
   height: "calc(100vh - 6em)",
   width: "100%",
@@ -30,21 +29,17 @@ export default function Gmap() {
   const [selected, setSelected] = useState(null);
   const [showDisplayWindow, setShowDisplayWindow] = useState(false);
   const locations = useSelector(state => Object.values(state.locations.allLocations));
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries,
-  });
 
   useEffect(() => {
     dispatch(getAllLocations());
   }, [dispatch]);
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback(map => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback(map => {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
   }, []);
@@ -54,9 +49,6 @@ export default function Gmap() {
     setShowDisplayWindow(true);
   }
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
-
   return (
     <div className="map-container main">
       <div className="map-btns-and-display">
@@ -65,7 +57,11 @@ export default function Gmap() {
           <Search panTo={panTo} />
         </div>
         {showDisplayWindow && (
-          <DisplayWindow setShowDisplayWindow={setShowDisplayWindow} selected={selected} setSelected={setSelected} />
+          <DisplayWindow
+            setShowDisplayWindow={setShowDisplayWindow}
+            setSelected={setSelected}
+            selected={selected}
+          />
         )}
       </div>
       <GoogleMap
