@@ -38,14 +38,14 @@ const Comment = ({ comment, setUpdateContainer }) => {
         <span className="comment-date">{parseDate(comment.created_at)}</span>
       </p>
       {sessionUser.id === comment.user_id && (
-        <>
+        <div className="comment-buttons">
           <button className='edit-btn' onClick={() => setShowEditForm(true)}>
             <i className="far fa-edit"></i>
           </button>
           <button className='delete-btn' onClick={() => handleDelete(comment.id)}>
             <i className="far fa-trash-alt"></i>
           </button>
-        </>
+        </div>
       )}
     </div>
   );
