@@ -194,7 +194,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div className="file-input-div">
-                <label htmlFor="photo-upload">Upload A Photo
+                <label htmlfor="photo-upload">Upload A Photo
                 <input
                   className="file-input"
                   id="photo-upload"
