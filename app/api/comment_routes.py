@@ -7,14 +7,20 @@ from sqlalchemy import asc, desc
 
 comment_routes = Blueprint("comments", __name__)
 
+# grabs all comments for a given location and returns them in descending order
 
-@comment_routes.route("/<int:location_id>")
-@login_required
-def comments(location_id):
+
+def return_comments(location_id):
     comments = Comment.query.filter(
         Comment.location_id == location_id).order_by(desc(Comment.created_at)).all()
     data = [comment.to_dict() for comment in comments]
     return json.dumps(data)
+
+
+@comment_routes.route("/<int:location_id>")
+@login_required
+def comments(location_id):
+    return return_comments(location_id)
 
 
 @comment_routes.route("/new", methods=["POST"])
@@ -41,10 +47,7 @@ def add_comment():
 
         db.session.commit()
 
-        comments = Comment.query.filter(
-            Comment.location_id == location_id).order_by(desc(Comment.created_at)).all()
-        data = [comment.to_dict() for comment in comments]
-        return json.dumps(data)
+        return return_comments(location_id)
 
 
 @comment_routes.route("/<int:id>/delete", methods=["DELETE"])
@@ -57,10 +60,7 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
 
-    comments = Comment.query.filter(
-        Comment.location_id == location_id).order_by(desc(Comment.created_at)).all()
-    data = [comment.to_dict() for comment in comments]
-    return json.dumps(data)
+    return return_comments(location_id)
 
 
 @comment_routes.route("/<int:id>/edit", methods=["PUT"])
@@ -74,7 +74,4 @@ def edit_comment(id):
     comment.created_at = comment.created_at
     db.session.commit()
 
-    comments = Comment.query.filter(
-        Comment.location_id == location_id).order_by(desc(Comment.created_at)).all()
-    data = [comment.to_dict() for comment in comments]
-    return json.dumps(data)
+    return return_comments(location_id)
