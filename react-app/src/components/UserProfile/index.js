@@ -92,6 +92,7 @@ export default function UserProfile() {
               {locationsArray.map(location => {
                 return (
                   <ArtLocationContainer
+                    key={location.id}
                     showDelete={showDelete}
                     location={location}
                     change={change}

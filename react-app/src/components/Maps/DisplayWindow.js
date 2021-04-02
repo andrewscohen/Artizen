@@ -3,7 +3,6 @@ import "./DisplayWindow.css";
 
 const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelected, addToWalk, stickToRight }) => {
   const currentLocation = useLocation();
-  console.log(artWalkList);
   const handleDisplayWindowClose = () => {
     setShowDisplayWindow(false);
     setSelected(null);

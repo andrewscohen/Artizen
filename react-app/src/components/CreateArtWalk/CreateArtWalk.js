@@ -80,7 +80,6 @@ export default function CreateArtWalk() {
 
   const onOutsideClick = () => {
     if (artWalkName.length > 0) {
-      console.log("yass");
       setIsOpen(false);
     } else {
       setIsOpen(false);
