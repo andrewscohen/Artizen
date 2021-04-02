@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import "./DisplayWindow.css";
 
-const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk }) => {
-
-  const currentLocation = useLocation()
+const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk, stickToRight }) => {
+  const currentLocation = useLocation();
 
   const handleDisplayWindowClose = () => {
     setShowDisplayWindow(false);
@@ -11,7 +10,7 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk 
   };
 
   return (
-    <div className="map-display-window">
+    <div className={`map-display-window ${stickToRight ? "stick-to-right" : "stick-to-left"}`}>
       <div className="map-display-btn-container">
         <button onClick={handleDisplayWindowClose}>
           <i className="fas fa-times"></i>
@@ -27,10 +26,12 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk 
       </div>
       <div className="map-display-link-container">
         {currentLocation.pathname === "/artwalks/add/new" ? (
-            <button id={selected.id} onClick={addToWalk}>
+          <button id={selected.id} onClick={addToWalk}>
             Add to Walk
           </button>
-        ) : (<Link to={`/locations/${selected.id}`}>See Details</Link>)}
+        ) : (
+          <Link to={`/locations/${selected.id}`}>See Details</Link>
+        )}
       </div>
     </div>
   );
