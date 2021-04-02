@@ -11,8 +11,7 @@
 }
 
 .splash-container {
-  margin-top: 10em;
-  position: absolute;
+  /* margin-top: 10em; */
   display: flex;
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.7);
@@ -25,6 +24,10 @@
   padding: 2em 1.2em 3.5em;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .subtitle {
