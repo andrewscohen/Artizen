@@ -64,6 +64,7 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
           placeholder="Email"
           value={email}
           onChange={updateEmail}
+          autoComplete="email"
         />
       </div>
       <div>
@@ -71,6 +72,7 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
           name="password"
           type="password"
           placeholder="Password"
+          autoComplete="current-password"
           value={password}
           onChange={updatePassword}
         />

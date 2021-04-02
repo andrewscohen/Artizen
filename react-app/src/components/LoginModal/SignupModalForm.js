@@ -108,6 +108,7 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
         <input
           type="password"
           name="password"
+          autoComplete="new-password"
           placeholder="Password"
           onChange={updatePassword}
           value={password}
@@ -117,6 +118,7 @@ const SignUpModalForm = ({authenticated, setAuthenticated, setShowLoginForm}) =>
         <input
           type="password"
           name="repeat_password"
+          autoComplete="new-password"
           placeholder="Confirm Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
