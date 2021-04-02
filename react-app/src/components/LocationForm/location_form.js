@@ -13,9 +13,9 @@ const LocationForm = () => {
 
   return (
     <>
-      <>
+      <div className="main home_main">
         {newLocation && <Redirect to={`/locations/${newLocation.id}`} />}
-        <div className="splash-container-loc vertical-center" style={backgroundStyle}>
+        <div className="splash-container splash-container-loc" style={backgroundStyle}>
           {showContainer && (
             <>
               <h1 className="heading1 header">Uncover Austin's True Colors</h1>
@@ -31,7 +31,7 @@ const LocationForm = () => {
         <div className="main location_main">
           <img className="background__img" src={splashImage} alt="Uncovering Colorful Street Art" />
         </div>
-      </>
+      </div>
       <Footer bottomOfPage={true} />
     </>
   );

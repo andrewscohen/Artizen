@@ -15,15 +15,15 @@ const LocationContainer = () => {
   const [updateContainer, setUpdateContainer] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
 
-  const getLocationLocal = async () => {
-    await dispatch(getLocation(locationId));
-    dispatch(resetNewLocation());
-    setLoaded(true);
-  };
 
   useEffect(() => {
+    const getLocationLocal = async () => {
+      await dispatch(getLocation(locationId));
+      dispatch(resetNewLocation());
+      setLoaded(true);
+    };
     getLocationLocal();
-  }, [updateContainer]);
+  }, [updateContainer, dispatch, locationId]);
 
   if (!loaded) return <span>Loading</span>;
 

@@ -3,7 +3,6 @@ import "./DisplayWindow.css";
 
 const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelected, addToWalk, stickToRight }) => {
   const currentLocation = useLocation();
-  console.log(artWalkList);
   const handleDisplayWindowClose = () => {
     setShowDisplayWindow(false);
     setSelected(null);
@@ -12,7 +11,7 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelecte
   return (
     <div className={`map-display-window ${stickToRight ? "stick-to-right" : "stick-to-left"}`}>
       <div className="map-display-btn-container">
-        <button onClick={handleDisplayWindowClose}>
+        <button className="btn-main display-x" onClick={handleDisplayWindowClose}>
           <i className="fas fa-times"></i>
         </button>
       </div>
@@ -20,18 +19,22 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelecte
         <img src={selected.photos[0].url} alt="selected places" />
       </div>
       <div className="map-display-text-container">
-        <p>
-          {selected.street_address}, {selected.city}, {selected.state} {selected.zip_code}
-        </p>
+          <h3 className="artlocation-address">
+            {selected.street_address}
+            <div>
+              {selected.city}, {selected.state}
+            </div>
+            {selected.zip_code}
+          </h3>
       </div>
       <div className="map-display-link-container">
         {currentLocation.pathname === "/artwalks/add/new" ? (
           !artWalkList.includes(selected) ? (
-            <button id={selected.id} onClick={addToWalk}>
+            <button className="btn-main" id={selected.id} onClick={addToWalk}>
               Add to Walk
             </button>
           ) : (
-            <p>This art piece is currently in your walk</p>
+            <p>This art location has already been added to your walk</p>
           )
         ) : (
           <Link to={`/locations/${selected.id}`}>See Details</Link>
