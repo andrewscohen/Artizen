@@ -1,15 +1,19 @@
+.display-x {
+  margin: 0;
+}
+
 .map-display-window {
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 2;
   margin: 0;
-  padding: 0.5em;
+  padding: 1em;
   top: 5em;
   background-color: #1cc3d9;
-  color: white;
-  width: 19em;
+  width: 16em;
   border-radius: 5px;
+  border: 3px solid black;
 }
 
 .stick-to-left {
@@ -53,10 +57,11 @@
 }
 
 .map-display-text-container {
-  font-family: "Ubuntu", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.2em;
-  text-align: center;
-  height: 3em;
+  font-family: "Rubik";
+  font-size: 1em;
+  text-align: left;
+  color: black;
+  display: flex;
 }
 
 .stick-to-left .map-display-link-container {
@@ -65,7 +70,7 @@
 
 .map-display-link-container {
   text-align: center;
-  padding-top: 1em;
+  padding-top: .5em;
 }
 
 .map-display-link-container a {
@@ -73,4 +78,8 @@
   color: white;
   font-weight: bold;
   letter-spacing: 0.05em;
+}
+
+.map-display-link-container a:hover {
+  text-shadow: 1px 0 0px black;
 }

@@ -170,7 +170,12 @@ export default function CreateArtWalk() {
           <div id="artWalkCardListContainer">
             <div className="artWalkTitleContainer">
               <h1>
-                New Art Walk: <br />
+                <div className="name-div">New Art Walk: {artWalkName.length > 0 && (
+                    <button type="button" className="edit-btn artwalk-edit-btn" onClick={openModal}>
+                      <i className="far fa-edit"></i>
+                    </button>
+                    )}
+                </div>
                 {artWalkName}
               </h1>
               {!artWalkName.length ? (
@@ -184,17 +189,13 @@ export default function CreateArtWalk() {
                   disabled={artWalkList.length < 2 || artWalkList.length > 10}
                   onClick={handleSubmit}
                 >
-                  Get Walkin!
+                  Get Walkin'!
                 </button>
               )}
             </div>
-            {artWalkName && (
-              <button type="button" className="btn-main" onClick={openModal}>
-                Edit Name
-              </button>
-            )}
+
             {artWalkName.length && artWalkList.length < 1 ? (
-              <div>Click a location on the map to add it to your walk</div>
+              <div className="helper-text">Click a location image on the map to add it to your art walk</div>
             ) : null}
             {artWalkList.length > 10 && <h2>You have added too many artwalks</h2>}
             <div className="artWalkCardList">

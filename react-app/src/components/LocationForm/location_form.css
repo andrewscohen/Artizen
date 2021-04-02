@@ -1,4 +1,4 @@
-/* background-image: url(./expose-art-crop.jpg); */
+
 
 .background__img {
   height: 100%;
@@ -8,37 +8,9 @@
 }
 
 .splash-container-loc {
-  display: flex;
-  z-index: 50;
-  /* background-color: rgba(0, 0, 0, 0.7); */
-  flex-direction: column;
-  width: 50%;
-  text-align: center;
-  color: white;
-  justify-self: center;
-  box-sizing: border-box;
-  /* margin-top: .8em; */
-  padding: 1.2em;
+  width: 450px;
 }
 
-/* .subtitle {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.subtitle2 {
-  color: #fe3a9e;
-} */
-
-/* .vertical-left {
-  margin: 0;
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-} */
 
 .location_main {
   overflow: hidden;
@@ -49,7 +21,3 @@
   height: 100vh;
   width: 100%;
 }
-/*
-.heading1 {
-font-size: 45px;
-} */
