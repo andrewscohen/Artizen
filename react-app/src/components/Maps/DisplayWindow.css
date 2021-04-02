@@ -6,11 +6,18 @@
   margin: 0;
   padding: 0.5em;
   top: 5em;
-  left: 1em;
   background-color: #1cc3d9;
   color: white;
   width: 19em;
   border-radius: 5px;
+}
+
+.stick-to-left {
+  left: 1em;
+}
+
+.stick-to-right {
+  right: 1em;
 }
 
 .map-display-btn-container {
@@ -52,10 +59,13 @@
   height: 3em;
 }
 
+.stick-to-left .map-display-link-container {
+  text-decoration: underline;
+}
+
 .map-display-link-container {
   text-align: center;
   padding-top: 1em;
-  text-decoration: underline;
 }
 
 .map-display-link-container a {
