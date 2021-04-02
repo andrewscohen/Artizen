@@ -20,3 +20,28 @@
   font-size: 1.2em;
   margin: 0 0 0.2em 0;
 }
+
+.edit-btn {
+  background-color: #FFE41C;
+  padding: 5px 7px;
+  margin: 5px 0px;
+  border: 2px solid black;
+  border-radius: 20%;
+}
+
+.delete-btn {
+  background-color: #fe3a9e;
+  padding: 5px 8px;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 20%;
+}
+
+.edit-btn:hover {
+	box-shadow: 0 0 4px #fe3a9e;
+	background-color: #f1e163;
+}
+.delete-btn:hover {
+	box-shadow: 0 0 4px #fe3a9e;
+	background-color: #f169b0;
+}
