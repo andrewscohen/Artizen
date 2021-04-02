@@ -214,6 +214,7 @@ export default function CreateArtWalk() {
                 setSelected={setSelected}
                 selected={selected}
                 addToWalk={addToWalk}
+                artWalkList={artWalkList}
                 stickToRight={true}
                 id="artwalkListDisplayWindow"
               />
@@ -244,30 +245,6 @@ export default function CreateArtWalk() {
                     onLoad={onMapLoad}
                   />
                 ))}
-              {selected && (
-                <InfoWindow
-                  onCloseClick={() => {
-                    setSelected(null);
-                  }}
-                  position={{ lat: selected.lat, lng: selected.long }}
-                >
-                  <div>
-                    <img src={selected.photos[0].url} alt="wallArt" style={{ height: "300px", width: "300px" }} />
-                    <p>
-                      <b>
-                        Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
-                      </b>
-                    </p>
-                    {!artWalkList.includes(selected) ? (
-                      <button id={selected.id} onClick={addToWalk}>
-                        Add to Walk
-                      </button>
-                    ) : (
-                      <p>This art piece is currently in your walk</p>
-                    )}
-                  </div>
-                </InfoWindow>
-              )}
             </GoogleMap>
           </div>
         </div>

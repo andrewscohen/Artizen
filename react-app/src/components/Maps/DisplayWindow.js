@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import "./DisplayWindow.css";
 
-const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk, stickToRight }) => {
+const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelected, addToWalk, stickToRight }) => {
   const currentLocation = useLocation();
-
+  console.log(artWalkList);
   const handleDisplayWindowClose = () => {
     setShowDisplayWindow(false);
     setSelected(null);
@@ -26,9 +26,13 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, setSelected, addToWalk,
       </div>
       <div className="map-display-link-container">
         {currentLocation.pathname === "/artwalks/add/new" ? (
-          <button id={selected.id} onClick={addToWalk}>
-            Add to Walk
-          </button>
+          !artWalkList.includes(selected) ? (
+            <button id={selected.id} onClick={addToWalk}>
+              Add to Walk
+            </button>
+          ) : (
+            <p>This art piece is currently in your walk</p>
+          )
         ) : (
           <Link to={`/locations/${selected.id}`}>See Details</Link>
         )}

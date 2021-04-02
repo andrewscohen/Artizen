@@ -59,10 +59,13 @@
   height: 3em;
 }
 
+.stick-to-left .map-display-link-container {
+  text-decoration: underline;
+}
+
 .map-display-link-container {
   text-align: center;
   padding-top: 1em;
-  text-decoration: underline;
 }
 
 .map-display-link-container a {
