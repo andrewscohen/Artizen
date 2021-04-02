@@ -82,13 +82,15 @@ export default function CreateArtWalk() {
     }
   }, [dispatch, loaded]);
 
-  const onClick = () => {
-    setIsOpen(false);
-  };
 
   const onOutsideClick = () => {
-    setIsOpen(false);
-    // setArtWalkName('');
+    if (artWalkName.length > 0) {
+      console.log("yass")
+      setIsOpen(false);
+    } else {
+
+      setIsOpen(false);
+    }
   }
 
   const openModal = () => {
@@ -125,10 +127,7 @@ export default function CreateArtWalk() {
 
   const handleKeypress = (e) => {
     if (e.charCode === 13) {
-      // setArtWalkName(e.target.value)
-      console.log("YOU HIT ENTER!!!: ", e.charCode)
-    } else {
-      console.log("WHAT THE HECK!: ",  e.charCode)
+      handleArtWalkNameSubmit()
     }
   };
 
