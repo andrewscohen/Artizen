@@ -22,7 +22,7 @@
 }
 
 .artwalk-city {
-  margin: .8em 0 0;
+  margin: 0.8em 0 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,13 +41,13 @@
 
 .trash {
   outline: none;
-  background-color: #FFE41C;
+  background-color: #ffe41c;
   border: none;
   width: 2em;
   height: 1.8em;
   box-sizing: border-box;
   border-radius: 4px;
-  z-index: 100;
+  z-index: 50;
   align-self: flex-end;
   /* justify-self: flex-end; */
   margin: 0 1em 1em 0;

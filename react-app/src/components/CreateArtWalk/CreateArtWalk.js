@@ -82,19 +82,20 @@ export default function CreateArtWalk() {
     }
   }, [dispatch, loaded]);
 
-  const onClick = () => {
-    setIsOpen(false);
-  };
+
+  const onOutsideClick = () => {
+    if (artWalkName.length > 0) {
+      console.log("yass")
+      setIsOpen(false);
+    } else {
+
+      setIsOpen(false);
+    }
+  }
 
   const openModal = () => {
     setIsOpen(true);
   };
-
-  // const artExists = () => {
-  //   for (let i = 0; i< artWalkList.length; i++) {
-  //      console.log("ARTWALKLISTID: ", artWalkList[i])
-  //   }
-  // }
 
   const addToWalk = async e => {
     const id = e.target.id.toString();
@@ -120,6 +121,21 @@ export default function CreateArtWalk() {
     history.push(`/artwalks/${res.id}`);
   };
 
+  const handleArtWalkNameChange = (e) => {
+    setArtWalkName(e.target.value);
+  }
+
+  const handleKeypress = (e) => {
+    if (e.charCode === 13) {
+      handleArtWalkNameSubmit()
+    }
+  };
+
+  const handleArtWalkNameSubmit = (e) => {
+    setArtWalkName(artWalkName)
+    setIsOpen(false)
+  }
+
   const onMapLoad = useCallback(map => {
     mapRef.current = map;
   }, []);
@@ -129,27 +145,34 @@ export default function CreateArtWalk() {
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
-        onRequestClose={onClick}
+        onRequestClose={onOutsideClick}
         >
-          <form className='create-modal-form' onSubmit={onClick}>
+          <form className='create-modal-form'>
               <div className='create-modal-top-row'>
                 <h1>Name Your Art Walk</h1>
-                <button className="btn__x" onClick={onClick}>
+                  <button
+                    className="btn__x"
+                    onClick={onOutsideClick}
+                  >
                     <i className="fas fa-times"/>
-                </button>
+                  </button>
              </div>
              <div>
                 <input
                   type='text'
                   placeholder='i.e. "Artsy Stroll"'
                   value={artWalkName}
-                  onChange={(e) => setArtWalkName(e.target.value)}
+                  onChange={handleArtWalkNameChange}
+                  onKeyPress={handleKeypress}
+                  id="artWalkInput"
                 />
               </div>
               <div className='create-modal-enter'>
                 <button
                   type="submit"
                   disabled={artWalkName.length ? false : true}
+                  id="artWalkBtn"
+                  onClick={handleArtWalkNameSubmit}
                 >
                   Enter
                 </button>
@@ -162,28 +185,48 @@ export default function CreateArtWalk() {
             <div className="artWalkTitleContainer">
               <h1>New Art Walk: <br/>{artWalkName}</h1>
               {!artWalkName.length ? (
-                <button type="button" className="btn-main" onClick={openModal}>
+                <button
+                  type="button"
+                  className="btn-main"
+                  onClick={openModal}
+                >
                   Name Your Art Walk
                 </button>
               ) : (
-                <button type="submit" className="btn-main" disabled={artWalkList.length < 2 || artWalkList.length > 10} onClick={handleSubmit}>
+                <button
+                 type="submit"
+                 className="btn-main"
+                 disabled={artWalkList.length < 2 || artWalkList.length > 10}
+                 onClick={handleSubmit}
+                >
                   Get Walkin!
                 </button>
               )}
             </div>
+            {artWalkName && (
+               <button
+                type="button"
+                className="btn-main"
+                onClick={openModal}
+              >
+               Edit Name
+             </button>
+            )}
+            {artWalkName.length && artWalkList.length < 1 ?
+              <div>Click a location on the map to add it to your walk</div> : null}
             {artWalkList.length > 10 && <h2>You have added too many artwalks</h2>}
-            <div className="artWalkCardList">
-              {artWalkList &&
-                artWalkList.map(location => (
-                  <div className="artWalkCard" key={location.id}>
-                    <ArtCard
-                      location={location}
-                      artWalkList={artWalkList}
-                      setArtWalkList={setArtWalkList}
-                      />
-                  </div>
-                ))}
-            </div>
+              <div className="artWalkCardList">
+                {artWalkList &&
+                  artWalkList.map(location => (
+                    <div className="artWalkCard" key={location.id}>
+                      <ArtCard
+                        location={location}
+                        artWalkList={artWalkList}
+                        setArtWalkList={setArtWalkList}
+                        />
+                    </div>
+                  ))}
+              </div>
           </div>
           <div className="allArtMapContainer">
             {/* {showDisplayWindow && (
@@ -235,11 +278,15 @@ export default function CreateArtWalk() {
                           Address: {selected.street_address}, {selected.city}, {selected.state}, {selected.zip_code}
                         </b>
                       </p>
-                      {!artWalkList.includes(selected) ? (
-                      <button id={selected.id} onClick={addToWalk}>
-                        Add to Walk
-                      </button>
-                      ) : <p>This art piece is currently in your walk</p>
+                      {!artWalkList.includes(selected) ?
+                        (
+                          <button
+                            id={selected.id}
+                            onClick={addToWalk}
+                          >
+                            Add to Walk
+                          </button>
+                        ) : <p>This art piece is currently in your walk</p>
                       }
                     </div>
                   </InfoWindow>
