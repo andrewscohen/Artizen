@@ -47,7 +47,7 @@ export default function ArtwalkContainer({ artwalk, change, setChange }) {
               </h3>
             </div>
           </Link>
-          <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt"></i></button>
+          <button className="trash" onClick={(event) => handleDelete(event)}><i className="far fa-trash-alt" /></button>
         </div>
     );
   } else {

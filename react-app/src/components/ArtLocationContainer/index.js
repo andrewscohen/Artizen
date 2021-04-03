@@ -27,7 +27,7 @@ export default function ArtLocationContainer({ showDelete, location, change, set
       </Link>
       {showDelete && (
         <button className="trash" onClick={event => handleDelete(event)}>
-          <i className="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt" />
         </button>
       )}
     </div>

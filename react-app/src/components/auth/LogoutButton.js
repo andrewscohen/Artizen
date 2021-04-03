@@ -18,7 +18,7 @@ const LogoutButton = ({setAuthenticated, setDisplay}) => {
     dispatch(userLogout());
   };
 
-  return <button className="logout-button" onClick={onLogout}><i className="fas fa-minus btn--dropdown-icon"></i>Logout</button>;
+  return <button className="logout-button" onClick={onLogout}><i className="fas fa-minus btn--dropdown-icon" />Logout</button>;
 };
 
 export default LogoutButton;

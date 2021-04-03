@@ -32,7 +32,7 @@ return (
             onClick={deleteFromWalk}
             className="trash"
         >
-            <i className="fas fa-times"></i>
+            <i className="fas fa-times" />
         </button>
     </div>
 )

@@ -16,7 +16,7 @@ const Locate = ({ panTo }) => {
         );
       }}
     >
-      <i className="fas fa-crosshairs"></i>
+      <i className="fas fa-crosshairs" />
     </button>
   );
 };

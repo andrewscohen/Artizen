@@ -172,7 +172,7 @@ export default function CreateArtWalk() {
               <h1>
                 <div className="name-div">New Art Walk: {artWalkName.length > 0 && (
                     <button type="button" className="edit-btn artwalk-edit-btn" onClick={openModal}>
-                      <i className="far fa-edit"></i>
+                      <i className="far fa-edit" />
                     </button>
                     )}
                 </div>

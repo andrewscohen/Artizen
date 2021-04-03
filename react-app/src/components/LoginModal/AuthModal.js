@@ -51,7 +51,7 @@ const AuthModal = ({setAuthenticated, setDisplay}) => {
 
     return (
         <>
-            <button className="login-btn" onClick={() => showLoginModal()}><i className="fas fa-user"></i> Login</button>
+            <button className="login-btn" onClick={() => showLoginModal()}><i className="fas fa-user" /> Login</button>
             <button className="signup-btn" onClick={() => showSignUpModal()}>Sign Up</button>
             <Modal
                 style={customStyles}
@@ -64,7 +64,7 @@ const AuthModal = ({setAuthenticated, setDisplay}) => {
                     <div className="login-modal-top-row">
                         <h1 className="title">Login</h1>
                         <button className="btn__x" onClick={onClick}>
-                            <i className="fas fa-times"></i>
+                            <i className="fas fa-times" />
                         </button>
                     </div>
                     <LoginModalForm showLoginForm={showLoginForm} setShowLoginForm={setShowLoginForm}  setAuthenticated={setAuthenticated} />
@@ -74,7 +74,7 @@ const AuthModal = ({setAuthenticated, setDisplay}) => {
                     <div className="signup-modal-top-row">
                         <h1 className="title">Sign Up</h1>
                         <button className="btn__x" onClick={onClick}>
-                            <i className="fas fa-times"></i>
+                            <i className="fas fa-times" />
                         </button>
                     </div>
                     <SignupModalForm setShowLoginForm={setShowLoginForm} setAuthenticated={setAuthenticated} />

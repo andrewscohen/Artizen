@@ -12,7 +12,7 @@ const DisplayWindow = ({ selected, setShowDisplayWindow, artWalkList, setSelecte
     <div className={`map-display-window ${stickToRight ? "stick-to-right" : "stick-to-left"}`}>
       <div className="map-display-btn-container">
         <button className="btn-main display-x" onClick={handleDisplayWindowClose}>
-          <i className="fas fa-times"></i>
+          <i className="fas fa-times" />
         </button>
       </div>
       <div className="map-display-img-container">
