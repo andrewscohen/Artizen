@@ -46,7 +46,7 @@
 .artlocation-address {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .link {
