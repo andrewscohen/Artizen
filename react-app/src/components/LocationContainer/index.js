@@ -29,7 +29,7 @@ const LocationContainer = () => {
 
   return (
     <>
-      <div className="main">
+      <div className="main no-overflow">
         <div className="location-container">
           <div className="location-left">
               <img className="location-art-img" src={location.photos[0].url} alt="art" />
@@ -50,15 +50,23 @@ const LocationContainer = () => {
               {location.description.length > 0 && (
                 <p className="location-description">{location.description}</p>
               )}
-              <p className="location-address">{location.street_address}</p>
-              <p className="location-address">
-                {location.city}, {location.state} {location.zip_code}
-              </p>
-              <div className="location-map-container">
-                <img
-                  src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=300x300&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
-                  alt="map"
-                />
+              <div className="location-address-info">
+                <div className="address-container">
+                  <p className="visit-text">Visit at:</p>
+                  <h3 className="artlocation-address">
+                    {location.street_address}
+                    <div>
+                      {location.city}, {location.state}
+                    </div>
+                    {location.zip_code}
+                  </h3>
+                </div>
+                <div className="location-map-container">
+                  <img
+                    src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=300x200&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
+                    alt="map"
+                  />
+                </div>
               </div>
             </div>
             <CommentContainer />

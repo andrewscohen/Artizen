@@ -1,11 +1,36 @@
+.address-container {
+  width: 50%;
+  padding: 1em;
+  font-family: "Rubik";
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.2em;
+  /* border-right: 2px solid #ccc; */
+}
+
+.location-address-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  padding: 1em 0;
+}
+
 .location-container {
   font-family: "Ubuntu Mono";
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   /* flex-wrap: wrap; */
   overflow-x: hidden;
+  overflow-y: hidden;
   padding: 1em;
   margin-bottom: 12em;
 }
@@ -17,7 +42,7 @@
 }
 
 .location-left {
-  width: 60%;
+  /* max-width: 60%; */
   max-width: 750px;
   max-height: calc(74vh);
   /* border: 3px solid black; */
@@ -26,15 +51,16 @@
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  /* padding: 2em; */
   margin: 1em;
   border-radius: 20px;
   /* background-color: #eee; */
+
 }
 
 .location-right {
   width: 40%;
   max-width: 550px;
+  max-height: calc(74vh);
   flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
@@ -43,15 +69,19 @@
   margin: 1em;
   border-radius: 20px;
   background-color: #eee;
+  overflow-y: auto;
+  /* overflow-y: overlay; */
+  border: 3px solid black;
 }
 
 .location-map-container {
-  grid-area: Map;
+  width: 50%;
+  /* border-left: 2px solid #ccc; */
 }
 
 .location-map-container img {
   padding: 1em;
-  width: 250px;
+  width: 100%;
   object-fit: contain;
 }
 
@@ -67,7 +97,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  margin: 0 0 0.5em;
+  margin: 0 0 1em;
+
 }
 
 .location-art-img {
@@ -76,6 +107,7 @@
   max-height: calc(74vh);
   object-fit: contain;
   border-radius: 20px;
+
 }
 
 .location-edit-btn {
@@ -91,7 +123,7 @@
 
 .location-artist {
   font-size: 2em;
-  margin-top: 0;
+  margin: 0 0 .7em;
 }
 
 .location-artist-name {
@@ -102,10 +134,19 @@
 .location-description {
   font-size: 1.2em;
   font-family: "Rubik";
-  font-weight: 500;
+  font-weight: 600;
+  margin: 0 0 1.5em;
 }
 
 .location-address {
   margin: 0;
   font-size: 2em;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.visit-text {
+  margin-top: 0;
 }
