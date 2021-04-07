@@ -55,8 +55,15 @@
 .location-info-container {
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  width: 100%;
+  padding: 2em;
+  /* width: 100%; */
+}
+
+.location-info-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .location-art-img {
@@ -77,6 +84,7 @@
 
 .location-title {
   font-size: 2.5em;
+  margin: 0 0 0.5em;
 }
 
 .location-artist {
