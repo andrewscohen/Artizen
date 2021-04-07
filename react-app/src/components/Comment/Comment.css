@@ -9,6 +9,23 @@
   padding: 1em;
   border-radius: 5px;
   background-color: #1cc3d977;
+  box-sizing: border-box;
+}
+
+.comment-edit-form {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-edit-form textarea {
+  resize: vertical;
+  width: 100%;
+  height: 5em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  padding: .5em;
 }
 
 .comment-user-line {

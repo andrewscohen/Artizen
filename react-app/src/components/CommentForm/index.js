@@ -25,7 +25,7 @@ const CommentForm = () => {
           onChange={e => setComment(e.target.value)}
           required
         ></textarea>
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn-main">Submit</button>
       </form>
     </div>
   );

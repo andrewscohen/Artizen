@@ -1,47 +1,78 @@
 .location-container {
   font-family: "Ubuntu Mono";
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "Pic Info"
-    "Map Info";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  /* flex-wrap: wrap; */
   overflow-x: hidden;
-  padding-bottom: 2em;
+  margin-bottom: 12em;
 }
 
 .location-pic-container {
-  grid-area: Pic;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
+}
+
+.location-left {
+  width: 60%;
+  max-width: 750px;
+  /* border: 3px solid black; */
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2em; */
+  margin: 1em;
+  border-radius: 20px;
+  background-color: #eee;
+}
+
+.location-right {
+  width: 40%;
+  max-width: 500px;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 20px;
+  background-color: #eee;
 }
 
 .location-map-container {
   grid-area: Map;
 }
 
-.location-map-container,
-.location-pic-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.location-map-container img {
   padding: 1em;
+  width: 250px;
+  object-fit: contain;
 }
 
 .location-info-container {
-  grid-area: Info;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
+  width: 100%;
 }
 
 .location-art-img {
-  max-width: 100%;
+  width: 100%;
   max-height: 700px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
 }
 
 .location-edit-btn {
-  position: absolute;
-  top: 8em;
-  right: 2em;
+  /* position: absolute; */
+  /* top: 8em; */
+  /* right: 2em; */
+  align-self: flex-end;
+  /* position: absolute; */
+  /* top: 0 */
 }
 
 .location-title {
