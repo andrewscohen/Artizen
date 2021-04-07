@@ -82,8 +82,8 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
 
   return (
     <>
-      <button className="location-edit-btn" onClick={openModal}>
-        Edit Location
+      <button className="edit-btn location-edit-btn" onClick={openModal}>
+        <i className="far fa-edit"></i>
       </button>
       <Modal
         style={customStyles}

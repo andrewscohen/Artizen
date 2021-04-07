@@ -33,9 +33,11 @@ const LocationContainer = () => {
         <div className="location-container">
           <div className="location-left">
               <img className="location-art-img" src={location.photos[0].url} alt="art" />
+          </div>
+          <div className="location-right">
               <div className="location-info-container">
                 <div className="location-info-top">
-                  {location.title.length > 0 && <h2 className="location-title">{location.title}</h2>}
+                  {location.title.length > 0 && <h2 className="location-title artlocation-title">{location.title}</h2>}
                   {location.user_id === sessionUser.id && (
                     <LocationEditModal setUpdateContainer={setUpdateContainer} userId={sessionUser.id} location={location} />
                     )}
@@ -46,21 +48,19 @@ const LocationContainer = () => {
                 </p>
               )}
               {location.description.length > 0 && (
-                <p className="location-description">Description: {location.description}</p>
+                <p className="location-description">{location.description}</p>
               )}
               <p className="location-address">{location.street_address}</p>
               <p className="location-address">
                 {location.city}, {location.state} {location.zip_code}
               </p>
-            <div className="location-map-container">
-              <img
-                src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=300x300&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
-                alt="map"
-              />
+              <div className="location-map-container">
+                <img
+                  src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.street_address},${location.city},${location.state}&zoom=14&size=300x300&maptype=roadmap&markers=color:0xFE3A9E%7C${location.lat},${location.long}&key=${process.env.REACT_APP_GOOGLE_PLACES_API_KEY}`}
+                  alt="map"
+                />
+              </div>
             </div>
-            </div>
-          </div>
-          <div className="location-right">
             <CommentContainer />
           </div>
         </div>

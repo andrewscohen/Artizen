@@ -6,6 +6,7 @@
   align-items: flex-start;
   /* flex-wrap: wrap; */
   overflow-x: hidden;
+  padding: 1em;
   margin-bottom: 12em;
 }
 
@@ -18,7 +19,9 @@
 .location-left {
   width: 60%;
   max-width: 750px;
+  max-height: calc(74vh);
   /* border: 3px solid black; */
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
@@ -26,17 +29,17 @@
   /* padding: 2em; */
   margin: 1em;
   border-radius: 20px;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 
 .location-right {
   width: 40%;
-  max-width: 500px;
+  max-width: 550px;
   flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  padding: 2em;
+  padding: 2.1em;
   margin: 1em;
   border-radius: 20px;
   background-color: #eee;
@@ -55,36 +58,35 @@
 .location-info-container {
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  /* width: 100%; */
+  /* padding: 2em; */
+  width: 100%;
 }
 
 .location-info-top {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  margin: 0 0 0.5em;
 }
 
 .location-art-img {
-  width: 100%;
-  max-height: 700px;
-  object-fit: cover;
-  border-radius: 20px 20px 0 0;
+  display: flex;
+  max-width: 100%;
+  max-height: calc(74vh);
+  object-fit: contain;
+  border-radius: 20px;
 }
 
 .location-edit-btn {
-  /* position: absolute; */
-  /* top: 8em; */
-  /* right: 2em; */
-  align-self: flex-end;
-  /* position: absolute; */
-  /* top: 0 */
+  margin: 10px;
+
 }
 
 .location-title {
-  font-size: 2.5em;
-  margin: 0 0 0.5em;
+  font-size: 3.2em;
+  margin: 0;
+  font-weight: 400;
 }
 
 .location-artist {
@@ -98,7 +100,9 @@
 }
 
 .location-description {
-  font-size: 1.8em;
+  font-size: 1.2em;
+  font-family: "Rubik";
+  font-weight: 500;
 }
 
 .location-address {
