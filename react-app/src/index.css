@@ -86,16 +86,19 @@ body {
 }
 
 .main::-webkit-scrollbar,
-.artWalkCardList::-webkit-scrollbar {
+.artWalkCardList::-webkit-scrollbar,
+.location-container::-webkit-scrollbar {
 	width: 13px;
 }
 
 .main::-webkit-scrollbar-thumb,
-.artWalkCardList::-webkit-scrollbar-thumb {
+.artWalkCardList::-webkit-scrollbar-thumb,
+.location-container::-webkit-scrollbar-thumb {
 	background-color: #fe3a9e;
 }
 
 .main::-webkit-scrollbar-thumb:hover,
-.artWalkCardList::-webkit-scrollbar-thumb:hover {
+.artWalkCardList::-webkit-scrollbar-thumb:hover,
+.location-container::-webkit-scrollbar-thumb:hover {
 	background-color: #c52f7c;
 }
