@@ -27,7 +27,7 @@ const Comment = ({ comment, setUpdateContainer }) => {
       {showEditForm ? (
         <div className="comment-edit-form">
           <textarea onChange={e => setEditedComment(e.target.value)}>{editedComment}</textarea>
-          <button onClick={() => handleEdit(comment.id, editedComment)}>Update</button>
+
         </div>
       ) : (
         <p className="comment-content">{comment.comment}</p>
@@ -39,12 +39,17 @@ const Comment = ({ comment, setUpdateContainer }) => {
       </p>
       {sessionUser.id === comment.user_id && (
         <div className="comment-buttons">
-          <button className='edit-btn' onClick={() => setShowEditForm(true)}>
+          <button className='edit-btn' onClick={() => setShowEditForm(showEditForm => !showEditForm)}>
             <i className="far fa-edit"></i>
           </button>
           <button className='delete-btn' onClick={() => handleDelete(comment.id)}>
             <i className="far fa-trash-alt"></i>
           </button>
+          {showEditForm &&
+            <button className='save-btn' onClick={() => handleEdit(comment.id, editedComment)}>
+              <i className="far fa-save"></i>
+            </button>
+          }
         </div>
       )}
     </div>
