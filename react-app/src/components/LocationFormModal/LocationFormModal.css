@@ -105,15 +105,19 @@ input::-webkit-file-upload-button {
   font-size: 1em;
 }
 
-.location-form input {
+.location-form input,
+.location-form textarea {
   border: 1px solid #1CC3D9;
   border-radius: 2px;
   padding: 0.3em;
   outline: none;
   width: 100%;
+  resize: vertical;
+  font-family: "Rubik"
 }
 
-.location-form input:focus {
+.location-form input:focus,
+.location-form textarea:focus {
   box-shadow: 0 0 3px #1CC3D9;
 }
 

@@ -186,8 +186,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <input
-                  type="textarea"
+                <textarea
                   placeholder="Description (optional)"
                   value={description}
                   onChange={e => setDescription(e.target.value)}

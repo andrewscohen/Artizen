@@ -13,9 +13,9 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    padding: "1.5em",
+    padding: "2.5em",
     backgroundColor: "rgba(254, 58, 158, .7)",
-    borderRadius: "2px",
+    borderRadius: "5px",
     border: "none",
     width: "fit-content",
     boxSizing: "border-box",
@@ -23,7 +23,7 @@ const customStyles = {
   },
   overlay: {
     // backgroundColor: "transparent",
-    backgroundColor: "rgba(0, 0, 0, .6)",
+    backgroundColor: "rgba(0, 0, 0, .7)",
     zIndex: "100",
   },
 };
@@ -75,7 +75,7 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
         lat,
         long,
       })
-    );
+    )
     await setUpdateContainer(prev => !prev);
     await setIsOpen(false);
   };
@@ -90,77 +90,94 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
-        <button
-          className="btn__x"
-          onClick={closeModal}>
-          <i className="fas fa-times" />
-        </button>
-        <div className="location-edit-form">
-          <h1>Edit Location</h1>
-          <div>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={editTitle}
-              onChange={e => setEditTitle(e.target.value)}
-            />
+        <div className="location-edit-form location-form">
+          <div className='new-location-top-row'>
+            <h1>Edit Location</h1>
+            {/* {errors.length > 0 && errors.map(error => <div className="errors" key={error}>{error}</div>)} */}
+            <button
+              className="btn__x"
+              onClick={closeModal}>
+              <i className="fas fa-times" />
+            </button>
           </div>
-          <div>
-            <label htmlFor="artist">Artist</label>
-            <input
-              type="text"
-              name="artist"
-              value={editArtist}
-              onChange={e => setEditArtist(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="description">Description</label>
-            <input
-              type="text"
-              name="description"
-              value={editDescription}
-              onChange={e => setEditDescription(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="street-address">Street Address</label>
-            <input
-              type="text"
-              name="street-address"
-              value={editStreetAddress}
-              onChange={e => setEditStreetAddress(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="city">City</label>
-            <input
-              type="text"
-              name="city"
-              value={editCity}
-              onChange={e => setEditCity(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="state">State</label>
-            <input
-              type="text"
-              name="state"
-              value={editState}
-              onChange={e => setEditState(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="zip-code">ZIP Code</label>
-            <input
-              type="text"
-              name="zip-code"
-              value={editZip}
-              onChange={e => setEditZip(e.target.value)}
-            />
-          </div>
-          <button onClick={handleSubmit}>Submit</button>
+          <form className="location-form" onSubmit={handleSubmit}>
+            <div>
+              {/* <label htmlFor="title">Title</label> */}
+              <input
+                type="text"
+                name="title"
+                placeholder="Artwork Title (optional)"
+                value={editTitle}
+                onChange={e => setEditTitle(e.target.value)}
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="artist">Artist</label> */}
+              <input
+                type="text"
+                name="artist"
+                placeholder="Artist Name (optional)"
+                value={editArtist}
+                onChange={e => setEditArtist(e.target.value)}
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="description">Description</label> */}
+              <textarea
+                name="description"
+                placeholder="Description (optional)"
+                value={editDescription}
+                onChange={e => setEditDescription(e.target.value)}
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="street-address">Street Address</label> */}
+              <input
+                type="text"
+                name="street-address"
+                placeholder="Street Address"
+                value={editStreetAddress}
+                onChange={e => setEditStreetAddress(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="city">City</label> */}
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={editCity}
+                onChange={e => setEditCity(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="state">State</label> */}
+              <input
+                type="text"
+                name="state"
+                placeholder="State"
+                value={editState}
+                onChange={e => setEditState(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              {/* <label htmlFor="zip-code">ZIP Code</label> */}
+              <input
+                type="text"
+                name="zip-code"
+                placeholder="Zip Code"
+                value={editZip}
+                onChange={e => setEditZip(e.target.value)}
+                required
+              />
+            </div>
+            <div className="edit-location-submit">
+              <button className="btn-secondary" type="submit">Save</button>
+            </div>
+          </form>
         </div>
       </Modal>
     </>
