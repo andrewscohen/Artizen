@@ -110,7 +110,7 @@
   max-width: 100%;
   max-height: calc(74vh);
   object-fit: contain;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .location-edit-btn {
