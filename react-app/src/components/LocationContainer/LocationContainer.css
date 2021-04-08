@@ -1,6 +1,7 @@
 .address-container {
   width: 50%;
-  padding: 1em;
+  min-width: 200px;
+  padding: 1em 0;
   font-family: "Rubik";
   box-sizing: border-box;
   display: flex;
@@ -17,9 +18,11 @@
   width: 100%;
   box-sizing: border-box;
   align-items: center;
+  justify-content: center;
   border-top: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   padding: 1em 0;
+  flex-wrap: wrap;
 }
 
 .location-container {
@@ -28,9 +31,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   padding: 1em;
   margin-bottom: 12em;
 }
@@ -67,20 +70,19 @@
   align-items: center;
   padding: 2.1em;
   margin: 1em;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #eee;
   overflow-y: auto;
-  /* overflow-y: overlay; */
+  overflow-y: overlay;
   border: 3px solid black;
 }
 
 .location-map-container {
   width: 50%;
-  /* border-left: 2px solid #ccc; */
+  min-width: 200px;
 }
 
 .location-map-container img {
-  padding: 1em;
   width: 100%;
   object-fit: contain;
 }
@@ -112,7 +114,6 @@
 
 .location-edit-btn {
   margin: 10px;
-
 }
 
 .location-title {
@@ -149,4 +150,24 @@
 
 .visit-text {
   margin-top: 0;
+}
+
+.location-right::-webkit-scrollbar {
+	width: 10px;
+}
+
+.location-right::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  padding: 5px;
+	background-color: #fe3a9e;
+}
+
+.location-right::-webkit-scrollbar-thumb:hover {
+	background-color: #c52f7c;
+}
+
+@media screen and (max-width: 1388px) {
+  .no-overflow {
+    overflow-y: auto;
+  }
 }
