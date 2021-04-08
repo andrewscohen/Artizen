@@ -34,16 +34,18 @@ body {
 }
 
 .btn-secondary {
-	padding: 5px 10px;
-	width: 6rem;
+	padding: 7px 10px;
+	width: 7rem;
 	flex-wrap: nowrap;
 	color: white;
 	border: 1px solid #fe3a9e;
-	background-color: #1cc3d9;
-	/* background-image: linear-gradient(to right, #1CC3D9, #FE3A9E); */
+	background-color: #1CC3D9;
+	font-family: "Rubik";
 	outline: none;
 	border-radius: 5px;
-	margin: 0 1.5em;
+	cursor: pointer;
+	/* margin: 0 1.5em; */
+	font-size: 1em;
 }
 
 .btn-secondary:hover {

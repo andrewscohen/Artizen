@@ -76,45 +76,8 @@
 }
 
 .new-location-submit button {
-  padding: 7px 10px;
-  flex-wrap: nowrap;
-  color: white;
-  border: 1px solid #fe3a9e;
-  background-color: #1CC3D9;
-  font-family: "Rubik";
-  outline: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 0 1.5em;
-  font-size: 1em;
+  width: 100%;
 }
-
-/* .new-location-submit label {
-  padding: 7px 10px;
-  width: 7rem;
-  flex-wrap: nowrap;
-  color: white;
-  border: 1px solid #fe3a9e;
-  background-color: #1CC3D9;
-  font-family: "Rubik";
-  outline: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 0 1.5em;
-  font-size: 1em;
-} */
-
-.new-location-submit button:hover,
-input::-webkit-file-upload-button:hover
-{
-  box-shadow: 0 0 4px #FFE41C;
-  background-color: #18b9ce;
-}
-
-/* .new-location-submit label:hover {
-  box-shadow: 0 0 4px #FFE41C;
-  background-color: #18b9ce;
-} */
 
 .file-input-div {
   width: 100%;

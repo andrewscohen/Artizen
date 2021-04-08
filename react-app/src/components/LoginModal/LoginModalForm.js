@@ -79,10 +79,10 @@ const LoginModalForm = ({ authenticated, setAuthenticated, setShowLoginForm, sho
       </div>
       <div className="button-container">
         <div>
-          <button id="btn" type="submit">Login</button>
+          <button className="btn-secondary" id="btn" type="submit">Login</button>
         </div>
         <div>
-          <button id="btn2" type="submit" onClick={demoLogin}>Demo User</button>
+          <button className="btn-secondary" id="btn2" type="submit" onClick={demoLogin}>Demo User</button>
         </div>
       </div>
 
