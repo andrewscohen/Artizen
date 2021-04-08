@@ -1,7 +1,7 @@
 .address-container {
   width: 50%;
   min-width: 200px;
-  padding: 1em 0;
+  padding: 1em .5em;
   font-family: "Rubik";
   box-sizing: border-box;
   display: flex;
