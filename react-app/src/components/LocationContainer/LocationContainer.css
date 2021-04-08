@@ -30,12 +30,14 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   overflow-x: hidden;
-  /* overflow-y: hidden; */
-  padding: 1em;
-  margin-bottom: 12em;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1em 1em 10em;
+  margin-top: 7em;
+  height: 100vh;
 }
 
 .location-pic-container {
@@ -45,8 +47,8 @@
 }
 
 .location-left {
-  /* max-width: 60%; */
-  max-width: 750px;
+  max-width: 60%;
+  /* max-width: 750px; */
   max-height: calc(74vh);
   /* border: 3px solid black; */
   display: flex;
@@ -62,6 +64,7 @@
 
 .location-right {
   width: 40%;
+  min-width: 480px;
   max-width: 550px;
   max-height: calc(74vh);
   flex-direction: column;
@@ -100,7 +103,6 @@
   align-items: flex-start;
   justify-content: space-between;
   margin: 0 0 1em;
-
 }
 
 .location-art-img {
@@ -109,7 +111,6 @@
   max-height: calc(74vh);
   object-fit: contain;
   border-radius: 20px;
-
 }
 
 .location-edit-btn {
@@ -144,10 +145,6 @@
   font-size: 2em;
 }
 
-.no-overflow {
-  overflow: hidden;
-}
-
 .visit-text {
   margin-top: 0;
 }
@@ -164,10 +161,4 @@
 
 .location-right::-webkit-scrollbar-thumb:hover {
 	background-color: #c52f7c;
-}
-
-@media screen and (max-width: 1388px) {
-  .no-overflow {
-    overflow-y: auto;
-  }
 }

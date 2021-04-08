@@ -29,7 +29,7 @@ const LocationContainer = () => {
 
   return (
     <>
-      <div className="main no-overflow">
+      {/* <div className="main no-overflow"> */}
         <div className="location-container">
           <div className="location-left">
               <img className="location-art-img" src={location.photos[0].url} alt="art" />
@@ -72,7 +72,7 @@ const LocationContainer = () => {
             <CommentContainer />
           </div>
         </div>
-      </div>
+      {/* </div> */}
       <Footer bottomOfPage={true} />
     </>
   );
