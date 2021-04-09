@@ -1,5 +1,5 @@
 import { getLocation, resetNewLocation } from "../../store/locations";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import "./LocationContainer.css";
@@ -9,6 +9,7 @@ import Footer from "../Footer";
 
 const LocationContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { locationId } = useParams();
   const location = useSelector(state => state.locations.location);
   const [loaded, setLoaded] = useState(false);
@@ -18,18 +19,24 @@ const LocationContainer = () => {
 
   useEffect(() => {
     const getLocationLocal = async () => {
-      await dispatch(getLocation(locationId));
+      const locationTry = await dispatch(getLocation(locationId));
+      if (locationTry.errors) {
+        history.push("/dashboard")
+      }
       dispatch(resetNewLocation());
       setLoaded(true);
     };
     getLocationLocal();
-  }, [updateContainer, dispatch, locationId]);
+  }, [updateContainer, dispatch, locationId, history]);
 
   if (!loaded) return <span>Loading</span>;
 
 
-  // if (!location) return (
+  // if (location && location === null) return (
+  //   <>
+  //   {console.log("hit the thing")}
   //   <Redirect to="/dashboard" />
+  //   </>
   // );
 
   return (

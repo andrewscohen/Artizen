@@ -47,7 +47,6 @@ const updateOneLocation = location => {
 export const getLocation = locationId => async dispatch => {
     const res = await fetch(`/api/locations/get/${locationId}`);
     const data = await res.json();
-
     dispatch(getOneLocation(data));
     return data;
   };
@@ -55,7 +54,6 @@ export const getLocation = locationId => async dispatch => {
 export const getAllLocations = () => async dispatch => {
     const res = await fetch(`/api/locations/get/all`);
     const data = await res.json();
-
     dispatch(getEveryLocation(data));
 }
 
