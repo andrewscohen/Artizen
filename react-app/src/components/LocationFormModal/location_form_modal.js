@@ -186,8 +186,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 />
               </div>
               <div>
-                <input
-                  type="textarea"
+                <textarea
                   placeholder="Description (optional)"
                   value={description}
                   onChange={e => setDescription(e.target.value)}
@@ -206,9 +205,7 @@ const LocationFormModal = ({showContainer, setShowContainer, setBackgroundStyle}
                 </label>
               </div>
               <div className='new-location-submit'>
-                <div>
-                  <button type="submit">Create Location</button>
-                </div>
+                <button className="btn-secondary" type="submit">Create Location</button>
               </div>
             </form>
           </div>

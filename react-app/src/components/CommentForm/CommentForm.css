@@ -1,6 +1,7 @@
 .comment-form-container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .comment-form {
@@ -8,12 +9,18 @@
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1.5em;
+  width: 100%;
 }
 
 .comment-form textarea {
-  width: 33em;
-  height: 8em;
+  width: 100%;
+  height: 6em;
   margin-bottom: 0.8em;
+  resize: vertical;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  padding: .5em;
 }
 
 .comment-form textarea::-webkit-input-placeholder {
@@ -21,11 +28,6 @@
 }
 
 .comment-form button {
-  padding: 0.5em 0;
-  font-size: 1em;
-  background-color: #fe3a9e;
-  border: none;
-  outline: none;
-  color: white;
-  border-radius: 5px;
+  width: 100%;
+  align-self: center;
 }

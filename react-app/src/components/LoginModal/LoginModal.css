@@ -10,7 +10,7 @@
 .button-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .login-btn {
@@ -41,26 +41,6 @@
 
 .login-modal-form div:last-of-type {
     margin-bottom: 0.8em;
-}
-
-.login-modal-form button {
-    padding: 7px 10px;
-    width: 7rem;
-    flex-wrap: nowrap;
-    color: white;
-    border: 1px solid #fe3a9e;
-    background-color: #1CC3D9;
-    font-family: "Rubik";
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 1.5em;
-    font-size: 1em;
-}
-
-.login-modal-form button:hover {
-    box-shadow: 0 0 4px #FFE41C;
-    background-color: #18b9ce;
 }
 
 .login-modal-form input {

@@ -9,6 +9,23 @@
   padding: 1em;
   border-radius: 5px;
   background-color: #1cc3d977;
+  box-sizing: border-box;
+}
+
+.comment-edit-form {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-edit-form textarea {
+  resize: vertical;
+  width: 100%;
+  height: 5em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  padding: .5em;
 }
 
 .comment-user-line {
@@ -42,6 +59,17 @@
   outline: none;
   background-color: #fe3a9e;
   padding: 6px 7px 5px 7px;
+  margin: 5px 0 5px 7px ;
+  border: 2px solid black;
+  border-radius: 20%;
+  width: 32px;
+  height: 30px;
+}
+
+.save-btn {
+  outline: none;
+  background-color: #53B1DB;
+  padding: 6px 7px 5px 7px;
   margin: 5px 7px;
   border: 2px solid black;
   border-radius: 20%;
@@ -53,7 +81,13 @@
 	box-shadow: 0 0 4px #fe3a9e;
 	background-color: #f1e163;
 }
+
 .delete-btn:hover {
 	box-shadow: 0 0 4px #fe3a9e;
 	background-color: #f169b0;
+}
+
+.save-btn:hover {
+	box-shadow: 0 0 4px #fe3a9e;
+	background-color: #3997c2;
 }

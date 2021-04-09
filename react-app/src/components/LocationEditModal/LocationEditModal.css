@@ -3,3 +3,7 @@
   justify-content: space-between;
   margin-bottom: 0.8em;
 }
+
+.edit-location-submit button{
+  width: 100%;
+}

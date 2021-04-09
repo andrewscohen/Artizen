@@ -49,7 +49,7 @@ function App() {
       {loaded && (
         <Switch>
           <Route exact path="/">
-            <Home display={display} />
+            <Home display={display} authenticated={authenticated}/>
           </Route>
           <ProtectedRoute path="/locations/:locationId" exact={true} authenticated={authenticated}>
             <LocationContainer />
@@ -70,6 +70,9 @@ function App() {
           <ProtectedRoute path="/artwalks/add/new" exact={true} authenticated={authenticated}>
             <CreateArtWalk />
           </ProtectedRoute>
+          <Route>
+            <Home display={display} authenticated={authenticated} />
+          </Route>
         </Switch>
       )}
     </BrowserRouter>

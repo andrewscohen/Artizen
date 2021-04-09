@@ -11,9 +11,10 @@ location_get_routes = Blueprint("locations", __name__)
 @login_required
 def locations(id):
     location = Location.query.get(id)
-
-    return location.to_dict()
-
+    if location:
+        return location.to_dict()
+    else:
+        return {'errors': 'Location does not exist'}, 404
 
 @location_get_routes.route('/', methods=["POST"])
 @login_required

@@ -38,24 +38,6 @@
     margin-bottom: 0.8em;
 }
 
-.signup-modal-form button {
-    padding: 7px 10px;
-    color: white;
-    border: 1px solid #fe3a9e;
-    background-color: #1CC3D9;
-    border-radius: 5px;
-
-    font-family: "Rubik";
-    outline: none;
-
-    font-size: 1em;
-}
-
-.signup-modal-form button:hover {
-    box-shadow: 0 0 4px #FFE41C;
-    background-color: #18b9ce;
-}
-
 .signup-modal-form input {
     border: 1px solid #1CC3D9;
     border-radius: 2px;
@@ -69,7 +51,6 @@
 }
 
 .signup-modal-form button {
-    border-radius: 5px;
     width: 100%;
 }
 
