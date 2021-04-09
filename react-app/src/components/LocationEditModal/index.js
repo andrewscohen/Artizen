@@ -75,7 +75,7 @@ const LocationEditModal = ({ location, userId, setUpdateContainer }) => {
         lat,
         long,
       })
-    )
+    );
     await setUpdateContainer(prev => !prev);
     await setIsOpen(false);
   };
