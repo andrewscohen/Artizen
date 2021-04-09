@@ -56,9 +56,8 @@ const LocationContainer = () => {
                   <h3 className="artlocation-address">
                     {location.street_address}
                     <div>
-                      {location.city}, {location.state}
+                      {location.city}, {location.state} {location.zip_code}
                     </div>
-                    {location.zip_code}
                   </h3>
                 </div>
                 <div className="location-map-container">

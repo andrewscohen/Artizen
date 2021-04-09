@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
   /* border-right: 2px solid #ccc; */
 }
 
@@ -48,6 +48,7 @@
 
 .location-left {
   max-width: 60%;
+  min-width: 450px;
   /* max-width: 750px; */
   max-height: calc(74vh);
   /* border: 3px solid black; */
@@ -64,7 +65,7 @@
 
 .location-right {
   width: 40%;
-  min-width: 480px;
+  min-width: 350px;
   max-width: 550px;
   max-height: calc(74vh);
   flex-direction: column;
@@ -161,4 +162,15 @@
 
 .location-right::-webkit-scrollbar-thumb:hover {
 	background-color: #c52f7c;
+}
+
+@media screen and (max-width: 1240px) {
+  .location-map-container {
+    width: 75%;
+    margin-top: 1em;
+  }
+
+  .address-container {
+    width: 100%;
+  }
 }
