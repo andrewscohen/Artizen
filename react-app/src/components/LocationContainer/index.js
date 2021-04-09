@@ -1,5 +1,5 @@
 import { getLocation, resetNewLocation } from "../../store/locations";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import "./LocationContainer.css";
@@ -26,6 +26,11 @@ const LocationContainer = () => {
   }, [updateContainer, dispatch, locationId]);
 
   if (!loaded) return <span>Loading</span>;
+
+
+  // if (!location) return (
+  //   <Redirect to="/dashboard" />
+  // );
 
   return (
     <>

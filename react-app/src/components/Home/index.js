@@ -1,9 +1,15 @@
+import { Redirect } from "react-router-dom";
 import "./Home.css";
 import splashImage from "./Header_Dragon_Skeleton.jpg";
 import modalImage from "./Header_Hair_Blowing.jpg";
 import Footer from "../Footer";
 
-export default function Home({ display }) {
+export default function Home({ display, authenticated }) {
+
+  if (authenticated) return (
+    <Redirect to="/dashboard" />
+  );
+
   return (
     <>
       <div className="main home_main">
