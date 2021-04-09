@@ -26,7 +26,7 @@ const Comment = ({ comment, setUpdateContainer }) => {
     <div className="comment-container">
       {showEditForm ? (
         <div className="comment-edit-form">
-          <textarea onChange={e => setEditedComment(e.target.value)}>{editedComment}</textarea>
+          <textarea value={editedComment} onChange={e => setEditedComment(e.target.value)}></textarea>
 
         </div>
       ) : (
