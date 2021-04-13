@@ -171,12 +171,6 @@
 }
 
 @media screen and (max-width: 908px) {
-  .location-art-img {
-    max-width: 100%;
-    width: 100%;
-    /* max-height: 90vh; */
-  }
-
   .location-container {
     padding: 1em 1em 10em;
   }
